@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação DDSMS - Percepção de Risco v2.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* Tom de cinza/ardósia mais suave */
+        }
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            padding: 2.5rem; /* Mais respiro */
+            background-color: white;
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+        .card {
+            background-color: white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 1.5rem; /* Bordas mais arredondadas */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .nav-button {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Animações */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide.active .animated-item {
+            animation: fadeInUp 0.7s ease-out forwards;
+            opacity: 0;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #10b981, #facc15); /* Gradiente verde/amarelo mais vibrante */
+            color: white;
+        }
+        #timer {
+            cursor: pointer;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none; /* Standard syntax */
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        #timer.clicked {
+            transform: scale(1.1);
+            color: #facc15;
+        }
+        .subtle-bg {
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 1.5rem 1.5rem;
+        }
+        .video-container {
+            width: 70%;
+            height: 70%;
+            margin: auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+        }
+        .low-opacity-gradient-bg {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(250, 204, 21, 0.25));
+        }
+
+        /* Novas animações de Hover */
+        .hover-lift {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .hover-lift:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.2);
+        }
+        .hover-zoom {
+            transition: transform 0.3s ease-in-out;
+        }
+        .hover-zoom:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div id="presentationCard" class="card w-full max-w-5xl h-[700px] max-h-[90vh]">
+        <!-- Conteúdo dos Slides -->
+        <div class="flex-grow flex flex-col justify-center items-center text-center relative">
+
+            <!-- Timer e Fullscreen -->
+            <div id="timer" class="absolute top-4 right-20 text-base font-semibold text-gray-400 z-10">00:00</div>
+            <button id="fullscreenBtn" class="absolute top-3 right-4 text-gray-400 hover:text-emerald-600 z-10 p-2 rounded-full transition-colors">
+                <svg id="fs-enter-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 0h-4m4 0l-5-5"></path></svg>
+                <svg id="fs-exit-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14.485V19.97a.03.03 0 00.03.03h5.485M19.97 4.03a.03.03 0 00-.03-.03H14.455M4.03 4.03a.03.03 0 00-.03.03v5.485m15.94-5.515a.03.03 0 00.03.03v5.485"></path></svg>
+            </button>
+
+            <!-- Slide 1: Título -->
+            <div id="slide-1" class="slide active w-full h-full gradient-bg">
+                <div class="m-auto flex flex-col items-center">
+                    <div class="animated-item mb-6 flex items-center justify-center space-x-8">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" alt="Logo Petrobras" class="h-20">
+                        <img src="https://www.agfengenharia.com.br/wp-content/uploads/2018/09/group-20668-211507.png" alt="Logo AGF Engenharia" class="h-20">
+                    </div>
+                    <div class="animated-item delay-1 bg-black bg-opacity-30 text-white font-bold py-1 px-4 rounded-full inline-block mb-4">DDSMS - 21/10/25 | MARCELINO</div>
+                    <h1 class="animated-item delay-2 text-5xl md:text-7xl font-black leading-tight text-shadow-lg">Percepção de Risco</h1>
+                    <p class="animated-item delay-3 mt-4 text-xl md:text-3xl font-semibold">Você está realmente vendo o perigo ao seu redor?</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Agenda -->
+            <div id="slide-2" class="slide w-full h-full subtle-bg">
+                 <div class="m-auto w-full max-w-2xl">
+                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">O que vamos ver hoje?</h2>
+                    <ul class="text-left space-y-4 text-lg text-gray-700">
+                        <li class="animated-item delay-1 flex items-start hover-zoom"><span class="bg-gradient-to-b from-emerald-500 to-emerald-400 text-transparent bg-clip-text mr-3 mt-1 font-bold text-2xl leading-none">&#10148;</span><span>O perigo do "Piloto Automático" e da rotina.</span></li>
+                        <li class="animated-item delay-2 flex items-start hover-zoom"><span class="bg-gradient-to-b from-emerald-400 to-lime-400 text-transparent bg-clip-text mr-3 mt-1 font-bold text-2xl leading-none">&#10148;</span><span>Diferença fundamental entre Perigo e Risco.</span></li>
+                        <li class="animated-item delay-3 flex items-start hover-zoom"><span class="bg-gradient-to-b from-lime-400 to-yellow-400 text-transparent bg-clip-text mr-3 mt-1 font-bold text-2xl leading-none">&#10148;</span><span>Análise de acidentes reais para aprendizado.</span></li>
+                        <li class="animated-item delay-4 flex items-start hover-zoom"><span class="bg-gradient-to-b from-yellow-400 to-yellow-500 text-transparent bg-clip-text mr-3 mt-1 font-bold text-2xl leading-none">&#10148;</span><span>A ferramenta dos 3 P's para quebrar o ciclo.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 3: Conexão -->
+            <div id="slide-3" class="slide w-full h-full">
+                <div class="m-auto">
+                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">O "Piloto Automático"</h2>
+                    <div class="animated-item delay-1 my-6 rounded-lg overflow-hidden shadow-lg mx-auto w-48 h-48">
+                        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejE2ZTU3M2hvY25jZzB2eG5qNGRodDU4cm54Z2NucnE0eGZqajVodCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPnAiaMCws8nOsE/giphy.gif" alt="Robô trabalhando em linha de montagem" class="w-full h-full object-cover">
+                    </div>
+                    <p class="animated-item delay-2 text-lg md:text-xl text-gray-700 max-w-prose mx-auto">
+                        Quem já chegou em casa e não se lembrou do caminho?<br>
+                        Ou fez uma tarefa aqui "sem pensar"?<br><br>
+                        <span class="font-bold text-red-600">No trabalho, esse hábito é uma armadilha perigosa.</span>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Slide 4: O Problema (Habituação) -->
+            <div id="slide-4" class="slide w-full h-full subtle-bg">
+                <div class="m-auto">
+                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">A Rotina nos Cega</h2>
+                    <p class="animated-item delay-1 text-lg md:text-xl text-gray-700 max-w-prose mx-auto mt-6">
+                        O nome disso é <strong class="text-emerald-600">Habituação</strong>.<br>
+                        Nosso cérebro busca eficiência, e essa eficiência se torna uma vulnerabilidade em ambientes dinâmicos.<br><br>
+                        Ele se acostuma com os riscos e eles se tornam "invisíveis", parte da paisagem.<br>
+                        O excesso de confiança é o maior inimigo da segurança.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 5: Perigo vs Risco -->
+            <div id="slide-5" class="slide w-full h-full">
+                <div class="m-auto w-full max-w-4xl">
+                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Perigo vs. Risco: Qual a diferença?</h2>
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div class="animated-item delay-1 p-6 border-2 border-red-400 border-dashed rounded-lg hover-lift">
+                            <h3 class="font-bold text-2xl text-red-600">PERIGO</h3>
+                            <p class="text-gray-600 mt-2">É a <strong class="font-semibold">FONTE</strong> com potencial de causar dano.</p>
+                        </div>
+                        <div class="animated-item delay-2 p-6 border-2 border-yellow-500 border-dashed rounded-lg hover-lift">
+                            <h3 class="font-bold text-2xl text-yellow-600">RISCO</h3>
+                            <p class="text-gray-600 mt-2">É a <strong class="font-semibold">PROBABILIDADE</strong> do dano acontecer.</p>
+                        </div>
+                        <div class="animated-item delay-3 p-6 border-2 border-green-500 border-dashed rounded-lg hover-lift">
+                            <h3 class="font-bold text-2xl text-green-600">MEDIDAS</h3>
+                            <p class="text-gray-600 mt-2">É como <strong class="font-semibold">REDUZIMOS</strong> o risco.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Exemplos Práticos -->
+            <div id="slide-6" class="slide w-full h-full subtle-bg">
+                 <div class="m-auto w-full max-w-4xl">
+                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Exemplos Práticos</h2>
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div class="animated-item delay-1 space-y-2">
+                            <div class="bg-red-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg><p class="font-bold mt-2">PERIGO: Eletricidade</p></div>
+                            <div class="bg-yellow-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 010 12.728M11.999 9.001a1 1 0 11-2 0 1 1 0 012 0zM12 12a1 1 0 11-2 0 1 1 0 012 0zM12 15a1 1 0 11-2 0 1 1 0 012 0z"></path></svg><p class="font-bold mt-2">RISCO: Choque Elétrico</p></div>
+                            <div class="bg-green-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"></path></svg><p class="font-bold mt-2">MEDIDA: EPIs e LOTO</p></div>
+                        </div>
+                        <div class="animated-item delay-2 space-y-2">
+                            <div class="bg-red-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg><p class="font-bold mt-2">PERIGO: Trabalho em Altura</p></div>
+                            <div class="bg-yellow-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5-5-5M12 8v10"></path></svg><p class="font-bold mt-2">RISCO: Queda</p></div>
+                            <div class="bg-green-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg><p class="font-bold mt-2">MEDIDA: Cinto de Segurança</p></div>
+                        </div>
+                        <div class="animated-item delay-3 space-y-2">
+                             <div class="bg-red-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A5 5 0 0012 17.75a5 5 0 002.121-1.629M18 12a6 6 0 00-6-6 6 6 0 00-6 6"></path></svg><p class="font-bold mt-2">PERIGO: Líquido Inflamável</p></div>
+                            <div class="bg-yellow-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg><p class="font-bold mt-2">RISCO: Incêndio/Explosão</p></div>
+                            <div class="bg-green-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg><p class="font-bold mt-2">MEDIDA: Vestimenta RF</p></div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+
+            <!-- Slide 7: Vídeo: Acidente Grave - Falha de Procedimento -->
+            <div id="slide-7" class="slide w-full h-full">
+                <div class="flex flex-col w-full h-full justify-center items-center">
+                    <h2 class="animated-item text-2xl font-bold text-gray-800 mb-4">Análise de Caso: Falha em Procedimento</h2>
+                    <div class="video-container animated-item delay-1 hover-lift">
+                        <iframe src="https://www.youtube.com/embed/UFfpwCm274c" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Vídeo: Acidente por Posicionamento Inseguro -->
+            <div id="slide-8" class="slide w-full h-full">
+                <div class="flex flex-col w-full h-full justify-center items-center">
+                    <h2 class="animated-item text-2xl font-bold text-gray-800 mb-4">Regra de Ouro: Posicionamento Seguro</h2>
+                     <div class="video-container animated-item delay-1 hover-lift">
+                        <iframe src="https://www.youtube.com/embed/GyU1XMIhu_o" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p class="animated-item delay-2 text-lg text-gray-600 mt-4 font-semibold max-w-prose">
+                        Estar na "linha de fogo" ou sob cargas suspensas é uma falha grave.<br>
+                        Onde você se posiciona é uma decisão de segurança.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Slide 9: O Teste de Atenção (Gorila Invisível) -->
+            <div id="slide-9" class="slide w-full h-full">
+                <div class="flex flex-col w-full h-full justify-center items-center">
+                    <h2 class="animated-item text-2xl font-bold text-gray-800 mb-4">Teste Rápido: Conte os passes do time de BRANCO</h2>
+                    <div class="video-container animated-item delay-1 hover-lift">
+                        <iframe src="https://www.youtube.com/embed/LvusDjrYTf4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10: A Revelação -->
+            <div id="slide-10" class="slide w-full h-full subtle-bg">
+                <div class="m-auto">
+                     <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">E aí... quem viu o gorila?</h2>
+                     <p class="animated-item delay-1 text-lg md:text-xl text-gray-700 max-w-prose mx-auto mt-6">
+                        O foco excessivo em uma tarefa pode criar "pontos cegos" na nossa atenção.<br>
+                        Assim como o gorila, muitos riscos no nosso dia a dia passam despercebidos.<br><br>
+                        <strong class="text-red-600">E é aí que o acidente acontece.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 11: A Solução -->
+             <div id="slide-11" class="slide w-full h-full">
+                <div class="m-auto">
+                     <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">Como quebramos o "Piloto Automático"?</h2>
+                     <p class="animated-item delay-1 text-lg md:text-xl text-gray-700 max-w-prose mx-auto mt-6">
+                        A resposta não está em trabalhar mais devagar, mas sim em trabalhar de forma mais consciente.<br>
+                        Para isso, usamos uma ferramenta simples e poderosa:
+                    </p>
+                    <div class="animated-item delay-2 mt-8 text-5xl md:text-7xl font-black text-emerald-600 tracking-wider">
+                        Os 3 P's
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12: Pausar -->
+            <div id="slide-12" class="slide w-full h-full subtle-bg">
+                 <div class="m-auto">
+                    <h2 class="animated-item text-2xl md:text-3xl font-bold text-gray-500">O 1º P:</h2>
+                    <div class="flex items-center justify-center">
+                        <p class="animated-item delay-1 text-6xl md:text-8xl font-black text-red-600 my-4 mr-6">PAUSAR</p>
+                        <svg class="animated-item delay-2 w-20 h-20 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <p class="animated-item delay-3 text-lg md:text-xl text-gray-700 max-w-prose mx-auto">
+                        <strong>Saia do piloto automático.</strong><br>
+                        Antes de iniciar, respire fundo.<br>
+                        Dê a si mesmo segundos para se conectar com o presente e o ambiente.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 13: Processar -->
+            <div id="slide-13" class="slide w-full h-full subtle-bg">
+                 <div class="m-auto">
+                    <h2 class="animated-item text-2xl md:text-3xl font-bold text-gray-500">O 2º P:</h2>
+                     <div class="flex items-center justify-center">
+                        <p class="animated-item delay-1 text-6xl md:text-8xl font-black text-yellow-500 my-4 mr-6">PROCESSAR</p>
+                        <svg class="animated-item delay-2 w-20 h-20 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                    </div>
+                    <p class="animated-item delay-3 text-lg md:text-xl text-gray-700 max-w-prose mx-auto">
+                        <strong>Avalie os riscos, observação total, passo a passo.</strong><br>
+                        Olhe para suas mãos, seus pés, suas ferramentas e o local.<br>
+                        O que pode dar errado?
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 14: Prosseguir -->
+            <div id="slide-14" class="slide w-full h-full subtle-bg">
+                 <div class="m-auto">
+                    <h2 class="animated-item text-2xl md:text-3xl font-bold text-gray-500">O 3º P:</h2>
+                     <div class="flex items-center justify-center">
+                        <p class="animated-item delay-1 text-6xl md:text-8xl font-black text-emerald-600 my-4 mr-6">PROSSEGUIR</p>
+                        <svg class="animated-item delay-2 w-20 h-20 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <p class="animated-item delay-3 text-lg md:text-xl text-gray-700 max-w-prose mx-auto">
+                        <strong>Avance com cautela.</strong><br>
+                        Execute a tarefa com as medidas de controle aplicadas.<br>
+                        Considere sempre risco versus recompensa na balança.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 15: Vamos Refletir -->
+            <div id="slide-15" class="slide w-full h-full">
+                <div class="m-auto w-full max-w-3xl">
+                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">Vamos Refletir</h2>
+                    <svg class="animated-item delay-1 w-24 h-24 mx-auto my-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    <p class="animated-item delay-2 text-lg md:text-xl text-gray-700 max-w-prose mx-auto">
+                        A reflexão sobre segurança transcende funções.<br>
+                        Seja na linha de frente, na supervisão técnica ou no suporte administrativo, cada um de nós possui uma perspectiva única sobre os riscos.<br><br>
+                        <strong class="text-emerald-600">É nosso dever analisar criticamente os processos, questionar a rotina e comunicar os perigos que se tornaram 'invisíveis'.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 16: Compromisso -->
+            <div id="slide-16" class="slide w-full h-full subtle-bg">
+                 <div class="m-auto">
+                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">Nosso Compromisso de Hoje:</h2>
+                    <div class="animated-item delay-1 border-4 border-yellow-400 rounded-xl p-6 max-w-3xl mx-auto mt-8 bg-yellow-50 hover-lift">
+                        <h3 class="text-2xl md:text-3xl font-black text-gray-800">Praticar os 3 P's em TODAS as tarefas</h3>
+                        <p class="text-lg md:text-xl text-gray-700 mt-4">
+                           <strong>PAUSAR</strong>, <strong>PROCESSAR</strong> e só então <strong>PROSSEGUIR</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 17: Encerramento -->
+            <div id="slide-17" class="slide w-full h-full">
+                <div class="m-auto">
+                    <svg class="animated-item w-24 h-24 mx-auto my-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h2 class="animated-item delay-1 text-4xl md:text-5xl font-black text-gray-800">A Segurança é Nossa Responsabilidade</h2>
+                    <p class="animated-item delay-2 mt-4 text-xl md:text-2xl text-gray-600 max-w-prose mx-auto">
+                        Obrigado pela participação.<br>Cuidem de si mesmos e dos seus colegas.<br>
+                        Juntos, garantimos um ambiente de trabalho mais seguro para todos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 18: Referências -->
+            <div id="slide-18" class="slide w-full h-full subtle-bg">
+                <div class="m-auto w-full max-w-3xl text-left">
+                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">Referências e Fontes</h2>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="animated-item delay-1 hover-zoom"><strong>Vídeo - Acidente Grave (Procedimento):</strong> <a href="https://www.youtube.com/watch?v=UFfpwCm274c" target="_blank" class="text-emerald-600 hover:underline">youtube.com/watch?v=UFfpwCm274c</a></li>
+                        <li class="animated-item delay-2 hover-zoom"><strong>Vídeo - Acidente Grave (Desatenção):</strong> <a href="https://www.youtube.com/watch?v=GyU1XMIhu_o" target="_blank" class="text-emerald-600 hover:underline">youtube.com/watch?v=GyU1XMIhu_o</a></li>
+                        <li class="animated-item delay-3 hover-zoom"><strong>Vídeo - Teste de Atenção (Gorila):</strong> <a href="https://www.youtube.com/watch?v=LvusDjrYTf4" target="_blank" class="text-emerald-600 hover:underline">youtube.com/watch?v=LvusDjrYTf4</a></li>
+                        <li class="animated-item delay-4 hover-zoom"><strong>Logo Petrobras:</strong> <a href="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" target="_blank" class="text-emerald-600 hover:underline">Wikimedia Commons</a></li>
+                        <li class="animated-item delay-4 hover-zoom"><strong>Logo AGF Engenharia:</strong> <a href="https://www.agfengenharia.com.br" target="_blank" class="text-emerald-600 hover:underline">agfengenharia.com.br</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 19: Conclusão Visual -->
+            <div id="slide-19" class="slide w-full h-full low-opacity-gradient-bg">
+                <div class="m-auto flex flex-col items-center text-gray-800">
+                    <div class="animated-item mb-6 flex items-center justify-center space-x-8">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" alt="Logo Petrobras" class="h-20">
+                        <img src="https://www.agfengenharia.com.br/wp-content/uploads/2018/09/group-20668-211507.png" alt="Logo AGF Engenharia" class="h-20">
+                    </div>
+                    <h1 class="animated-item delay-1 text-5xl md:text-7xl font-black leading-tight">A Segurança Começa Com Você</h1>
+                    <p class="animated-item delay-2 mt-6 text-xl md:text-2xl font-semibold">Leve a Percepção de Risco para cada tarefa do seu dia.</p>
+                    <p class="animated-item delay-3 mt-12 text-lg md:text-xl font-semibold">Obrigado pela sua atenção e compromisso.</p>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Navegação e Barra de Progresso -->
+        <div class="bg-gray-50 border-t p-4 flex items-center justify-between">
+            <button id="prevBtn" class="nav-button bg-gray-600 text-white font-bold py-2 px-6 rounded-lg shadow-md">Anterior</button>
+            <div class="flex-grow mx-4">
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progressBar" class="bg-gradient-to-r from-emerald-500 to-yellow-400 h-2.5 rounded-full transition-all duration-300" style="width: 5.2%"></div>
+                </div>
+            </div>
+            <button id="nextBtn" class="nav-button bg-emerald-600 text-white font-bold py-2 px-6 rounded-lg shadow-md">Próximo</button>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        const presentationCard = document.getElementById('presentationCard');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const fsEnterIcon = document.getElementById('fs-enter-icon');
+        const fsExitIcon = document.getElementById('fs-exit-icon');
+        const timerElement = document.getElementById('timer');
+        
+        let currentSlide = 1;
+        const totalSlides = slides.length;
+
+        function showSlide(slideNumber) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            document.getElementById(`slide-${slideNumber}`).classList.add('active');
+            updateControls();
+            document.querySelectorAll(`#slide-${slideNumber} .animated-item`).forEach(item => {
+                item.style.opacity = 0;
+                item.style.animation = 'none';
+                void item.offsetWidth;
+                item.style.animation = '';
+            });
+        }
+
+        function updateControls() {
+            prevBtn.disabled = currentSlide === 1;
+            
+            if (currentSlide === totalSlides) {
+                nextBtn.innerText = 'Reiniciar';
+                nextBtn.classList.remove('bg-emerald-600');
+                nextBtn.classList.add('bg-yellow-500');
+            } else {
+                nextBtn.innerText = 'Próximo';
+                nextBtn.classList.add('bg-emerald-600');
+                nextBtn.classList.remove('bg-yellow-500');
+            }
+
+            const progressPercentage = (currentSlide / totalSlides) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                showSlide(currentSlide);
+            } else {
+                // Se estiver no último slide, o botão funciona para reiniciar
+                currentSlide = 1;
+                showSlide(currentSlide);
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Fullscreen Logic
+        fullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                presentationCard.requestFullscreen().catch(err => {
+                    console.error(`Não foi possível ativar o modo tela cheia: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        document.addEventListener('fullscreenchange', () => {
+            const isFullscreen = !!document.fullscreenElement;
+            fsEnterIcon.classList.toggle('hidden', isFullscreen);
+            fsExitIcon.classList.toggle('hidden', !isFullscreen);
+        });
+
+        // Timer Logic
+        let seconds = 0;
+        let timerInterval;
+
+        function startTimer() {
+            if(timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                seconds++;
+                const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const secs = (seconds % 60).toString().padStart(2, '0');
+                timerElement.textContent = `${mins}:${secs}`;
+            }, 1000);
+        }
+        
+        // Reset timer on click
+        timerElement.addEventListener('click', () => {
+            seconds = 0;
+            timerElement.textContent = '00:00';
+            clearInterval(timerInterval);
+            startTimer();
+            
+            // Visual feedback
+            timerElement.classList.add('clicked');
+            setTimeout(() => {
+                timerElement.classList.remove('clicked');
+            }, 200);
+        });
+
+        startTimer();
+        showSlide(currentSlide);
+    </script>
+
+</body>
+</html>
