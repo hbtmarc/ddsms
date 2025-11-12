@@ -3,139 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apresentação DDSMS - Percepção de Risco v2.0</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- SEO Meta Tags -->
+    <title>DDSMS - Percepção de Risco | Apresentação Premium</title>
+    <meta name="description" content="Apresentação interativa sobre Percepção de Risco no ambiente de trabalho. DDSMS Petrobras.">
+    <meta name="keywords" content="DDSMS, Percepção de Risco, Segurança, Petrobras, AGF Engenharia">
+    <meta name="author" content="Petrobras | AGF Engenharia">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f1f5f9; /* Tom de cinza/ardósia mais suave */
-        }
-        .slide {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.6s ease-in-out;
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            padding: 2.5rem; /* Mais respiro */
-            background-color: white;
-        }
-        .slide.active {
-            display: flex;
-            opacity: 1;
-        }
-        .card {
-            background-color: white;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border-radius: 1.5rem; /* Bordas mais arredondadas */
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        .nav-button {
-            transition: all 0.2s ease-in-out;
-        }
-        .nav-button:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .nav-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        /* Animações */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .slide.active .animated-item {
-            animation: fadeInUp 0.7s ease-out forwards;
-            opacity: 0;
-        }
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-        .delay-4 { animation-delay: 0.8s; }
-
-        .gradient-bg {
-            background: linear-gradient(135deg, #10b981, #facc15); /* Gradiente verde/amarelo mais vibrante */
-            color: white;
-        }
-        #timer {
-            cursor: pointer;
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* IE 10+ */
-            user-select: none; /* Standard syntax */
-            transition: transform 0.2s ease, color 0.2s ease;
-        }
-        #timer.clicked {
-            transform: scale(1.1);
-            color: #facc15;
-        }
-        .subtle-bg {
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 1.5rem 1.5rem;
-        }
-        .video-container {
-            width: 70%;
-            height: 70%;
-            margin: auto;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-        }
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-        }
-        .low-opacity-gradient-bg {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(250, 204, 21, 0.25));
-        }
-
-        /* Novas animações de Hover */
-        .hover-lift {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .hover-lift:hover {
-            transform: scale(1.03) translateY(-5px);
-            box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.2);
-        }
-        .hover-zoom {
-            transition: transform 0.3s ease-in-out;
-        }
-        .hover-zoom:hover {
-            transform: scale(1.05);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS Premium -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
+<body>
 
-    <div id="presentationCard" class="card w-full max-w-5xl h-[700px] max-h-[90vh]">
-        <!-- Conteúdo dos Slides -->
-        <div class="flex-grow flex flex-col justify-center items-center text-center relative">
+<!-- Loading Screen Premium -->
+<div id="loading-screen">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">Carregando Apresentação</div>
+</div>
 
-            <!-- Timer e Fullscreen -->
-            <div id="timer" class="absolute top-4 right-20 text-base font-semibold text-gray-400 z-10">00:00</div>
-            <button id="fullscreenBtn" class="absolute top-3 right-4 text-gray-400 hover:text-emerald-600 z-10 p-2 rounded-full transition-colors">
-                <svg id="fs-enter-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 0h-4m4 0l-5-5"></path></svg>
-                <svg id="fs-exit-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14.485V19.97a.03.03 0 00.03.03h5.485M19.97 4.03a.03.03 0 00-.03-.03H14.455M4.03 4.03a.03.03 0 00-.03.03v5.485m15.94-5.515a.03.03 0 00.03.03v5.485"></path></svg>
-            </button>
+<!-- Particles Canvas -->
+<canvas id="particles-canvas"></canvas>
 
-            <!-- Slide 1: Título -->
-            <div id="slide-1" class="slide active w-full h-full gradient-bg">
-                <div class="m-auto flex flex-col items-center">
-                    <div class="animated-item mb-6 flex items-center justify-center space-x-8">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" alt="Logo Petrobras" class="h-20">
-                        <img src="https://www.agfengenharia.com.br/wp-content/uploads/2018/09/group-20668-211507.png" alt="Logo AGF Engenharia" class="h-20">
-                    </div>
-                    <div class="animated-item delay-1 bg-black bg-opacity-30 text-white font-bold py-1 px-4 rounded-full inline-block mb-4">DDSMS - 21/10/25 | MARCELINO</div>
-                    <h1 class="animated-item delay-2 text-5xl md:text-7xl font-black leading-tight text-shadow-lg">Percepção de Risco</h1>
-                    <p class="animated-item delay-3 mt-4 text-xl md:text-3xl font-semibold">Você está realmente vendo o perigo ao seu redor?</p>
+<main id="presentationCard">
+    <!-- Slides Container -->
+    <div class="slides-container">
+
+        <!-- Timer e Fullscreen -->
+        <div id="timer">00:00</div>
+        <button id="fullscreenBtn" aria-label="Alternar tela cheia">
+            <svg id="fs-enter-icon" class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 0h-4m4 0l-5-5"></path></svg>
+            <svg id="fs-exit-icon" class="icon-svg hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <!-- Indicador de Slide -->
+        <div id="slideIndicator" class="slide-indicator">1 / 19</div>
+
+        <!-- Slide 1: Título -->
+        <section id="slide-1" class="slide active gradient-bg">
+            <div class="slide-content">
+                <div class="logos-container animated-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" alt="Logo Petrobras">
+                    <img src="https://www.agfengenharia.com.br/wp-content/uploads/2018/09/group-20668-211507.png" alt="Logo AGF Engenharia">
                 </div>
+                <div class="animated-item delay-1 badge mb-4">DDSMS - 21/10/25 | MARCELINO</div>
+                <h1 class="animated-item delay-2">Percepção de Risco</h1>
+                <p class="animated-item delay-3 mt-4 text-xl md:text-3xl font-semibold">Você está realmente vendo o perigo ao seu redor?</p>
             </div>
+        </section>
 
             <!-- Slide 2: Agenda -->
             <div id="slide-2" class="slide w-full h-full subtle-bg">
@@ -396,129 +315,21 @@
                 </div>
             </div>
             
-        </div>
-
-        <!-- Navegação e Barra de Progresso -->
-        <div class="bg-gray-50 border-t p-4 flex items-center justify-between">
-            <button id="prevBtn" class="nav-button bg-gray-600 text-white font-bold py-2 px-6 rounded-lg shadow-md">Anterior</button>
-            <div class="flex-grow mx-4">
-                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                    <div id="progressBar" class="bg-gradient-to-r from-emerald-500 to-yellow-400 h-2.5 rounded-full transition-all duration-300" style="width: 5.2%"></div>
-                </div>
-            </div>
-            <button id="nextBtn" class="nav-button bg-emerald-600 text-white font-bold py-2 px-6 rounded-lg shadow-md">Próximo</button>
-        </div>
     </div>
 
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const progressBar = document.getElementById('progressBar');
-        const presentationCard = document.getElementById('presentationCard');
-        const fullscreenBtn = document.getElementById('fullscreenBtn');
-        const fsEnterIcon = document.getElementById('fs-enter-icon');
-        const fsExitIcon = document.getElementById('fs-exit-icon');
-        const timerElement = document.getElementById('timer');
-        
-        let currentSlide = 1;
-        const totalSlides = slides.length;
+    <!-- Navigation Bar -->
+    <nav class="navigation-bar">
+        <button id="prevBtn" class="nav-button" aria-label="Slide anterior">Anterior</button>
+        <div class="progress-container">
+            <div class="progress-track">
+                <div id="progressBar" class="progress-fill" style="width: 5.26%"></div>
+            </div>
+        </div>
+        <button id="nextBtn" class="nav-button primary" aria-label="Próximo slide">Próximo</button>
+    </nav>
+</main>
 
-        function showSlide(slideNumber) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            document.getElementById(`slide-${slideNumber}`).classList.add('active');
-            updateControls();
-            document.querySelectorAll(`#slide-${slideNumber} .animated-item`).forEach(item => {
-                item.style.opacity = 0;
-                item.style.animation = 'none';
-                void item.offsetWidth;
-                item.style.animation = '';
-            });
-        }
-
-        function updateControls() {
-            prevBtn.disabled = currentSlide === 1;
-            
-            if (currentSlide === totalSlides) {
-                nextBtn.innerText = 'Reiniciar';
-                nextBtn.classList.remove('bg-emerald-600');
-                nextBtn.classList.add('bg-yellow-500');
-            } else {
-                nextBtn.innerText = 'Próximo';
-                nextBtn.classList.add('bg-emerald-600');
-                nextBtn.classList.remove('bg-yellow-500');
-            }
-
-            const progressPercentage = (currentSlide / totalSlides) * 100;
-            progressBar.style.width = `${progressPercentage}%`;
-        }
-
-        nextBtn.addEventListener('click', () => {
-            if (currentSlide < totalSlides) {
-                currentSlide++;
-                showSlide(currentSlide);
-            } else {
-                // Se estiver no último slide, o botão funciona para reiniciar
-                currentSlide = 1;
-                showSlide(currentSlide);
-            }
-        });
-
-        prevBtn.addEventListener('click', () => {
-            if (currentSlide > 1) {
-                currentSlide--;
-                showSlide(currentSlide);
-            }
-        });
-
-        // Fullscreen Logic
-        fullscreenBtn.addEventListener('click', () => {
-            if (!document.fullscreenElement) {
-                presentationCard.requestFullscreen().catch(err => {
-                    console.error(`Não foi possível ativar o modo tela cheia: ${err.message}`);
-                });
-            } else {
-                document.exitFullscreen();
-            }
-        });
-
-        document.addEventListener('fullscreenchange', () => {
-            const isFullscreen = !!document.fullscreenElement;
-            fsEnterIcon.classList.toggle('hidden', isFullscreen);
-            fsExitIcon.classList.toggle('hidden', !isFullscreen);
-        });
-
-        // Timer Logic
-        let seconds = 0;
-        let timerInterval;
-
-        function startTimer() {
-            if(timerInterval) clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                seconds++;
-                const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
-                const secs = (seconds % 60).toString().padStart(2, '0');
-                timerElement.textContent = `${mins}:${secs}`;
-            }, 1000);
-        }
-        
-        // Reset timer on click
-        timerElement.addEventListener('click', () => {
-            seconds = 0;
-            timerElement.textContent = '00:00';
-            clearInterval(timerInterval);
-            startTimer();
-            
-            // Visual feedback
-            timerElement.classList.add('clicked');
-            setTimeout(() => {
-                timerElement.classList.remove('clicked');
-            }, 200);
-        });
-
-        startTimer();
-        showSlide(currentSlide);
-    </script>
-
+<!-- Scripts Premium -->
+<script src="script.js"></script>
 </body>
 </html>
