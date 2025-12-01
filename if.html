@@ -1,0 +1,2734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InspFLOW - Governança & Futuro</title>
+    <style>
+        /* --- CSS RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Brand Colors */
+            --primary: #008542;
+            --primary-dark: #006030;
+            --primary-light: #00a552;
+            --secondary: #FFCC29;
+            --secondary-dark: #e5b520;
+            
+            /* Neutrals */
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            
+            /* Semantic Colors */
+            --success: #22c55e;
+            --warning: #eab308;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            
+            /* Backgrounds */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            
+            /* Borders & Shadows */
+            --border-color: #e2e8f0;
+            --border-radius-sm: 6px;
+            --border-radius-md: 10px;
+            --border-radius-lg: 14px;
+            --border-radius-xl: 18px;
+            
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            
+            /* Spacing Scale */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            
+            /* Typography */
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-secondary);
+            color: var(--gray-800);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        html {
+            height: 100%;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--gray-900);
+        }
+        
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.25rem; margin-bottom: var(--space-sm); }
+        h4 { font-size: 1.125rem; }
+        
+        p { 
+            font-size: 0.9375rem; 
+            line-height: 1.65; 
+            margin-bottom: var(--space-md); 
+            color: var(--gray-600); 
+        }
+        
+        .mono { 
+            font-family: var(--font-mono); 
+            font-size: 0.875rem; 
+            background: var(--gray-100); 
+            color: var(--gray-800);
+            padding: 0.125rem 0.375rem; 
+            border-radius: var(--border-radius-sm); 
+            border: 1px solid var(--gray-200);
+        }
+        
+        .text-sm { font-size: 0.875rem; line-height: 1.5; }
+        .text-xs { font-size: 0.75rem; line-height: 1.4; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+        
+        /* --- COMPONENTES --- */
+        /* Header */
+        header {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding: var(--space-md) var(--space-xl);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            z-index: 100;
+            position: sticky;
+            top: 0;
+        }
+
+        .brand { 
+            display: flex; 
+            align-items: center; 
+            gap: var(--space-md); 
+        }
+        
+        .brand-logo { 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white; 
+            padding: 0.5rem 0.75rem; 
+            border-radius: var(--border-radius-md); 
+            font-weight: 700; 
+            font-size: 1.125rem;
+            letter-spacing: -0.02em;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Tabs Navigation */
+        .nav-tabs { 
+            display: flex; 
+            gap: var(--space-sm); 
+            background: var(--gray-100); 
+            padding: 0.375rem; 
+            border-radius: var(--border-radius-md); 
+        }
+        
+        .tab-btn {
+            border: none;
+            background: transparent;
+            padding: 0.625rem 1.25rem;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            white-space: nowrap;
+        }
+        
+        .tab-btn:hover { 
+            color: var(--gray-900); 
+            background: var(--gray-200); 
+        }
+        
+        .tab-btn.active { 
+            background: var(--bg-primary); 
+            color: var(--primary); 
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .tab-btn .icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.8;
+        }
+        
+        .tab-btn.active .icon {
+            opacity: 1;
+        }
+
+        /* Main Container */
+        .main-container { 
+            flex: 1; 
+            display: flex;
+            min-height: 0;
+        }
+
+        /* Sidebar (Dossier) */
+        .sidebar { 
+            width: 280px; 
+            background: var(--bg-primary); 
+            border-right: 1px solid var(--border-color); 
+            overflow-y: auto; 
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar-item {
+            width: 100%;
+            text-align: left;
+            padding: 0.875rem 1.5rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: var(--gray-600);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all var(--transition-base);
+            position: relative;
+        }
+        
+        .sidebar-item:hover { 
+            background: var(--gray-50); 
+            color: var(--primary);
+        }
+        
+        .sidebar-item.active { 
+            background: rgba(0, 133, 66, 0.06);
+            color: var(--primary); 
+            border-left-color: var(--primary); 
+            font-weight: 600;
+        }
+        
+        .sidebar-item.active::after {
+            content: '';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Content Area */
+        .content { 
+            flex: 1; 
+            padding: var(--space-xl); 
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: var(--bg-secondary);
+            min-height: 0;
+        }
+        
+        .card { 
+            background: var(--bg-primary); 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--border-radius-lg); 
+            padding: var(--space-xl); 
+            margin-bottom: var(--space-lg); 
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow var(--transition-base);
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Slide Deck */
+        .slide-wrapper { 
+            max-width: 1024px; 
+            margin: 0 auto; 
+            width: 100%;
+            display: flex; 
+            flex-direction: column; 
+            gap: var(--space-lg);
+            padding-bottom: var(--space-xl);
+        }
+        
+        .slide-kicker { 
+            text-transform: uppercase; 
+            font-size: 0.6875rem; 
+            letter-spacing: 0.1em; 
+            color: var(--primary); 
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .slide-stage { 
+            background: var(--bg-primary); 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--border-radius-xl); 
+            padding: var(--space-2xl); 
+            box-shadow: var(--shadow-md);
+            min-height: 400px;
+        }
+        
+        .slide-title { 
+            font-size: 2rem; 
+            margin: var(--space-sm) 0 var(--space-md); 
+            color: var(--gray-900);
+            line-height: 1.2;
+        }
+        
+        .slide-summary { 
+            font-size: 1.0625rem; 
+            color: var(--gray-600); 
+            margin-bottom: var(--space-xl); 
+            max-width: 760px;
+            line-height: 1.7;
+        }
+        .slide-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: var(--space-lg); 
+        }
+        
+        .highlight-card { 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--border-radius-lg); 
+            padding: var(--space-lg); 
+            background: var(--gray-50); 
+            transition: all var(--transition-base);
+        }
+        
+        .highlight-card:hover {
+            background: var(--bg-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .highlight-title { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            color: var(--gray-500); 
+            letter-spacing: 0.05em;
+        }
+        
+        .highlight-value { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--gray-900); 
+            margin-top: var(--space-sm);
+        }
+        .data-chip { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: var(--space-xs); 
+            font-size: 0.8125rem; 
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--info);
+            padding: 0.375rem 0.75rem; 
+            border-radius: 999px; 
+            margin: var(--space-xs) var(--space-xs) 0 0;
+            font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .slide-progress { 
+            display: flex; 
+            align-items: center; 
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            justify-content: center;
+        }
+        
+        .progress-dot { 
+            width: 12px; 
+            height: 12px; 
+            border-radius: 999px; 
+            border: 2px solid var(--gray-300); 
+            background: var(--bg-primary); 
+            position: relative;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+        
+        .progress-dot:hover {
+            border-color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        .progress-dot.active { 
+            background: var(--primary); 
+            border-color: var(--primary);
+            width: 14px;
+            height: 14px;
+        }
+        
+        .progress-label { 
+            font-size: 0.6875rem; 
+            font-weight: 700; 
+            color: var(--gray-500); 
+            position: absolute; 
+            top: 24px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            white-space: nowrap;
+        }
+        
+        .progress-dot.active .progress-label {
+            color: var(--primary);
+        }
+        .slide-nav { 
+            display: flex; 
+            justify-content: space-between; 
+            gap: var(--space-md); 
+        }
+        
+        .slide-btn { 
+            flex: 1; 
+            border: none; 
+            border-radius: var(--border-radius-md); 
+            padding: 0.875rem 1.75rem; 
+            font-size: 0.9375rem; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all var(--transition-base);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+        }
+        
+        .slide-btn.prev { 
+            background: var(--bg-primary); 
+            border: 1px solid var(--border-color); 
+            color: var(--gray-700);
+        }
+        
+        .slide-btn.prev:hover:not(:disabled) {
+            background: var(--gray-50);
+            border-color: var(--gray-300);
+        }
+        
+        .slide-btn.next { 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .slide-btn.next:hover:not(:disabled) {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+        
+        .slide-btn:disabled { 
+            opacity: 0.4; 
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        .control-bar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            gap: var(--space-lg); 
+            margin-bottom: var(--space-lg); 
+            flex-wrap: wrap;
+            padding: var(--space-md);
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+        }
+        
+        .status-label { 
+            font-size: 0.9375rem; 
+            font-weight: 600; 
+            color: var(--gray-900);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .control-buttons { 
+            display: flex; 
+            gap: var(--space-sm); 
+            flex-wrap: wrap; 
+        }
+        
+        .control-btn { 
+            border: 1px solid var(--border-color); 
+            background: var(--bg-primary); 
+            padding: 0.5rem 1rem; 
+            border-radius: var(--border-radius-md); 
+            font-size: 0.875rem; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all var(--transition-base);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .control-btn:hover {
+            background: var(--gray-50);
+            border-color: var(--gray-300);
+        }
+        
+        .control-btn.active { 
+            background: var(--primary); 
+            color: white; 
+            border-color: var(--primary);
+        }
+        
+        .control-btn.active:hover {
+            background: var(--primary-dark);
+        }
+        body.presentation-mode .sidebar { 
+            display: none; 
+        }
+        
+        body.presentation-mode .content { 
+            padding: var(--space-2xl) var(--space-xl);
+            background: var(--gray-900);
+        }
+        
+        body.presentation-mode .slide-wrapper { 
+            max-width: 1400px; 
+        }
+        
+        body.presentation-mode header { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0;
+            z-index: 1000;
+        }
+        
+        body.presentation-mode .main-container { 
+            margin-top: 72px; 
+        }
+        
+        body.presentation-mode .slide-stage { 
+            min-height: 500px;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        body.presentation-mode .control-bar,
+        body.presentation-mode .slide-progress {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
+        }
+        
+        body.presentation-mode .control-bar {
+            color: var(--gray-100);
+        }
+        
+        body.presentation-mode .status-label {
+            color: var(--gray-100);
+        }
+        @media (max-width: 1024px) {
+            .main-container { 
+                flex-direction: column; 
+            }
+            
+            .sidebar { 
+                width: 100%; 
+                display: flex; 
+                overflow-x: auto; 
+                border-right: none; 
+                border-bottom: 1px solid var(--border-color);
+                scrollbar-width: thin;
+            }
+            
+            .sidebar-item { 
+                flex: 1; 
+                white-space: nowrap; 
+                justify-content: center; 
+                border-left: none; 
+                border-bottom: 3px solid transparent;
+                padding: var(--space-md) var(--space-lg);
+            }
+            
+            .sidebar-item.active { 
+                border-bottom-color: var(--primary);
+                border-left: none;
+            }
+            
+            .sidebar-item.active::after {
+                display: none;
+            }
+            
+            .content { 
+                padding: var(--space-lg); 
+            }
+            
+            .slide-wrapper { 
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .slide-stage {
+                padding: var(--space-lg);
+            }
+            
+            .pa-sections { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .span-2 { 
+                grid-column: span 1; 
+            }
+            
+            .nav-tabs { 
+                flex-wrap: wrap; 
+            }
+            
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .mockup-container {
+                padding: var(--space-md);
+            }
+        }
+        @media (max-width: 640px) {
+            header {
+                padding: var(--space-sm) var(--space-md);
+            }
+            
+            .brand-logo {
+                font-size: 1rem;
+                padding: 0.375rem 0.625rem;
+            }
+            
+            .slide-title { 
+                font-size: 1.5rem; 
+            }
+            
+            .slide-summary { 
+                font-size: 0.9375rem; 
+            }
+            
+            .slide-stage {
+                padding: var(--space-md);
+            }
+            
+            .control-bar { 
+                flex-direction: column; 
+                align-items: stretch;
+                gap: var(--space-md);
+            }
+            
+            .control-buttons { 
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .control-btn { 
+                flex: 1; 
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .kpi-grid { 
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-tabs button { 
+                flex: 1; 
+                justify-content: center;
+                font-size: 0.8125rem;
+            }
+            
+            .nav-tabs .icon {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .slide-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: var(--space-md);
+            }
+            
+            .card {
+                padding: var(--space-md);
+            }
+            
+            .tablet-frame {
+                max-height: 600px;
+                border-width: 2px;
+            }
+            
+            .pa-content {
+                padding: var(--space-md);
+            }
+            
+            h2 {
+                font-size: 1.25rem;
+            }
+            
+            .insight-card {
+                padding: var(--space-md);
+            }
+        }
+        .timeline { 
+            border-left: 3px solid var(--border-color); 
+            padding-left: var(--space-xl); 
+            display: flex; 
+            flex-direction: column; 
+            gap: var(--space-2xl); 
+            margin-left: var(--space-md);
+        }
+        
+        .timeline-step { 
+            position: relative;
+        }
+        
+        .timeline-step h3 {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .timeline-step::before { 
+            content: ""; 
+            position: absolute; 
+            left: calc(-1 * var(--space-xl) - 7px);
+            top: 0.35rem; 
+            width: 14px; 
+            height: 14px; 
+            border-radius: 50%; 
+            background: var(--primary); 
+            border: 3px solid var(--bg-primary); 
+            box-shadow: 0 0 0 3px var(--border-color);
+        }
+        .badge-tag { 
+            font-size: 0.6875rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            padding: 0.375rem 0.875rem; 
+            border-radius: 999px; 
+            background: linear-gradient(135deg, #ecfccb 0%, #d9f99d 100%);
+            color: #3f6212; 
+            font-weight: 700; 
+            margin-bottom: var(--space-md); 
+            display: inline-block;
+            border: 1px solid #bef264;
+        }
+        .list-clean { 
+            list-style: none; 
+            padding-left: 0; 
+            margin: 0; 
+        }
+        
+        .list-clean li { 
+            padding-left: 1.5rem; 
+            position: relative; 
+            margin-bottom: var(--space-sm); 
+            font-size: 0.9375rem;
+            line-height: 1.65;
+        }
+        
+        .list-clean li::before { 
+            content: ""; 
+            width: 6px; 
+            height: 6px; 
+            border-radius: 50%; 
+            background: var(--primary); 
+            position: absolute; 
+            left: 0; 
+            top: 0.65rem;
+        }
+        
+        .ordered-flow { 
+            list-style: none; 
+            padding-left: 0; 
+            margin: 0; 
+            counter-reset: flow; 
+        }
+        
+        .ordered-flow li { 
+            counter-increment: flow; 
+            padding-left: 2.75rem; 
+            margin-bottom: var(--space-md); 
+            position: relative; 
+            font-size: 0.9375rem;
+            line-height: 1.65;
+        }
+        
+        .ordered-flow li::before {
+            content: counter(flow);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.875rem;
+            height: 1.875rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            color: #0369a1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            border: 2px solid #bae6fd;
+        }
+        .slide-body { 
+            animation: slideFade 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        
+        @keyframes slideFade {
+            from { 
+                opacity: 0; 
+                transform: translateY(16px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        /* Fade in animation for cards */
+        .card, .highlight-card, .insight-card {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .media-card { 
+            border: 1px solid var(--gray-700); 
+            border-radius: var(--border-radius-lg); 
+            padding: var(--space-lg); 
+            background: var(--gray-900); 
+            color: var(--gray-100); 
+            margin-top: var(--space-xl); 
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .media-card.light { 
+            background: var(--bg-primary); 
+            color: var(--gray-900); 
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-color);
+        }
+        
+        .media-card svg { 
+            width: 100%; 
+            height: 160px; 
+            border-radius: var(--border-radius-md);
+        }
+        
+        .media-meta { 
+            font-size: 0.8125rem; 
+            opacity: 0.85; 
+            margin-top: var(--space-md); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            gap: var(--space-md); 
+        }
+        
+        .play-btn { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: var(--space-sm); 
+            background: rgba(255,255,255,0.12); 
+            border: 1px solid rgba(255,255,255,0.2); 
+            color: inherit; 
+            padding: 0.5rem 1rem; 
+            border-radius: var(--border-radius-md); 
+            font-size: 0.8125rem; 
+            font-weight: 600; 
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+        
+        .play-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-1px);
+        }
+        
+        .play-btn svg { 
+            width: 16px; 
+            height: 16px; 
+        }
+        .diag-callout { 
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid var(--info); 
+            border-radius: var(--border-radius-lg); 
+            padding: var(--space-xl); 
+            color: #1e3a8a;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .data-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: var(--space-lg); 
+            font-size: 0.875rem;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        
+        .data-table th { 
+            text-align: left; 
+            background: var(--gray-100); 
+            color: var(--gray-700); 
+            padding: 0.875rem 1rem; 
+            font-size: 0.8125rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            border-bottom: 2px solid var(--border-color);
+            font-weight: 700;
+        }
+        
+        .data-table td { 
+            padding: 0.875rem 1rem; 
+            border-bottom: 1px solid var(--border-color); 
+            color: var(--gray-600); 
+            vertical-align: top;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table tbody tr:hover {
+            background: var(--gray-50);
+        }
+        .nav-map { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: var(--space-sm); 
+            margin-top: var(--space-md); 
+        }
+        
+        .pill { 
+            padding: 0.5rem 1rem; 
+            border-radius: 999px; 
+            background: var(--gray-100); 
+            font-size: 0.8125rem; 
+            color: var(--gray-700); 
+            font-weight: 600;
+            border: 1px solid var(--gray-200);
+            transition: all var(--transition-base);
+        }
+        
+        .pill:hover {
+            background: var(--gray-200);
+            transform: translateY(-1px);
+        }
+        .risk-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: var(--space-lg);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        
+        .risk-table th, .risk-table td { 
+            border: 1px solid var(--border-color); 
+            padding: 0.875rem 1rem; 
+            font-size: 0.875rem; 
+        }
+        
+        .risk-table th { 
+            background: var(--gray-100); 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            font-weight: 700; 
+            font-size: 0.75rem; 
+            color: var(--gray-700);
+        }
+        
+        .risk-table tbody tr:hover {
+            background: var(--gray-50);
+        }
+        
+        .risk-critical { 
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #991b1b; 
+            font-weight: 700; 
+            text-align: center;
+            border-left: 4px solid #dc2626;
+        }
+        
+        .risk-high { 
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+            color: #9a3412; 
+            font-weight: 700; 
+            text-align: center;
+            border-left: 4px solid #ea580c;
+        }
+        
+        .risk-medium { 
+            background: var(--gray-50); 
+            color: var(--gray-900); 
+            font-weight: 700; 
+            text-align: center;
+            border-left: 4px solid var(--gray-300);
+        }
+        
+        /* Badges */
+        .badge { 
+            padding: 0.25rem 0.625rem; 
+            border-radius: var(--border-radius-md); 
+            font-size: 0.6875rem; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .badge-red { 
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        
+        .badge-yellow { 
+            background: linear-gradient(135deg, #fef9c3 0%, #fef08a 100%);
+            color: #854d0e;
+            border: 1px solid #fde047;
+        }
+        
+        .badge-green { 
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+
+        /* --- MOCKUP ESPECÍFICO (SIMULAÇÃO POWER APPS) --- */
+        .mockup-container {
+            background: linear-gradient(135deg, var(--gray-700) 0%, var(--gray-800) 100%);
+            padding: var(--space-2xl);
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .tablet-frame {
+            width: 100%;
+            max-width: 1200px;
+            height: 100%;
+            max-height: 760px;
+            background: var(--gray-100);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 4px solid var(--gray-800);
+        }
+        .pa-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+        }
+        .pa-body { 
+            display: flex; 
+            flex: 1; 
+            overflow: hidden; 
+        }
+        
+        .pa-sidebar {
+            width: 64px;
+            background: var(--gray-900);
+            color: var(--gray-400);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: var(--space-lg);
+            transition: width var(--transition-slow);
+            border-right: 1px solid var(--gray-800);
+        }
+        
+        .pa-sidebar.expanded { 
+            width: 240px; 
+            align-items: flex-start; 
+        }
+        
+        .pa-nav-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md) var(--space-lg);
+            width: 100%;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            border-left: 3px solid transparent;
+        }
+        
+        .pa-nav-item:hover { 
+            background: var(--gray-800); 
+            color: white; 
+        }
+        
+        .pa-nav-item.active { 
+            background: var(--gray-800); 
+            color: white; 
+            border-left-color: var(--secondary);
+        }
+        
+        .pa-content { 
+            flex: 1; 
+            padding: var(--space-xl); 
+            overflow-y: auto;
+            background: var(--bg-secondary);
+        }
+        
+        .kpi-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: var(--space-md); 
+            margin-bottom: var(--space-xl); 
+        }
+        
+        .kpi-card { 
+            background: var(--bg-primary); 
+            padding: var(--space-lg); 
+            border-radius: var(--border-radius-lg); 
+            box-shadow: var(--shadow-sm); 
+            border-left: 4px solid transparent;
+            transition: all var(--transition-base);
+        }
+        
+        .kpi-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .kpi-value { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            margin: var(--space-sm) 0; 
+        }
+        .pa-sections { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: var(--space-lg); 
+        }
+        
+        .insight-card { 
+            background: var(--bg-primary); 
+            border-radius: var(--border-radius-lg); 
+            padding: var(--space-xl); 
+            border: 1px solid var(--border-color); 
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+        }
+        
+        .insight-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .span-2 { 
+            grid-column: span 2; 
+        }
+        .status-chip { 
+            display: inline-flex; 
+            align-items: center; 
+            padding: 0.375rem 0.875rem; 
+            border-radius: 999px; 
+            font-size: 0.75rem; 
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+        
+        .status-chip.danger { 
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #b91c1c;
+            border: 1px solid #fca5a5;
+        }
+        
+        .status-chip.warning { 
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+            border: 1px solid #fbbf24;
+        }
+        
+        .status-chip.safe { 
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+        
+        .handover-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: var(--space-md); 
+            margin-top: var(--space-lg); 
+        }
+        
+        .handover-item { 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--border-radius-md); 
+            padding: var(--space-md) var(--space-lg); 
+            display: flex; 
+            justify-content: space-between; 
+            gap: var(--space-md);
+            background: var(--bg-primary);
+            transition: all var(--transition-base);
+        }
+        
+        .handover-item:hover {
+            border-color: var(--gray-300);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .handover-meta { 
+            font-size: 0.8125rem; 
+            color: var(--gray-500); 
+            margin-top: var(--space-xs); 
+        }
+        .wizard-steps { 
+            list-style: none; 
+            padding-left: 0; 
+            margin: var(--space-md) 0 var(--space-lg); 
+            display: flex; 
+            flex-direction: column; 
+            gap: var(--space-sm); 
+        }
+        
+        .wizard-steps li { 
+            display: flex; 
+            align-items: center; 
+            gap: var(--space-sm); 
+            font-size: 0.875rem; 
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+        
+        .wizard-steps li svg { 
+            width: 18px; 
+            height: 18px; 
+            stroke-width: 2.5;
+            flex-shrink: 0;
+        }
+        
+        .progress-shell { 
+            height: 8px; 
+            border-radius: 999px; 
+            background: var(--gray-200); 
+            width: 100%; 
+            margin-bottom: var(--space-md);
+            overflow: hidden;
+        }
+        
+        .progress-fill { 
+            height: 100%; 
+            border-radius: 999px; 
+            background: linear-gradient(90deg, var(--success) 0%, #16a34a 100%);
+            transition: width var(--transition-slow);
+        }
+        .mini-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: var(--space-md);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+        }
+        
+        .mini-table th, .mini-table td { 
+            padding: 0.625rem 0.75rem; 
+            font-size: 0.8125rem; 
+            text-align: left; 
+            border-bottom: 1px solid var(--border-color); 
+        }
+        
+        .mini-table th { 
+            text-transform: uppercase; 
+            letter-spacing: 0.08em; 
+            font-size: 0.6875rem; 
+            color: var(--gray-500);
+            font-weight: 700;
+            background: var(--gray-50);
+        }
+        
+        .mini-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .mini-table tbody tr:hover {
+            background: var(--gray-50);
+        }
+        
+        .chart-placeholder { 
+            height: 160px; 
+            border-radius: var(--border-radius-md); 
+            background: linear-gradient(135deg, rgba(34,197,94,0.15), rgba(14,165,233,0.15)); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--gray-700); 
+            font-weight: 600; 
+            font-size: 0.875rem;
+            border: 2px dashed var(--border-color);
+        }
+        
+        /* Icons (SVG Helpers) */
+        .icon { 
+            width: 20px; 
+            height: 20px; 
+            fill: none; 
+            stroke: currentColor; 
+            stroke-width: 2; 
+            stroke-linecap: round; 
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+        
+        /* Utility Classes */
+        .hidden { 
+            display: none !important; 
+        }
+        
+        .flex { 
+            display: flex; 
+        }
+        
+        .items-center { 
+            align-items: center; 
+        }
+        
+        .justify-between { 
+            justify-content: space-between; 
+        }
+        
+        .gap-2 { 
+            gap: var(--space-sm); 
+        }
+        
+        .gap-3 { 
+            gap: var(--space-md); 
+        }
+        
+        .gap-4 { 
+            gap: var(--space-lg); 
+        }
+        
+        .w-full { 
+            width: 100%; 
+        }
+        
+        .text-right { 
+            text-align: right; 
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-300);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gray-400);
+        }
+        
+        /* Media Overlay */
+        .media-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-base);
+        }
+        
+        .media-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .media-overlay-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            height: 80vh;
+            background: var(--gray-900);
+            border-radius: var(--border-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .media-overlay-header {
+            padding: var(--space-lg) var(--space-xl);
+            border-bottom: 1px solid var(--gray-800);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--gray-900);
+        }
+        
+        .media-overlay-title {
+            color: var(--gray-100);
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        
+        .media-overlay-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gray-800);
+            color: var(--gray-100);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-base);
+        }
+        
+        .media-overlay-close:hover {
+            background: var(--gray-700);
+            transform: rotate(90deg);
+        }
+        
+        .media-overlay-body {
+            flex: 1;
+            padding: var(--space-xl);
+            overflow-y: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .media-player {
+            width: 100%;
+            max-width: 900px;
+            background: var(--gray-800);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-2xl);
+            text-align: center;
+        }
+        
+        .media-player-visual {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 133, 66, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+            border-radius: var(--border-radius-md);
+            border: 2px dashed var(--gray-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-xl);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .media-player-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .media-player-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--gray-300);
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+        
+        .media-player-info {
+            color: var(--gray-300);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+        
+        .media-player-info h4 {
+            color: var(--gray-100);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .animation-canvas {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .animation-element {
+            position: absolute;
+            transition: all 1s ease-in-out;
+        }
+        
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        @media (max-width: 768px) {
+            .media-overlay-content {
+                width: 95%;
+                height: 90vh;
+            }
+            
+            .media-player-visual {
+                height: 250px;
+            }
+            
+            .media-player-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .media-player-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER DO PORTAL -->
+    <header>
+        <div class="brand">
+            <div class="brand-logo">IF</div>
+            <div>
+                <div style="font-weight: bold; color: var(--dark);">InspFLOW <span style="color: var(--primary);">Portal</span></div>
+                <div class="text-xs" style="color: var(--gray);">REGAP / IE - Governança Técnica</div>
+            </div>
+        </div>
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchMainTab('dossier', this)">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Dossiê Técnico
+            </button>
+            <button class="tab-btn" onclick="switchMainTab('mockup', this)">
+                <svg class="icon" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="21" y2="9"/></svg>
+                Protótipo (Mockup)
+            </button>
+        </div>
+    </header>
+
+    <!-- ÁREA 1: DOSSIÊ TÉCNICO -->
+    <div id="dossier-view" class="main-container">
+        <div class="sidebar" id="slide-sidebar">
+            <div class="p-6 border-b" style="border-color: #f1f5f9;">
+                <div class="text-xs font-bold text-gray-500 uppercase">Seções</div>
+            </div>
+            <button class="sidebar-item active" data-slide="sumario" onclick="goToSlide('sumario')">1. Sumário Executivo</button>
+            <button class="sidebar-item" data-slide="arquitetura" onclick="goToSlide('arquitetura')">2. Arquitetura de Dados</button>
+            <button class="sidebar-item" data-slide="frontend" onclick="goToSlide('frontend')">3. Front-end & Integrações</button>
+            <button class="sidebar-item" data-slide="riscos" onclick="goToSlide('riscos')">4. Matriz de Riscos</button>
+            <button class="sidebar-item" data-slide="roadmap" onclick="goToSlide('roadmap')">5. Plano Diretor</button>
+            <button class="sidebar-item" data-slide="procedimentos" onclick="goToSlide('procedimentos')">6. Procedimentos-chave</button>
+        </div>
+        <div id="dossier-content" class="content">
+            <div class="slide-wrapper">
+                <div class="control-bar">
+                    <div id="slide-status" class="status-label">Slide 1/6</div>
+                    <div class="control-buttons">
+                        <button id="toggle-autoplay" class="control-btn" type="button">Pausar auto</button>
+                        <button id="restart-deck" class="control-btn" type="button">Reiniciar</button>
+                        <button id="presentation-toggle" class="control-btn" type="button">Modo apresentação</button>
+                    </div>
+                </div>
+                <div id="slide-progress" class="slide-progress"></div>
+                <div id="slide-stage" class="slide-stage"></div>
+                <div class="slide-nav">
+                    <button id="prev-slide" class="slide-btn prev" onclick="changeSlide(-1)">Anterior</button>
+                    <button id="next-slide" class="slide-btn next" onclick="changeSlide(1)">Próximo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ÁREA 2: PROTÓTIPO (MOCKUP) -->
+    <div id="mockup-view" class="main-container hidden">
+        <div class="mockup-container w-full">
+            <div class="tablet-frame">
+                <!-- Power Apps Header -->
+                <div class="pa-header">
+                    <div class="flex items-center gap-4">
+                        <svg class="icon" style="cursor: pointer;" onclick="toggleMenu()" viewBox="0 0 24 24"><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+                        <div>
+                            <div class="font-bold">InspFLOW</div>
+                            <div class="text-xs" style="opacity: 0.8;">PARADA HDT: U-210</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/20 px-3 py-1 rounded">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        <span class="text-sm">Buscar Equipamento...</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="text-right text-xs">
+                            <div><strong>Marcelino</strong></div>
+                            <div style="opacity: 0.8;">Admin</div>
+                        </div>
+                        <div style="width: 32px; height: 32px; background: #FFCC29; color: #008542; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">M</div>
+                    </div>
+                </div>
+
+                <!-- Power Apps Body -->
+                <div class="pa-body">
+                    <div id="pa-sidebar" class="pa-sidebar">
+                        <div class="pa-nav-item active"><svg class="icon" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg> <span class="label hidden">Dashboard</span></div>
+                        <div class="pa-nav-item"><svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> <span class="label hidden">Passagem de Serviço</span></div>
+                        <div class="pa-nav-item"><svg class="icon" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> <span class="label hidden">Manutenção</span></div>
+                        <div class="pa-nav-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> <span class="label hidden">Inspeção</span></div>
+                    </div>
+                    <div class="pa-content">
+                        <h2 style="margin-bottom: 0.5rem;">Visão Geral da Parada</h2>
+                        <p style="margin-bottom: 1.5rem;">Resumo operacional do seu turno.</p>
+
+                        <!-- KPI Cards -->
+                        <div class="kpi-grid">
+                            <div class="kpi-card" style="border-left-color: #ef4444;">
+                                <div class="text-xs text-gray-500">Pendências Críticas</div>
+                                <div class="kpi-value" style="color: #ef4444;">12</div>
+                                <div class="text-xs text-gray-400">Inspeções Atrasadas</div>
+                            </div>
+                            <div class="kpi-card" style="border-left-color: #3b82f6;">
+                                <div class="text-xs text-gray-500">Abertos Hoje</div>
+                                <div class="kpi-value" style="color: #3b82f6;">5</div>
+                                <div class="text-xs text-gray-400">Novas Solicitações</div>
+                            </div>
+                            <div class="kpi-card" style="border-left-color: #eab308;">
+                                <div class="text-xs text-gray-500">Handover</div>
+                                <div class="kpi-value" style="color: #eab308;">1</div>
+                                <div class="text-xs text-gray-400">Turno Anterior</div>
+                            </div>
+                            <div class="kpi-card" style="border-left-color: #22c55e;">
+                                <div class="text-xs text-gray-500">Concluídos</div>
+                                <div class="kpi-value" style="color: #22c55e;">45</div>
+                                <div class="text-xs text-gray-400">Esta semana</div>
+                            </div>
+                        </div>
+
+                        <div class="pa-sections">
+                            <div class="insight-card span-2">
+                                <div class="flex items-center justify-between" style="gap: 0.5rem;">
+                                    <div>
+                                        <h3 style="margin: 0;">Passagem de Serviço • U-210</h3>
+                                        <p class="handover-meta" style="margin: 0;">Cluster atual: PARADA HDT · Última atualização há 7 min</p>
+                                    </div>
+                                    <span class="status-chip warning">Handover</span>
+                                </div>
+                                <div class="handover-list">
+                                    <div class="handover-item">
+                                        <div>
+                                            <strong>0210-P-105A · Integridade</strong>
+                                            <p class="handover-meta">Solicitado por João Silva · @Marcelo · Turno Noite</p>
+                                        </div>
+                                        <span class="status-chip danger">Risco</span>
+                                    </div>
+                                    <div class="handover-item">
+                                        <div>
+                                            <strong>0210-V-002 · Andaime</strong>
+                                            <p class="handover-meta">Manutenção reportou pendência de APR • Necessita inspeção</p>
+                                        </div>
+                                        <span class="status-chip warning">Alerta</span>
+                                    </div>
+                                    <div class="handover-item">
+                                        <div>
+                                            <strong>0210-T-501 · Medição de Espessura</strong>
+                                            <p class="handover-meta">Inspeção finalizada · Anexos disponíveis no _Eventos</p>
+                                        </div>
+                                        <span class="status-chip safe">OK</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="insight-card">
+                                <div class="flex items-center justify-between" style="gap: 0.5rem;">
+                                    <h3 style="margin: 0;">Wizard de Inspeção</h3>
+                                    <span class="status-chip safe">Fase 2</span>
+                                </div>
+                                <p class="handover-meta">Formulário passo-a-passo (Dados &gt; Análise &gt; Conclusão)</p>
+                                <div class="progress-shell"><div class="progress-fill" style="width: 68%;"></div></div>
+                                <ul class="wizard-steps">
+                                    <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dados do equipamento (TAG, Classe, GINSPEQ)</li>
+                                    <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Análise e medições (delegável)</li>
+                                    <li><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>Conclusão & anexos (pendente)</li>
+                                </ul>
+                                <button class="slide-btn next" style="width: 100%; padding: 0.7rem;">Retomar formulário</button>
+                            </div>
+
+                            <div class="insight-card">
+                                <div class="flex items-center justify-between" style="gap: 0.5rem;">
+                                    <h3 style="margin: 0;">Painel PBI</h3>
+                                    <span class="status-chip warning">Atualiza 30 min</span>
+                                </div>
+                                <p class="handover-meta">Mesmas listas SharePoint via dataset corporativo</p>
+                                <div class="chart-placeholder">KPI: Pendências críticas ↓ 12% semana</div>
+                                <div class="mini-table-wrapper">
+                                    <table class="mini-table">
+                                        <thead>
+                                            <tr>
+                                                <th>TAG</th>
+                                                <th>Status</th>
+                                                <th>Turno</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>0210-L-332</td>
+                                                <td>Inspeção</td>
+                                                <td>Noite</td>
+                                            </tr>
+                                            <tr>
+                                                <td>0210-E-120</td>
+                                                <td>Reparo</td>
+                                                <td>Dia</td>
+                                            </tr>
+                                            <tr>
+                                                <td>0210-V-044</td>
+                                                <td>Concluído</td>
+                                                <td>Dia</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="insight-card span-2">
+                                <div class="flex items-center justify-between" style="gap: 0.5rem;">
+                                    <h3 style="margin: 0;">ZR Monitoramento</h3>
+                                    <span class="status-chip danger">Excel Legacy</span>
+                                </div>
+                                <p class="handover-meta">ListasZR.xlsx ainda opera como fonte principal · Roadmap prevê migração para SPO</p>
+                                <table class="mini-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ZR</th>
+                                            <th>Responsável</th>
+                                            <th>Status</th>
+                                            <th>Próximo passo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>ZR-3320</td>
+                                            <td>Planejamento</td>
+                                            <td>Carregado</td>
+                                            <td>Validar schema SPO</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZR-2110</td>
+                                            <td>Inspeção</td>
+                                            <td>Checkout</td>
+                                            <td>Solicitar liberação arquivo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZR-1980</td>
+                                            <td>Admin</td>
+                                            <td>Em migração</td>
+                                            <td>Script Power Automate</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Media Overlay -->
+    <div id="media-overlay" class="media-overlay">
+        <div class="media-overlay-content">
+            <div class="media-overlay-header">
+                <div class="media-overlay-title" id="media-overlay-title">Reproduzindo mídia</div>
+                <button class="media-overlay-close" onclick="closeMediaOverlay()" type="button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="media-overlay-body" id="media-overlay-body">
+                <!-- Conteúdo dinâmico será inserido aqui -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- SLIDE DATASET (EXTRAÍDO DO DOSSIÊ) ---
+        const slides = [
+            {
+                id: 'sumario',
+                label: '1',
+                kicker: 'Diagnóstico 2025',
+                title: 'Sumário Executivo',
+                summary: 'O InspFLOW centraliza passagem de serviço, inspeção e manutenção na Power Platform, mas opera sobre um “sharding manual” que aumenta dívida técnica e dependência de especialistas.',
+                highlights: [
+                    { title: 'Clusters ativos', value: '3', detail: 'HDS U-0108, HDT U-210, U-0036' },
+                    { title: 'Versão do App', value: '2.46', detail: 'Baseline de 02/09/2025' },
+                    { title: 'Status atual', value: 'Operacional', detail: 'Dores: escalabilidade e integridade' }
+                ],
+                content: `
+                    <div class="card diag-callout" style="margin-top: 1rem;">
+                        <p style="margin-bottom: 0.5rem;">
+                            <strong>Diagnóstico baseline:</strong> aplicação de orquestração construída na Microsoft Power Platform, atuando como front-end único sobre um “banco” descentralizado em SharePoint Online.
+                        </p>
+                        <p style="margin: 0;">
+                            Operação estável, porém cada nova parada demanda replicar fisicamente listas e planilhas (ListasZR, GINSPEQ) — o que gera dívida técnica, dependência de especialistas e risco alto de erro humano.
+                        </p>
+                    </div>
+                    <div class="slide-grid" style="margin-top: 1rem;">
+                        <div class="card" style="border-top: 4px solid var(--primary); margin: 0;">
+                            <h3>Pontos fortes</h3>
+                            <ul class="list-clean" style="margin-top: 0.75rem;">
+                                <li>Interface familiar para times de inspeção e manutenção.</li>
+                                <li>Comunicação ágil na passagem de turno com handover e @mentions.</li>
+                                <li>Deep links com GINSPEQ evitam retrabalho em sistemas corporativos.</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="border-top: 4px solid #f97316; margin: 0;">
+                            <h3>Pontos críticos</h3>
+                            <ul class="list-clean" style="margin-top: 0.75rem;">
+                                <li>Arquitetura em silos: cada parada exige quatro listas novas.</li>
+                                <li>Relacionamentos por TAG (texto) quebram histórico quando renomeados.</li>
+                                <li>Planilhas (ListasZR.xlsx, cargas GINSPEQ) funcionam como banco de dados.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top: 1.5rem;">
+                        <div class="badge-tag">Estratégia declarada</div>
+                        <ul class="list-clean">
+                            <li><strong>Estabilizar (blindar):</strong> inventário de variáveis, backups mensais e limpeza de artefatos herdados.</li>
+                            <li><strong>Embelezar (UX):</strong> novo menu retrátil, aplicação da paleta Petrobras e feedbacks de carregamento.</li>
+                            <li><strong>Estruturar (backend):</strong> evoluir o sharding manual para listas globais e automações governadas.</li>
+                        </ul>
+                    </div>
+                    <div class="media-card">
+                        <div class="badge-tag" style="background: rgba(255,255,255,0.15); color: #fefce8;">Snapshot audiovisual</div>
+                        <svg viewBox="0 0 360 140" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                                <linearGradient id="diagGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#22d3ee" />
+                                    <stop offset="100%" stop-color="#0ea5e9" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="10" y="10" width="340" height="120" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" />
+                            <text x="30" y="40" fill="#f8fafc" font-size="14" font-weight="600">Clusters Ativos</text>
+                            <circle cx="80" cy="80" r="22" stroke="url(#diagGradient)" stroke-width="4" fill="none" />
+                            <circle cx="180" cy="70" r="18" stroke="#22d3ee" stroke-width="4" fill="none" />
+                            <circle cx="260" cy="90" r="26" stroke="#0ea5e9" stroke-width="4" fill="none" />
+                            <text x="65" y="120" fill="#cbd5f5" font-size="10">HDS U-0108</text>
+                            <text x="155" y="110" fill="#cbd5f5" font-size="10">HDT U-210</text>
+                            <text x="240" y="125" fill="#cbd5f5" font-size="10">U-0036</text>
+                            <polyline points="80,58 180,52 260,64" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="4 4" />
+                        </svg>
+                        <div class="media-meta">
+                            <span>Clipping de 20s destacando clusters mais acionados.</span>
+                            <button class="play-btn" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                Assistir
+                            </button>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'arquitetura',
+                label: '2',
+                kicker: 'Back-end & Dados',
+                title: 'Arquitetura de Dados em Cluster',
+                summary: 'Cada parada ativa dispara a criação de um cluster de listas SharePoint (_Acompanhamento, _Equipamentos, _Eventos, _Usuários). O App seleciona o cluster correto com variáveis de contexto no login.',
+                highlights: [
+                    { title: 'Padrão', value: 'Cluster', detail: 'Listas por evento' },
+                    { title: 'Automação', value: 'Power Automate', detail: 'Cria listas espelhadas' },
+                    { title: 'Carga externa', value: 'Excel + GINSPEQ', detail: 'Import via Documentos' }
+                ],
+                content: `
+                    <div class="card diag-callout" style="margin-top: 1rem;">
+                        <p style="margin-bottom: 0.5rem;">
+                            Cada parada ativa dispara um <strong>cluster de 4 listas SharePoint independentes</strong>. O App define o cluster correto a partir das variáveis globais carregadas no login.
+                        </p>
+                        <p style="margin: 0;">Fluxos Power Automate herdados replicam as listas, porém ainda sem governança completa, mantendo o risco de divergência entre schemas.</p>
+                    </div>
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="badge-tag">Schema de nomenclatura</div>
+                        <p style="margin-bottom: 0.5rem;">Padrão: <span class="mono">[NOME_PARADA]_[SUFIXO_MÓDULO]</span></p>
+                        <div class="nav-map">
+                            <span class="pill">PARADA HDS: U-0108_Acompanhamento</span>
+                            <span class="pill">PARADA HDT: U-210_Acompanhamento</span>
+                            <span class="pill">PARADA U-0036_Equipamentos</span>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top: 1rem;">
+                        <h3 style="margin-bottom: 0.5rem;">Cluster por módulo</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Sufixo</th>
+                                    <th>Natureza</th>
+                                    <th>Função técnica</th>
+                                    <th>Volumetria / Criticidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>_Acompanhamento</strong></td>
+                                    <td>Transacional</td>
+                                    <td>Core do sistema. Status de TAGs com lookups textuais.</td>
+                                    <td>Alta — cresce rápido e encosta no limite de visualização.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>_Equipamentos</strong></td>
+                                    <td>Cadastral</td>
+                                    <td>Inventário estático que abastece galerias e filtros.</td>
+                                    <td>Média — dados carregados via Excel/Lista.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>_Eventos</strong></td>
+                                    <td>Log / Audit</td>
+                                    <td>Handover, diário de bordo e interações com @mentions.</td>
+                                    <td>Alta — garante rastreabilidade de turnos.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>_Usuários</strong></td>
+                                    <td>Segurança</td>
+                                    <td>Permissões locais por parada (Admin, Planejador, Inspetor).</td>
+                                    <td>Baixa — controla visibilidade de botões/galerias.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-sm" style="margin-top: 0.75rem; color: #475569;">Qualquer divergência de colunas entre listas replicadas causa falhas imediatas no App.</p>
+                    </div>
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="badge-tag">Camadas globais</div>
+                        <ul class="list-clean">
+                            <li><strong>DadosParada:</strong> aponta quais clusters estão ativos.</li>
+                            <li><strong>OpçãoUsuário:</strong> persiste última unidade visitada.</li>
+                            <li><strong>Ativos do Site:</strong> hospeda logos e ícones.</li>
+                        </ul>
+                        <div class="badge-tag" style="margin-top: 1.25rem;">Integrações via arquivo</div>
+                        <ul class="list-clean">
+                            <li><strong>GINSPEQ_INSPFLOW.xlsx</strong> — carga corporativa.</li>
+                            <li><strong>ListasZR.xlsx</strong> — base crítica de ZR.</li>
+                            <li><strong>Painel histórico PSVs REFAP.xlsx</strong> — herança de outra unidade.</li>
+                        </ul>
+                    </div>
+                    <div class="media-card light">
+                        <div class="badge-tag" style="background: #dbeafe; color: #1d4ed8;">Diagrama interativo</div>
+                        <svg viewBox="0 0 360 140" preserveAspectRatio="xMidYMid slice">
+                            <rect x="10" y="10" width="340" height="120" rx="14" fill="#f8fafc" stroke="#e2e8f0" />
+                            <rect x="30" y="32" width="120" height="80" rx="10" fill="#fff" stroke="#bae6fd" />
+                            <rect x="210" y="32" width="120" height="80" rx="10" fill="#fff" stroke="#c4b5fd" />
+                            <text x="50" y="55" fill="#0369a1" font-size="12" font-weight="600">Cluster U-210</text>
+                            <text x="230" y="55" fill="#6d28d9" font-size="12" font-weight="600">Tabelas Globais</text>
+                            <circle cx="90" cy="80" r="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2" />
+                            <text x="82" y="84" font-size="10" fill="#166534">_A</text>
+                            <circle cx="120" cy="100" r="10" fill="#fef9c3" stroke="#eab308" stroke-width="2" />
+                            <text x="114" y="104" font-size="10" fill="#854d0e">_E</text>
+                            <circle cx="60" cy="100" r="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2" />
+                            <text x="54" y="104" font-size="10" fill="#1d4ed8">_U</text>
+                            <circle cx="30" cy="95" r="6" fill="#f1f5f9" stroke="#cbd5f5" />
+                            <line x1="150" y1="72" x2="210" y2="72" stroke="#cbd5f5" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowhead)" />
+                            <line x1="150" y1="92" x2="210" y2="92" stroke="#cbd5f5" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowhead)" />
+                            <defs>
+                                <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto">
+                                    <polygon points="0 0, 6 2, 0 4" fill="#94a3b8"></polygon>
+                                </marker>
+                            </defs>
+                            <text x="230" y="80" fill="#475569" font-size="11">DadosParada</text>
+                            <text x="230" y="100" fill="#475569" font-size="11">OpçãoUsuário</text>
+                        </svg>
+                        <div class="media-meta" style="color: #475569;">
+                            <span>Micro-diagrama destacando ligação Cluster ↔ Tabelas globais.</span>
+                            <button class="play-btn" type="button" style="color: #1d4ed8; border-color: #bfdbfe; background: #eff6ff;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                Ver animação
+                            </button>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'frontend',
+                label: '3',
+                kicker: 'Experiência & Integrações',
+                title: 'Front-end Power Apps + Ecossistema',
+                summary: 'Layout tablet otimizado para desktop, menu lateral persistente e filtros cruzados conectam inspeção, manutenção e comunicação. Power BI e deep links corporativos completam a jornada.',
+                highlights: [
+                    { title: 'Navegação', value: 'Menu lateral', detail: 'Passagem, Inspeção, Manutenção, Admin' },
+                    { title: 'Delegação', value: '>6.500 itens', detail: 'tb_Equipamentos_GINSPEQ fora do limite' },
+                    { title: 'Integrações', value: 'GINSPEQ + PBI', detail: 'Links diretos e painel embarcado' }
+                ],
+                content: `
+                    <div class="card diag-callout" style="margin-top: 1rem;">
+                        <p style="margin-bottom: 0.5rem;">Layout tablet otimizado para desktop, com menu lateral persistente e contexto de parada definido já no <span class="mono">App.OnStart</span>.</p>
+                        <p style="margin: 0;">Delegação é o principal gargalo: listas como <strong>tb_Equipamentos_GINSPEQ</strong> têm 6.500+ itens, exigindo coleções locais e filtros delegáveis.</p>
+                    </div>
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="badge-tag">Mapa do menu</div>
+                        <p style="margin-bottom: 0.5rem; color: #475569;">Rotas disponíveis (tablet layout):</p>
+                        <div class="nav-map">
+                            <span class="pill">Dashboard</span>
+                            <span class="pill">Passagem de Serviços</span>
+                            <span class="pill">Inspeção</span>
+                            <span class="pill">Manutenção</span>
+                            <span class="pill">Equipamentos</span>
+                            <span class="pill">Equipe</span>
+                            <span class="pill">Visão Planejador</span>
+                            <span class="pill">Visão Admin</span>
+                            <span class="pill">Painel PBI</span>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="badge-tag">Fluxo da Home</div>
+                        <ol class="ordered-flow" style="color: #475569;">
+                            <li><strong>Notificações:</strong> _Eventos filtrado por @mentions ao usuário logado.</li>
+                            <li><strong>Manutenção:</strong> _Acompanhamento com responsável = usuário e status ≠ Concluído.</li>
+                            <li><strong>Inspeções:</strong> _Acompanhamento filtrado por Tipo = Inspeção & Status = Pendente.</li>
+                        </ol>
+                    </div>
+                    <div class="card" style="margin-top: 1.25rem;">
+                        <div class="badge-tag">Integrações & limites</div>
+                        <ul class="list-clean">
+                            <li><strong>Context switching:</strong> <span class="mono">Set(varCurrentCluster, LookUp(DadosParada,...))</span> define as listas ativas.</li>
+                            <li><strong>GINSPEQ:</strong> botões “Abrir no GINSPEQ” usam deep link por TAG.</li>
+                            <li><strong>Power BI:</strong> iframe com relatório embarcado consumindo as mesmas listas SharePoint.</li>
+                            <li><strong>Teams:</strong> Roadmap prevê troca de e-mail por Adaptive Cards para aprovações.</li>
+                        </ul>
+                    </div>
+                    <div class="media-card light">
+                        <div class="badge-tag" style="background: #fee2e2; color: #b91c1c;">Demo 45s</div>
+                        <svg viewBox="0 0 360 140">
+                            <rect x="15" y="15" width="330" height="110" rx="14" fill="#1e293b" />
+                            <rect x="30" y="30" width="80" height="80" rx="10" fill="#111827" />
+                            <rect x="120" y="30" width="70" height="80" rx="10" fill="#0f172a" />
+                            <rect x="200" y="30" width="120" height="80" rx="10" fill="#111827" />
+                            <text x="45" y="75" fill="#f8fafc" font-size="10">Passagem</text>
+                            <text x="132" y="75" fill="#f8fafc" font-size="10">Inspeção</text>
+                            <text x="230" y="75" fill="#f8fafc" font-size="10">Painel PBI</text>
+                            <polygon points="180,60 205,75 180,90" fill="#fef08a" />
+                        </svg>
+                        <div class="media-meta" style="color: #0f172a;">
+                            <span>Trecho mostrando navegação entre Passagem → Inspeção → Painel.</span>
+                            <button class="play-btn" type="button" style="background:#b91c1c; border-color:#991b1b; color: #fff;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                Reproduzir
+                            </button>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'riscos',
+                label: '4',
+                kicker: 'Riscos & Dívida Técnica',
+                title: 'Matriz de Risco Atual (AS-IS)',
+                summary: 'Quatro pilares concentram o risco operacional: escalabilidade, integridade referencial, dependência de Excel e limpeza de código.',
+                highlights: [
+                    { title: 'Crítico', value: 'Escalabilidade', detail: 'Criação manual de listas' },
+                    { title: 'Alto', value: 'TAG ≠ ID', detail: 'Histórico pode se perder' },
+                    { title: 'Alto', value: 'Excel dependente', detail: 'Checkout derruba o App' }
+                ],
+                content: `
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="badge-tag">Detalhamento</div>
+                        <div class="slide-grid">
+                            <div class="highlight-card" style="background: #fef2f2; border-color: #fecaca;">
+                                <div class="highlight-title" style="color: #b91c1c;">Crítico · Escalabilidade (Sharding)</div>
+                                <p class="text-sm" style="color:#7f1d1d; margin-top:0.5rem;">Novas paradas dependem de replicar 4 listas manualmente ou via fluxo não governado. Qualquer desvio de schema paralisa o App.</p>
+                            </div>
+                            <div class="highlight-card" style="background: #fff7ed; border-color: #fed7aa;">
+                                <div class="highlight-title" style="color: #9a3412;">Alto · Integridade referencial</div>
+                                <p class="text-sm" style="color:#9a3412; margin-top:0.5rem;">Relacionamentos por texto (TAG). Renomear P-101 → P-101A quebra histórico de inspeção e manutenção.</p>
+                            </div>
+                            <div class="highlight-card" style="background: #fff7ed; border-color: #fed7aa;">
+                                <div class="highlight-title" style="color: #9a3412;">Alto · Dependência de Excel</div>
+                                <p class="text-sm" style="color:#9a3412; margin-top:0.5rem;">ListasZR.xlsx e cargas GINSPEQ funcionam como banco de dados. Arquivo em checkout = aplicativo indisponível.</p>
+                            </div>
+                            <div class="highlight-card" style="background: #f8fafc; border-color: #e2e8f0;">
+                                <div class="highlight-title" style="color: #0f172a;">Médio · Higiene de código</div>
+                                <p class="text-sm" style="color:#475569; margin-top:0.5rem;">Artefatos herdados (REFAP, LabEventos) adicionam peso desnecessário e confundem a manutenção.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="risk-table">
+                        <thead>
+                            <tr>
+                                <th>Nível</th>
+                                <th>Componente</th>
+                                <th>Descrição do risco</th>
+                                <th>Impacto no negócio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="risk-critical">Crítico</td>
+                                <td>Escalabilidade (Sharding)</td>
+                                <td>Nova parada exige criação manual (ou fluxo não governado) de 4 listas SharePoint.</td>
+                                <td>Dependência total do desenvolvedor e alta chance de erro humano.</td>
+                            </tr>
+                            <tr>
+                                <td class="risk-high">Alto</td>
+                                <td>Integridade referencial</td>
+                                <td>Relacionamentos feitos por texto (TAG). Renomear P-101 → P-101A quebra o histórico.</td>
+                                <td>Perda de rastreabilidade de inspeções/manutenção.</td>
+                            </tr>
+                            <tr>
+                                <td class="risk-high">Alto</td>
+                                <td>Dependência de Excel</td>
+                                <td>Planilhas (ListasZR.xlsx, cargas GINSPEQ) atuam como banco de dados.</td>
+                                <td>Arquivo em checkout ou renomeado paralisa o App.</td>
+                            </tr>
+                            <tr>
+                                <td class="risk-medium">Médio</td>
+                                <td>Limpeza de código</td>
+                                <td>Artefatos de REFAP e listas de teste (LabEventos) permanecem no App.</td>
+                                <td>Confusão na manutenção e carregamento desnecessário.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `
+            },
+            {
+                id: 'roadmap',
+                label: '5',
+                kicker: 'Plano Diretor 2025/2026',
+                title: 'Estabilizar · Embelezar · Estruturar',
+                summary: 'Três ondas sequenciais conectam governança, UX e arquitetura para preparar a grande migração.',
+                highlights: [
+                    { title: 'Fase 1', value: 'Quick Wins', detail: 'Mês 1-2' },
+                    { title: 'Fase 2', value: 'Otimização', detail: 'Mês 3-4' },
+                    { title: 'Fase 3', value: 'Migração', detail: 'Mês 5+' }
+                ],
+                content: `
+                    <div class="timeline" style="margin-top: 1rem;">
+                        <div class="timeline-step">
+                            <h3>Fase 1 · Governança & Quick Wins</h3>
+                            <p class="text-sm">Foco em segurança operacional e percepção visual.</p>
+                            <ul class="list-clean">
+                                <li>Inventário completo de variáveis globais.</li>
+                                <li>Script de backup mensal das listas críticas.</li>
+                                <li>Limpeza de artefatos herdados (REFAP, labs).</li>
+                                <li>Nova identidade visual + menu retrátil.</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-step">
+                            <h3>Fase 2 · Otimização da experiência</h3>
+                            <p class="text-sm">Eficiência operacional e UX em telas diversas.</p>
+                            <ul class="list-clean">
+                                <li>Wizard de inspeção passo-a-passo.</li>
+                                <li>Busca híbrida por TAG ou descrição.</li>
+                                <li>Responsividade mobile/tablet.</li>
+                                <li>Migrar ZR de Excel para listas SPO + auditoria de permissões.</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-step">
+                            <h3>Fase 3 · Grande Migração</h3>
+                            <p class="text-sm">Escalabilidade, automação e unificação de dados.</p>
+                            <ul class="list-clean">
+                                <li>Lista única <strong>TB_Global_Acompanhamento</strong> com coluna <span class="mono">ID_Parada</span>.</li>
+                                <li>Reduzir necessidade de novos clusters físicos.</li>
+                                <li>Substituir e-mails por Adaptive Cards no Teams.</li>
+                                <li>Gerar PDF automático do handover de turno.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'procedimentos',
+                label: '6',
+                kicker: 'Operação & Contingência',
+                title: 'Procedimentos críticos visualizados',
+                summary: 'Passo a passo para abrir novas paradas e contingências quando o carregamento falha.',
+                highlights: [
+                    { title: 'Nova parada', value: '5 passos', detail: 'SharePoint + DadosParada' },
+                    { title: 'Contingência', value: '2 passos', detail: 'Checkout em arquivos críticos' }
+                ],
+                content: `
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="badge-tag">Como adicionar nova parada</div>
+                        <ol class="ordered-flow" style="color: #475569;">
+                            <li>Duplicar as 4 listas do cluster diretamente no SharePoint (ou via fluxo Power Automate existente).</li>
+                            <li>Respeitar o padrão <strong>[NOME]_[MÓDULO]</strong> em cada lista.</li>
+                            <li>Cadastrar o novo nome em <strong>DadosParada</strong>.</li>
+                            <li>Validar se o App reconhece o contexto e se as colunas estão corretas.</li>
+                            <li>Executar smoke test de leitura/gravação.</li>
+                        </ol>
+                    </div>
+                    <div class="card" style="margin-top: 1.25rem;">
+                        <div class="badge-tag">Contingência</div>
+                        <ol class="ordered-flow" style="color: #475569;">
+                            <li>Verificar se <strong>GINSPEQ_INSPFLOW.xlsx</strong> está aberto (check-out) na biblioteca “Documentos”.</li>
+                            <li>Solicitar liberação imediata para restabelecer o cache de equipamentos.</li>
+                        </ol>
+                    </div>
+                    <div class="card" style="margin-top: 1.25rem;">
+                        <div class="badge-tag">Pontos de atenção</div>
+                        <ul class="list-clean">
+                            <li>Após duplicar listas, conferir tipos de coluna (Choice, Lookup, Person) — erro comum mencionado no dossiê.</li>
+                            <li>Registrar nova parada em <strong>DadosParada</strong> antes de liberar para usuários.</li>
+                            <li>Manter logs de quem executou cada etapa para auditoria.</li>
+                        </ul>
+                    </div>
+                `
+            }
+        ];
+
+        let currentSlideIndex = 0;
+        let autoPlayTimer = null;
+        const AUTO_PLAY_INTERVAL = 12000; // 12 segundos
+        let autoPlayEnabled = true;
+
+        // --- LÓGICA DO PORTAL ---
+        function switchMainTab(tabId, btnElement) {
+            // UI Toggle
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // View Toggle
+            document.getElementById('dossier-view').classList.add('hidden');
+            document.getElementById('mockup-view').classList.add('hidden');
+            document.getElementById(`${tabId}-view`).classList.remove('hidden');
+        }
+
+        function renderSlide(index) {
+            const slide = slides[index];
+            const stage = document.getElementById('slide-stage');
+            if (!stage || !slide) return;
+
+            const highlightHtml = slide.highlights?.length
+                ? `<div class="slide-grid">${slide.highlights.map(h => `
+                        <div class="highlight-card">
+                            <div class="highlight-title">${h.title}</div>
+                            <div class="highlight-value">${h.value}</div>
+                            <p class="text-sm" style="color:#64748b; margin-top:0.25rem;">${h.detail}</p>
+                        </div>
+                    `).join('')}</div>`
+                : '';
+
+            stage.innerHTML = `
+                <div class="slide-body">
+                    <div class="slide-kicker">${slide.kicker}</div>
+                    <h1 class="slide-title">${slide.title}</h1>
+                    <p class="slide-summary">${slide.summary}</p>
+                    ${highlightHtml}
+                    ${slide.content}
+                </div>
+            `;
+
+            updateProgress(index);
+            updateNavButtons();
+            syncSidebar(slide.id);
+            updateStatusLabel(slide);
+            updateControlStates();
+        }
+
+        function updateProgress(activeIndex) {
+            const progressContainer = document.getElementById('slide-progress');
+            if (!progressContainer) return;
+            progressContainer.innerHTML = slides.map((slide, index) => `
+                <div class="progress-dot ${index <= activeIndex ? 'active' : ''}" onclick="goToSlide('${slide.id}')">
+                    <span class="progress-label">${slide.label}</span>
+                </div>
+            `).join('');
+        }
+
+        function updateNavButtons() {
+            const prev = document.getElementById('prev-slide');
+            const next = document.getElementById('next-slide');
+            if (prev) prev.disabled = currentSlideIndex === 0;
+            if (next) next.disabled = currentSlideIndex === slides.length - 1;
+        }
+
+        function updateStatusLabel(slide) {
+            const status = document.getElementById('slide-status');
+            if (!status) return;
+            status.textContent = `Slide ${currentSlideIndex + 1}/${slides.length} · ${slide.title}`;
+        }
+
+        function updateControlStates() {
+            const toggleBtn = document.getElementById('toggle-autoplay');
+            if (toggleBtn) {
+                toggleBtn.textContent = autoPlayEnabled ? 'Pausar auto' : 'Retomar auto';
+                toggleBtn.classList.toggle('active', autoPlayEnabled);
+            }
+            const presentationBtn = document.getElementById('presentation-toggle');
+            if (presentationBtn) {
+                const isPresentation = document.body.classList.contains('presentation-mode');
+                presentationBtn.textContent = isPresentation ? 'Sair do modo apresentação' : 'Modo apresentação';
+                presentationBtn.classList.toggle('active', isPresentation);
+            }
+        }
+
+        function startAutoPlay() {
+            if (!autoPlayEnabled) return;
+            stopAutoPlay();
+            autoPlayTimer = setInterval(() => {
+                const nextIndex = (currentSlideIndex + 1) % slides.length;
+                currentSlideIndex = nextIndex;
+                renderSlide(currentSlideIndex);
+            }, AUTO_PLAY_INTERVAL);
+        }
+
+        function stopAutoPlay() {
+            if (autoPlayTimer) {
+                clearInterval(autoPlayTimer);
+                autoPlayTimer = null;
+            }
+        }
+
+        function restartAutoPlay() {
+            stopAutoPlay();
+            startAutoPlay();
+        }
+
+        function goToSlide(id) {
+            const index = slides.findIndex(slide => slide.id === id);
+            if (index === -1) return;
+            currentSlideIndex = index;
+            renderSlide(currentSlideIndex);
+            restartAutoPlay();
+        }
+
+        function changeSlide(step) {
+            const newIndex = currentSlideIndex + step;
+            if (newIndex < 0 || newIndex >= slides.length) return;
+            currentSlideIndex = newIndex;
+            renderSlide(currentSlideIndex);
+            restartAutoPlay();
+        }
+
+        function syncSidebar(activeId) {
+            const sidebarItems = document.querySelectorAll('#slide-sidebar .sidebar-item');
+            sidebarItems.forEach(btn => {
+                const matches = btn.getAttribute('data-slide') === activeId;
+                btn.classList.toggle('active', matches);
+            });
+        }
+
+        function handleKeyNavigation(event) {
+            if (event.key === 'ArrowRight' || event.key === 'PageDown') {
+                changeSlide(1);
+            } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+                changeSlide(-1);
+            }
+        }
+
+        function toggleAutoplay() {
+            autoPlayEnabled = !autoPlayEnabled;
+            if (autoPlayEnabled) {
+                startAutoPlay();
+            } else {
+                stopAutoPlay();
+            }
+            updateControlStates();
+        }
+
+        function restartDeck() {
+            currentSlideIndex = 0;
+            renderSlide(currentSlideIndex);
+            restartAutoPlay();
+        }
+
+        function togglePresentationMode() {
+            document.body.classList.toggle('presentation-mode');
+            updateControlStates();
+        }
+
+        function toggleMenu() {
+            const sidebar = document.getElementById('pa-sidebar');
+            const labels = sidebar.querySelectorAll('.label');
+            
+            sidebar.classList.toggle('expanded');
+            
+            // Toggle labels visibility with delay to match transition
+            if (sidebar.classList.contains('expanded')) {
+                setTimeout(() => labels.forEach(l => l.classList.remove('hidden')), 100);
+            } else {
+                labels.forEach(l => l.classList.add('hidden'));
+            }
+        }
+
+        // --- FUNÇÕES DE MÍDIA E ANIMAÇÃO ---
+        const mediaContent = {
+            'sumario-snapshot': {
+                title: 'Snapshot Audiovisual: Clusters Ativos',
+                description: 'Visualização dos 3 clusters principais do InspFLOW na REGAP',
+                type: 'animation',
+                duration: 20,
+                animation: 'clusterPulse'
+            },
+            'arquitetura-diagram': {
+                title: 'Diagrama Interativo: Arquitetura de Dados',
+                description: 'Ligação entre Clusters de Parada e Tabelas Globais do SharePoint',
+                type: 'animation',
+                duration: 15,
+                animation: 'dataFlow'
+            },
+            'frontend-demo': {
+                title: 'Demo de Navegação: Passagem → Inspeção → Painel',
+                description: 'Demonstração do fluxo de trabalho entre módulos principais',
+                type: 'animation',
+                duration: 45,
+                animation: 'navigationFlow'
+            }
+        };
+
+        function openMediaOverlay(mediaId) {
+            const overlay = document.getElementById('media-overlay');
+            const titleEl = document.getElementById('media-overlay-title');
+            const bodyEl = document.getElementById('media-overlay-body');
+            
+            const media = mediaContent[mediaId];
+            if (!media) return;
+            
+            titleEl.textContent = media.title;
+            
+            // Criar player
+            const playerHtml = `
+                <div class="media-player">
+                    <div class="media-player-visual" id="animation-container">
+                        <div class="media-player-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="media-player-info">
+                        <h4>${media.title}</h4>
+                        <p>${media.description}</p>
+                        <p style="margin-top: var(--space-md); color: var(--gray-400); font-size: 0.875rem;">
+                            <strong>Duração:</strong> ${media.duration}s | 
+                            <strong>Tipo:</strong> ${media.type === 'animation' ? 'Animação' : 'Vídeo'}
+                        </p>
+                    </div>
+                </div>
+            `;
+            
+            bodyEl.innerHTML = playerHtml;
+            overlay.classList.add('active');
+            
+            // Iniciar animação
+            setTimeout(() => {
+                startAnimation(media.animation, 'animation-container');
+            }, 300);
+        }
+
+        function closeMediaOverlay() {
+            const overlay = document.getElementById('media-overlay');
+            overlay.classList.remove('active');
+            
+            // Limpar animações
+            const bodyEl = document.getElementById('media-overlay-body');
+            setTimeout(() => {
+                bodyEl.innerHTML = '';
+            }, 300);
+        }
+
+        function startAnimation(animationType, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            switch(animationType) {
+                case 'clusterPulse':
+                    animateClusterPulse(container);
+                    break;
+                case 'dataFlow':
+                    animateDataFlow(container);
+                    break;
+                case 'navigationFlow':
+                    animateNavigationFlow(container);
+                    break;
+            }
+        }
+
+        function animateClusterPulse(container) {
+            const svg = `
+                <svg width="100%" height="100%" viewBox="0 0 600 400" style="max-width: 600px; margin: 0 auto;">
+                    <defs>
+                        <linearGradient id="pulseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00a552" />
+                            <stop offset="100%" stop-color="#008542" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <text x="300" y="40" fill="#f8fafc" font-size="20" font-weight="600" text-anchor="middle">Clusters InspFLOW REGAP</text>
+                    
+                    <circle id="cluster1" cx="150" cy="200" r="50" stroke="url(#pulseGrad)" stroke-width="4" fill="rgba(0, 133, 66, 0.1)" />
+                    <text x="150" y="200" fill="#f8fafc" font-size="14" text-anchor="middle" dy=".3em">HDS</text>
+                    <text x="150" y="220" fill="#cbd5f5" font-size="12" text-anchor="middle">U-0108</text>
+                    
+                    <circle id="cluster2" cx="300" cy="200" r="45" stroke="#00a552" stroke-width="4" fill="rgba(0, 133, 66, 0.1)" />
+                    <text x="300" y="200" fill="#f8fafc" font-size="14" text-anchor="middle" dy=".3em">HDT</text>
+                    <text x="300" y="220" fill="#cbd5f5" font-size="12" text-anchor="middle">U-210</text>
+                    
+                    <circle id="cluster3" cx="450" cy="200" r="55" stroke="#008542" stroke-width="4" fill="rgba(0, 133, 66, 0.1)" />
+                    <text x="450" y="200" fill="#f8fafc" font-size="14" text-anchor="middle" dy=".3em">U-0036</text>
+                    
+                    <line id="conn1" x1="200" y1="200" x2="255" y2="200" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="5 5" />
+                    <line id="conn2" x1="345" y1="200" x2="395" y2="200" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="5 5" />
+                    
+                    <text x="300" y="320" fill="#94a3b8" font-size="14" text-anchor="middle">Sincronização via SharePoint Online</text>
+                </svg>
+            `;
+            
+            container.innerHTML = svg;
+            
+            // Animação de pulso
+            let scale = 1;
+            let growing = true;
+            setInterval(() => {
+                if (growing) {
+                    scale += 0.02;
+                    if (scale >= 1.15) growing = false;
+                } else {
+                    scale -= 0.02;
+                    if (scale <= 1) growing = true;
+                }
+                
+                ['cluster1', 'cluster2', 'cluster3'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.setAttribute('transform', `scale(${scale})`);
+                        el.setAttribute('transform-origin', el.getAttribute('cx') + ' ' + el.getAttribute('cy'));
+                    }
+                });
+            }, 50);
+        }
+
+        function animateDataFlow(container) {
+            const svg = `
+                <svg width="100%" height="100%" viewBox="0 0 600 400" style="max-width: 600px; margin: 0 auto;">
+                    <text x="300" y="40" fill="#f8fafc" font-size="20" font-weight="600" text-anchor="middle">Fluxo de Dados: Cluster ↔ Globais</text>
+                    
+                    <rect x="50" y="120" width="200" height="200" rx="15" fill="#1e293b" stroke="#008542" stroke-width="3" />
+                    <text x="150" y="160" fill="#008542" font-size="16" font-weight="600" text-anchor="middle">Cluster U-210</text>
+                    <text x="150" y="190" fill="#94a3b8" font-size="12" text-anchor="middle">_Acompanhamento</text>
+                    <text x="150" y="210" fill="#94a3b8" font-size="12" text-anchor="middle">_Equipamentos</text>
+                    <text x="150" y="230" fill="#94a3b8" font-size="12" text-anchor="middle">_Eventos</text>
+                    <text x="150" y="250" fill="#94a3b8" font-size="12" text-anchor="middle">_Usuários</text>
+                    
+                    <rect x="350" y="120" width="200" height="200" rx="15" fill="#1e293b" stroke="#FFCC29" stroke-width="3" />
+                    <text x="450" y="160" fill="#FFCC29" font-size="16" font-weight="600" text-anchor="middle">Tabelas Globais</text>
+                    <text x="450" y="200" fill="#94a3b8" font-size="12" text-anchor="middle">DadosParada</text>
+                    <text x="450" y="230" fill="#94a3b8" font-size="12" text-anchor="middle">OpçãoUsuário</text>
+                    <text x="450" y="260" fill="#94a3b8" font-size="12" text-anchor="middle">Ativos do Site</text>
+                    
+                    <path id="flow1" d="M 250 200 L 350 200" stroke="#008542" stroke-width="3" fill="none" stroke-dasharray="5 5" />
+                    <path id="flow2" d="M 250 240 L 350 240" stroke="#FFCC29" stroke-width="3" fill="none" stroke-dasharray="5 5" />
+                    
+                    <circle id="particle1" cx="250" cy="200" r="5" fill="#008542" />
+                    <circle id="particle2" cx="250" cy="240" r="5" fill="#FFCC29" />
+                </svg>
+            `;
+            
+            container.innerHTML = svg;
+            
+            // Animar partículas
+            let pos1 = 0;
+            let pos2 = 0;
+            setInterval(() => {
+                pos1 = (pos1 + 2) % 100;
+                pos2 = (pos2 + 1.5) % 100;
+                
+                const particle1 = document.getElementById('particle1');
+                const particle2 = document.getElementById('particle2');
+                
+                if (particle1) particle1.setAttribute('cx', 250 + pos1);
+                if (particle2) particle2.setAttribute('cx', 250 + pos2);
+            }, 30);
+        }
+
+        function animateNavigationFlow(container) {
+            const svg = `
+                <svg width="100%" height="100%" viewBox="0 0 600 400" style="max-width: 600px; margin: 0 auto;">
+                    <text x="300" y="40" fill="#f8fafc" font-size="20" font-weight="600" text-anchor="middle">Fluxo: Passagem → Inspeção → Painel PBI</text>
+                    
+                    <rect id="screen1" x="50" y="120" width="140" height="180" rx="10" fill="#1e293b" stroke="#008542" stroke-width="3" />
+                    <text x="120" y="220" fill="#f8fafc" font-size="14" font-weight="600" text-anchor="middle">Passagem</text>
+                    <text x="120" y="240" fill="#94a3b8" font-size="11" text-anchor="middle">Handover</text>
+                    
+                    <rect id="screen2" x="230" y="120" width="140" height="180" rx="10" fill="#1e293b" stroke="#00a552" stroke-width="3" />
+                    <text x="300" y="220" fill="#f8fafc" font-size="14" font-weight="600" text-anchor="middle">Inspeção</text>
+                    <text x="300" y="240" fill="#94a3b8" font-size="11" text-anchor="middle">Wizard</text>
+                    
+                    <rect id="screen3" x="410" y="120" width="140" height="180" rx="10" fill="#1e293b" stroke="#FFCC29" stroke-width="3" />
+                    <text x="480" y="220" fill="#f8fafc" font-size="14" font-weight="600" text-anchor="middle">Painel PBI</text>
+                    <text x="480" y="240" fill="#94a3b8" font-size="11" text-anchor="middle">Analytics</text>
+                    
+                    <polygon id="arrow1" points="195,210 220,210 220,200 235,215 220,230 220,220 195,220" fill="#FFCC29" />
+                    <polygon id="arrow2" points="375,210 400,210 400,200 415,215 400,230 400,220 375,220" fill="#FFCC29" />
+                    
+                    <text x="300" y="350" fill="#94a3b8" font-size="14" text-anchor="middle">Navegação fluida entre módulos do InspFLOW</text>
+                </svg>
+            `;
+            
+            container.innerHTML = svg;
+            
+            // Animar highlights
+            let currentScreen = 1;
+            setInterval(() => {
+                ['screen1', 'screen2', 'screen3'].forEach((id, i) => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        if (i + 1 === currentScreen) {
+                            el.setAttribute('stroke-width', '5');
+                            el.style.filter = 'brightness(1.3)';
+                        } else {
+                            el.setAttribute('stroke-width', '3');
+                            el.style.filter = 'brightness(1)';
+                        }
+                    }
+                });
+                
+                currentScreen = (currentScreen % 3) + 1;
+            }, 1500);
+        }
+
+        // Adicionar event listeners aos botões de play
+        document.addEventListener('click', (e) => {
+            const playBtn = e.target.closest('.play-btn');
+            if (playBtn) {
+                e.preventDefault();
+                const card = playBtn.closest('.media-card');
+                
+                // Identificar qual mídia baseado no contexto
+                let mediaId = 'sumario-snapshot';
+                if (card) {
+                    const badges = card.querySelectorAll('.badge-tag');
+                    badges.forEach(badge => {
+                        const text = badge.textContent.toLowerCase();
+                        if (text.includes('diagrama')) mediaId = 'arquitetura-diagram';
+                        if (text.includes('demo')) mediaId = 'frontend-demo';
+                    });
+                }
+                
+                openMediaOverlay(mediaId);
+            }
+        });
+
+        // Fechar overlay com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMediaOverlay();
+            }
+        });
+
+        // Fechar overlay clicando fora
+        document.getElementById('media-overlay')?.addEventListener('click', (e) => {
+            if (e.target.id === 'media-overlay') {
+                closeMediaOverlay();
+            }
+        });
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSlide(currentSlideIndex);
+            document.addEventListener('keydown', handleKeyNavigation);
+            const stage = document.getElementById('slide-stage');
+            if (stage) {
+                stage.addEventListener('mouseenter', stopAutoPlay);
+                stage.addEventListener('mouseleave', restartAutoPlay);
+            }
+            const autoBtn = document.getElementById('toggle-autoplay');
+            if (autoBtn) autoBtn.addEventListener('click', toggleAutoplay);
+            const restartBtn = document.getElementById('restart-deck');
+            if (restartBtn) restartBtn.addEventListener('click', restartDeck);
+            const presentationBtn = document.getElementById('presentation-toggle');
+            if (presentationBtn) presentationBtn.addEventListener('click', togglePresentationMode);
+            startAutoPlay();
+        });
+
+    </script>
+</body>
+</html>

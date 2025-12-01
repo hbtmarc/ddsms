@@ -34,7 +34,8 @@ class ParticlesCanvas {
         this.ctx = this.canvas.getContext('2d');
         this.particles = [];
         this.particleCount = 60;
-        this.colors = ['#10b981', '#facc15', '#f59e0b', '#ef4444'];
+        // Petrobras Colors: Green, Yellow, Light Green, Red (Safety)
+        this.colors = ['#008542', '#FFCC29', '#00a552', '#ef4444'];
         
         this.resize();
         this.init();

@@ -7,15 +7,15 @@
    VARIÁVEIS CSS - DESIGN SYSTEM
    ============================================ */
 :root {
-    /* Cores Principais */
-    --color-primary: #10b981;        /* Emerald-500 */
-    --color-secondary: #facc15;      /* Yellow-400 */
-    --color-accent: #f59e0b;         /* Amber-500 */
+    /* Cores Principais - Petrobras Identity */
+    --color-primary: #008542;        /* Petrobras Green */
+    --color-secondary: #FFCC29;      /* Petrobras Yellow */
+    --color-accent: #00a552;         /* Light Green */
     
     /* Cores de Status */
     --color-danger: #ef4444;         /* Red-500 */
-    --color-warning: #f59e0b;        /* Amber-500 */
-    --color-success: #10b981;        /* Emerald-500 */
+    --color-warning: #FFCC29;        /* Petrobras Yellow */
+    --color-success: #008542;        /* Petrobras Green */
     
     /* Cores de Superfície */
     --color-background: #f1f5f9;     /* Slate-100 */
