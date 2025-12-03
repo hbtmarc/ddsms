@@ -140,7 +140,7 @@ body {
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0.15; /* Reduced opacity for better visibility */
 }
 
 /* ============================================
@@ -251,8 +251,8 @@ body {
 }
 
 .subtle-bg {
-    background-image: radial-gradient(var(--color-text-tertiary) 1px, transparent 1px);
-    background-size: 1.5rem 1.5rem;
+    background-color: var(--color-surface-alt);
+    /* Removed dotted pattern to improve readability */
 }
 
 .low-opacity-gradient-bg {

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>DDSMS - Percepção de Risco | Apresentação Premium</title>
-    <meta name="description" content="Apresentação interativa sobre Percepção de Risco no ambiente de trabalho. DDSMS Petrobras.">
-    <meta name="keywords" content="DDSMS, Percepção de Risco, Segurança, Petrobras, AGF Engenharia">
+    <title>Inteligência Emocional | Apresentação Premium</title>
+    <meta name="description" content="Apresentação interativa sobre Inteligência Emocional no ambiente de trabalho.">
+    <meta name="keywords" content="Inteligência Emocional, Daniel Goleman, Soft Skills, Petrobras, AGF Engenharia">
     <meta name="author" content="Petrobras | AGF Engenharia">
     
     <!-- Fonts -->
@@ -15,6 +15,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS (via CDN for rapid development/compatibility) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        petrobras: {
+                            green: '#008542',
+                            yellow: '#FFCC29',
+                            lightgreen: '#00a552'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <!-- CSS Premium -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -41,7 +62,7 @@
         </button>
 
         <!-- Indicador de Slide -->
-        <div id="slideIndicator" class="slide-indicator">1 / 19</div>
+        <div id="slideIndicator" class="slide-indicator">1 / 17</div>
 
         <!-- Slide 1: Título -->
         <section id="slide-1" class="slide active gradient-bg">
@@ -50,270 +71,467 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" alt="Logo Petrobras">
                     <img src="https://www.agfengenharia.com.br/wp-content/uploads/2018/09/group-20668-211507.png" alt="Logo AGF Engenharia">
                 </div>
-                <div class="animated-item delay-1 badge mb-4">DDSMS - 21/10/25 | MARCELINO</div>
-                <h1 class="animated-item delay-2">Percepção de Risco</h1>
-                <p class="animated-item delay-3 mt-4 text-xl md:text-3xl font-semibold">Você está realmente vendo o perigo ao seu redor?</p>
+                <div class="animated-item delay-1 badge mb-4">DDSMS | DESENVOLVIMENTO PESSOAL</div>
+                <h1 class="animated-item delay-2">Inteligência Emocional</h1>
+                <p class="animated-item delay-3 mt-4 text-xl md:text-3xl font-semibold">Como reconhecer, entender e gerenciar nossas emoções<br>para melhorar relações e resultados.</p>
             </div>
         </section>
 
-            <!-- Slide 2: Agenda -->
-            <div id="slide-2" class="slide w-full h-full subtle-bg">
-                 <div class="m-auto w-full max-w-2xl">
-                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">O que vamos ver hoje?</h2>
-                    <ul class="text-left space-y-4 text-lg text-gray-700">
-                        <li class="animated-item delay-1 flex items-start hover-zoom"><span class="bg-gradient-to-b from-emerald-500 to-emerald-400 text-transparent bg-clip-text mr-3 mt-1 font-bold text-2xl leading-none">&#10148;</span><span>O perigo do "Piloto Automático" e da rotina.</span></li>
-                        <li class="animated-item delay-2 flex items-start hover-zoom"><span class="bg-gradient-to-b from-emerald-400 to-lime-400 text-transparent bg-clip-text mr-3 mt-1 font-bold text-2xl leading-none">&#10148;</span><span>Diferença fundamental entre Perigo e Risco.</span></li>
-                        <li class="animated-item delay-3 flex items-start hover-zoom"><span class="bg-gradient-to-b from-lime-400 to-yellow-400 text-transparent bg-clip-text mr-3 mt-1 font-bold text-2xl leading-none">&#10148;</span><span>Análise de acidentes reais para aprendizado.</span></li>
-                        <li class="animated-item delay-4 flex items-start hover-zoom"><span class="bg-gradient-to-b from-yellow-400 to-yellow-500 text-transparent bg-clip-text mr-3 mt-1 font-bold text-2xl leading-none">&#10148;</span><span>A ferramenta dos 3 P's para quebrar o ciclo.</span></li>
+        <!-- Slide 2: O que é? -->
+        <div id="slide-2" class="slide w-full h-full subtle-bg text-center">
+             <div class="m-auto w-full max-w-3xl">
+                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">O que é Inteligência Emocional?</h2>
+                <div class="animated-item delay-1 p-8 bg-white rounded-xl shadow-lg border-l-8 border-emerald-500">
+                    <p class="text-2xl text-gray-700 leading-relaxed">
+                        É a capacidade de <strong>reconhecer</strong>, <strong>compreender</strong><br>e <strong>gerenciar</strong> emoções próprias e alheias.
+                    </p>
+                    <p class="mt-6 text-xl text-gray-600">
+                        Permite responder de forma consciente,<br>em vez de reagir impulsivamente.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Benefícios -->
+        <div id="slide-3" class="slide w-full h-full text-center">
+            <div class="m-auto w-full max-w-5xl">
+                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Como ajuda no trabalho?</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="animated-item delay-1 p-4 bg-blue-50 rounded-lg hover-lift text-center">
+                        <div class="text-4xl mb-2">🗣️</div>
+                        <h3 class="font-bold text-lg text-blue-800">Comunicação Assertiva</h3>
+                        <p class="text-sm text-gray-600 mt-1">Clareza na passagem de informações e instruções.</p>
+                    </div>
+                    <div class="animated-item delay-2 p-4 bg-green-50 rounded-lg hover-lift text-center">
+                        <div class="text-4xl mb-2">🤝</div>
+                        <h3 class="font-bold text-lg text-green-800">Gestão de Conflitos</h3>
+                        <p class="text-sm text-gray-600 mt-1">Resolver divergências sem afetar a operação.</p>
+                    </div>
+                    <div class="animated-item delay-3 p-4 bg-yellow-50 rounded-lg hover-lift text-center">
+                        <div class="text-4xl mb-2">🛡️</div>
+                        <h3 class="font-bold text-lg text-yellow-800">Segurança e Foco</h3>
+                        <p class="text-sm text-gray-600 mt-1">Atenção plena reduz riscos de acidentes.</p>
+                    </div>
+                    <div class="animated-item delay-4 p-4 bg-purple-50 rounded-lg hover-lift text-center">
+                        <div class="text-4xl mb-2">🧠</div>
+                        <h3 class="font-bold text-lg text-purple-800">Tomada de Decisão</h3>
+                        <p class="text-sm text-gray-600 mt-1">Escolhas racionais mesmo sob pressão.</p>
+                    </div>
+                    <div class="animated-item delay-5 p-4 bg-orange-50 rounded-lg hover-lift text-center">
+                        <div class="text-4xl mb-2">☀️</div>
+                        <h3 class="font-bold text-lg text-orange-800">Clima Positivo</h3>
+                        <p class="text-sm text-gray-600 mt-1">Equipes mais unidas e colaborativas.</p>
+                    </div>
+                    <div class="animated-item delay-6 p-4 bg-teal-50 rounded-lg hover-lift text-center">
+                        <div class="text-4xl mb-2">⭐</div>
+                        <h3 class="font-bold text-lg text-teal-800">Liderança Pessoal</h3>
+                        <p class="text-sm text-gray-600 mt-1">Ser exemplo de postura e conduta.</p>
+                    </div>
+                </div>
+                <div class="animated-item delay-7 mt-6 p-4 bg-gray-100 rounded-lg border border-gray-200">
+                    <p class="text-gray-700 font-semibold">"90% das demissões comportamentais ocorrem por falta de IE."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Daniel Goleman -->
+        <div id="slide-4" class="slide w-full h-full subtle-bg text-center">
+            <div class="m-auto w-full max-w-4xl flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/3 animated-item">
+                    <!-- Daniel Goleman Image -->
+                    <div class="w-48 h-48 rounded-full mx-auto overflow-hidden shadow-xl border-4 border-emerald-500">
+                        <img src="https://cdl-static.s3-sa-east-1.amazonaws.com/colaboradores/04392_gg.jpg" alt="Daniel Goleman" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 text-center">
+                    <h2 class="animated-item delay-1 text-3xl md:text-4xl font-bold text-gray-800 mb-4">Quem é Daniel Goleman?</h2>
+                    <ul class="space-y-4 text-lg text-gray-700 animated-item delay-2 list-inside">
+                        <li>• Psicólogo, escritor e jornalista norte-americano.</li>
+                        <li>• Publicou o livro <strong>"Inteligência Emocional"</strong> em 1995.</li>
+                        <li>• Mostrou que o <strong>QI (Quociente Intelectual)</strong> não é suficiente para explicar o sucesso.</li>
+                        <li>• A inteligência emocional é um fator decisivo para o desempenho pessoal e profissional.</li>
                     </ul>
+                    <blockquote class="animated-item delay-3 mt-6 p-4 border-l-4 border-emerald-500 bg-emerald-50 italic text-gray-600">
+                        "O que realmente diferencia as pessoas bem-sucedidas não é o QI, mas a forma como elas lidam com as próprias emoções."
+                    </blockquote>
                 </div>
             </div>
+        </div>
 
-            <!-- Slide 3: Conexão -->
-            <div id="slide-3" class="slide w-full h-full">
-                <div class="m-auto">
-                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">O "Piloto Automático"</h2>
-                    <div class="animated-item delay-1 my-6 rounded-lg overflow-hidden shadow-lg mx-auto w-48 h-48">
-                        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejE2ZTU3M2hvY25jZzB2eG5qNGRodDU4cm54Z2NucnE0eGZqajVodCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPnAiaMCws8nOsE/giphy.gif" alt="Robô trabalhando em linha de montagem" class="w-full h-full object-cover">
-                    </div>
-                    <p class="animated-item delay-2 text-lg md:text-xl text-gray-700 max-w-prose mx-auto">
-                        Quem já chegou em casa e não se lembrou do caminho?<br>
-                        Ou fez uma tarefa aqui "sem pensar"?<br><br>
-                        <span class="font-bold text-red-600">No trabalho, esse hábito é uma armadilha perigosa.</span>
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Slide 4: O Problema (Habituação) -->
-            <div id="slide-4" class="slide w-full h-full subtle-bg">
-                <div class="m-auto">
-                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">A Rotina nos Cega</h2>
-                    <p class="animated-item delay-1 text-lg md:text-xl text-gray-700 max-w-prose mx-auto mt-6">
-                        O nome disso é <strong class="text-emerald-600">Habituação</strong>.<br>
-                        Nosso cérebro busca eficiência, e essa eficiência se torna uma vulnerabilidade em ambientes dinâmicos.<br><br>
-                        Ele se acostuma com os riscos e eles se tornam "invisíveis", parte da paisagem.<br>
-                        O excesso de confiança é o maior inimigo da segurança.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Slide 5: Perigo vs Risco -->
-            <div id="slide-5" class="slide w-full h-full">
-                <div class="m-auto w-full max-w-4xl">
-                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Perigo vs. Risco: Qual a diferença?</h2>
-                    <div class="grid md:grid-cols-3 gap-6 text-center">
-                        <div class="animated-item delay-1 p-6 border-2 border-red-400 border-dashed rounded-lg hover-lift">
-                            <h3 class="font-bold text-2xl text-red-600">PERIGO</h3>
-                            <p class="text-gray-600 mt-2">É a <strong class="font-semibold">FONTE</strong> com potencial de causar dano.</p>
-                        </div>
-                        <div class="animated-item delay-2 p-6 border-2 border-yellow-500 border-dashed rounded-lg hover-lift">
-                            <h3 class="font-bold text-2xl text-yellow-600">RISCO</h3>
-                            <p class="text-gray-600 mt-2">É a <strong class="font-semibold">PROBABILIDADE</strong> do dano acontecer.</p>
-                        </div>
-                        <div class="animated-item delay-3 p-6 border-2 border-green-500 border-dashed rounded-lg hover-lift">
-                            <h3 class="font-bold text-2xl text-green-600">MEDIDAS</h3>
-                            <p class="text-gray-600 mt-2">É como <strong class="font-semibold">REDUZIMOS</strong> o risco.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 6: Exemplos Práticos -->
-            <div id="slide-6" class="slide w-full h-full subtle-bg">
-                 <div class="m-auto w-full max-w-4xl">
-                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Exemplos Práticos</h2>
-                    <div class="grid md:grid-cols-3 gap-6 text-center">
-                        <div class="animated-item delay-1 space-y-2">
-                            <div class="bg-red-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg><p class="font-bold mt-2">PERIGO: Eletricidade</p></div>
-                            <div class="bg-yellow-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 010 12.728M11.999 9.001a1 1 0 11-2 0 1 1 0 012 0zM12 12a1 1 0 11-2 0 1 1 0 012 0zM12 15a1 1 0 11-2 0 1 1 0 012 0z"></path></svg><p class="font-bold mt-2">RISCO: Choque Elétrico</p></div>
-                            <div class="bg-green-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"></path></svg><p class="font-bold mt-2">MEDIDA: EPIs e LOTO</p></div>
-                        </div>
-                        <div class="animated-item delay-2 space-y-2">
-                            <div class="bg-red-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg><p class="font-bold mt-2">PERIGO: Trabalho em Altura</p></div>
-                            <div class="bg-yellow-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5-5-5M12 8v10"></path></svg><p class="font-bold mt-2">RISCO: Queda</p></div>
-                            <div class="bg-green-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg><p class="font-bold mt-2">MEDIDA: Cinto de Segurança</p></div>
-                        </div>
-                        <div class="animated-item delay-3 space-y-2">
-                             <div class="bg-red-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A5 5 0 0012 17.75a5 5 0 002.121-1.629M18 12a6 6 0 00-6-6 6 6 0 00-6 6"></path></svg><p class="font-bold mt-2">PERIGO: Líquido Inflamável</p></div>
-                            <div class="bg-yellow-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg><p class="font-bold mt-2">RISCO: Incêndio/Explosão</p></div>
-                            <div class="bg-green-100 p-4 rounded-lg hover-lift"><svg class="w-12 h-12 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg><p class="font-bold mt-2">MEDIDA: Vestimenta RF</p></div>
-                        </div>
-                    </div>
-                 </div>
-            </div>
-
-            <!-- Slide 7: Vídeo: Acidente Grave - Falha de Procedimento -->
-            <div id="slide-7" class="slide w-full h-full">
-                <div class="flex flex-col w-full h-full justify-center items-center">
-                    <h2 class="animated-item text-2xl font-bold text-gray-800 mb-4">Análise de Caso: Falha em Procedimento</h2>
-                    <div class="video-container animated-item delay-1 hover-lift">
-                        <iframe src="https://www.youtube.com/embed/UFfpwCm274c" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 8: Vídeo: Acidente por Posicionamento Inseguro -->
-            <div id="slide-8" class="slide w-full h-full">
-                <div class="flex flex-col w-full h-full justify-center items-center">
-                    <h2 class="animated-item text-2xl font-bold text-gray-800 mb-4">Regra de Ouro: Posicionamento Seguro</h2>
-                     <div class="video-container animated-item delay-1 hover-lift">
-                        <iframe src="https://www.youtube.com/embed/GyU1XMIhu_o" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <p class="animated-item delay-2 text-lg text-gray-600 mt-4 font-semibold max-w-prose">
-                        Estar na "linha de fogo" ou sob cargas suspensas é uma falha grave.<br>
-                        Onde você se posiciona é uma decisão de segurança.
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Slide 9: O Teste de Atenção (Gorila Invisível) -->
-            <div id="slide-9" class="slide w-full h-full">
-                <div class="flex flex-col w-full h-full justify-center items-center">
-                    <h2 class="animated-item text-2xl font-bold text-gray-800 mb-4">Teste Rápido: Conte os passes do time de BRANCO</h2>
-                    <div class="video-container animated-item delay-1 hover-lift">
-                        <iframe src="https://www.youtube.com/embed/LvusDjrYTf4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 10: A Revelação -->
-            <div id="slide-10" class="slide w-full h-full subtle-bg">
-                <div class="m-auto">
-                     <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">E aí... quem viu o gorila?</h2>
-                     <p class="animated-item delay-1 text-lg md:text-xl text-gray-700 max-w-prose mx-auto mt-6">
-                        O foco excessivo em uma tarefa pode criar "pontos cegos" na nossa atenção.<br>
-                        Assim como o gorila, muitos riscos no nosso dia a dia passam despercebidos.<br><br>
-                        <strong class="text-red-600">E é aí que o acidente acontece.</strong>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Slide 11: A Solução -->
-             <div id="slide-11" class="slide w-full h-full">
-                <div class="m-auto">
-                     <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">Como quebramos o "Piloto Automático"?</h2>
-                     <p class="animated-item delay-1 text-lg md:text-xl text-gray-700 max-w-prose mx-auto mt-6">
-                        A resposta não está em trabalhar mais devagar, mas sim em trabalhar de forma mais consciente.<br>
-                        Para isso, usamos uma ferramenta simples e poderosa:
-                    </p>
-                    <div class="animated-item delay-2 mt-8 text-5xl md:text-7xl font-black text-emerald-600 tracking-wider">
-                        Os 3 P's
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 12: Pausar -->
-            <div id="slide-12" class="slide w-full h-full subtle-bg">
-                 <div class="m-auto">
-                    <h2 class="animated-item text-2xl md:text-3xl font-bold text-gray-500">O 1º P:</h2>
-                    <div class="flex items-center justify-center">
-                        <p class="animated-item delay-1 text-6xl md:text-8xl font-black text-red-600 my-4 mr-6">PAUSAR</p>
-                        <svg class="animated-item delay-2 w-20 h-20 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <p class="animated-item delay-3 text-lg md:text-xl text-gray-700 max-w-prose mx-auto">
-                        <strong>Saia do piloto automático.</strong><br>
-                        Antes de iniciar, respire fundo.<br>
-                        Dê a si mesmo segundos para se conectar com o presente e o ambiente.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Slide 13: Processar -->
-            <div id="slide-13" class="slide w-full h-full subtle-bg">
-                 <div class="m-auto">
-                    <h2 class="animated-item text-2xl md:text-3xl font-bold text-gray-500">O 2º P:</h2>
-                     <div class="flex items-center justify-center">
-                        <p class="animated-item delay-1 text-6xl md:text-8xl font-black text-yellow-500 my-4 mr-6">PROCESSAR</p>
-                        <svg class="animated-item delay-2 w-20 h-20 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-                    </div>
-                    <p class="animated-item delay-3 text-lg md:text-xl text-gray-700 max-w-prose mx-auto">
-                        <strong>Avalie os riscos, observação total, passo a passo.</strong><br>
-                        Olhe para suas mãos, seus pés, suas ferramentas e o local.<br>
-                        O que pode dar errado?
-                    </p>
-                </div>
-            </div>
-
-            <!-- Slide 14: Prosseguir -->
-            <div id="slide-14" class="slide w-full h-full subtle-bg">
-                 <div class="m-auto">
-                    <h2 class="animated-item text-2xl md:text-3xl font-bold text-gray-500">O 3º P:</h2>
-                     <div class="flex items-center justify-center">
-                        <p class="animated-item delay-1 text-6xl md:text-8xl font-black text-emerald-600 my-4 mr-6">PROSSEGUIR</p>
-                        <svg class="animated-item delay-2 w-20 h-20 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <p class="animated-item delay-3 text-lg md:text-xl text-gray-700 max-w-prose mx-auto">
-                        <strong>Avance com cautela.</strong><br>
-                        Execute a tarefa com as medidas de controle aplicadas.<br>
-                        Considere sempre risco versus recompensa na balança.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Slide 15: Vamos Refletir -->
-            <div id="slide-15" class="slide w-full h-full">
-                <div class="m-auto w-full max-w-3xl">
-                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">Vamos Refletir</h2>
-                    <svg class="animated-item delay-1 w-24 h-24 mx-auto my-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                    <p class="animated-item delay-2 text-lg md:text-xl text-gray-700 max-w-prose mx-auto">
-                        A reflexão sobre segurança transcende funções.<br>
-                        Seja na linha de frente, na supervisão técnica ou no suporte administrativo, cada um de nós possui uma perspectiva única sobre os riscos.<br><br>
-                        <strong class="text-emerald-600">É nosso dever analisar criticamente os processos, questionar a rotina e comunicar os perigos que se tornaram 'invisíveis'.</strong>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Slide 16: Compromisso -->
-            <div id="slide-16" class="slide w-full h-full subtle-bg">
-                 <div class="m-auto">
-                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800">Nosso Compromisso de Hoje:</h2>
-                    <div class="animated-item delay-1 border-4 border-yellow-400 rounded-xl p-6 max-w-3xl mx-auto mt-8 bg-yellow-50 hover-lift">
-                        <h3 class="text-2xl md:text-3xl font-black text-gray-800">Praticar os 3 P's em TODAS as tarefas</h3>
-                        <p class="text-lg md:text-xl text-gray-700 mt-4">
-                           <strong>PAUSAR</strong>, <strong>PROCESSAR</strong> e só então <strong>PROSSEGUIR</strong>.
+        <!-- Slide 5: Reagir vs Responder -->
+        <div id="slide-5" class="slide w-full h-full text-center">
+            <div class="m-auto w-full max-w-5xl">
+                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">O Mecanismo da Decisão: Reagir vs. Responder</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Modo Reativo -->
+                    <div class="animated-item delay-1 bg-red-50 p-6 rounded-xl border-t-8 border-red-500 shadow-lg">
+                        <h3 class="text-2xl font-bold text-red-800 mb-4">🔥 Modo Reativo (Instinto)</h3>
+                        <p class="text-gray-700 mb-4">
+                            Acionado quando nos sentimos ameaçados (física ou emocionalmente).<br>O cérebro "desliga" o raciocínio para agir rápido.
                         </p>
+                        <ul class="space-y-2 text-red-900 font-medium list-inside">
+                            <li>⚡ Ação imediata e impulsiva.</li>
+                            <li>🚫 Sem análise de consequências.</li>
+                            <li>⚠️ Alto risco de erro ou conflito.</li>
+                        </ul>
+                        <div class="mt-4 text-sm text-gray-500 italic">
+                            "Útil para fugir de um incêndio, perigoso para lidar com uma crítica."
+                        </div>
+                    </div>
+
+                    <!-- Modo Consciente -->
+                    <div class="animated-item delay-2 bg-blue-50 p-6 rounded-xl border-t-8 border-blue-500 shadow-lg">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-4">🧠 Modo Consciente (Razão)</h3>
+                        <p class="text-gray-700 mb-4">
+                            Quando conseguimos fazer uma <strong>pausa</strong> entre o estímulo e a resposta.<br>O raciocínio retoma o controle.
+                        </p>
+                        <ul class="space-y-2 text-blue-900 font-medium list-inside">
+                            <li>🛑 Pausa para análise.</li>
+                            <li>✅ Avaliação de riscos e alternativas.</li>
+                            <li>🎯 Decisão assertiva e segura.</li>
+                        </ul>
+                        <div class="mt-4 text-sm text-gray-500 italic">
+                            "Essencial para operações complexas e liderança."
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Slide 17: Encerramento -->
-            <div id="slide-17" class="slide w-full h-full">
-                <div class="m-auto">
-                    <svg class="animated-item w-24 h-24 mx-auto my-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <h2 class="animated-item delay-1 text-4xl md:text-5xl font-black text-gray-800">A Segurança é Nossa Responsabilidade</h2>
-                    <p class="animated-item delay-2 mt-4 text-xl md:text-2xl text-gray-600 max-w-prose mx-auto">
-                        Obrigado pela participação.<br>Cuidem de si mesmos e dos seus colegas.<br>
-                        Juntos, garantimos um ambiente de trabalho mais seguro para todos.
+                <div class="animated-item delay-3 mt-8 p-4 bg-gray-100 rounded-lg text-center border border-gray-300">
+                    <p class="text-xl text-gray-800 font-semibold">
+                        A Inteligência Emocional é a capacidade de sair do <span class="text-red-600">Modo Reativo</span><br>e acessar o <span class="text-blue-600">Modo Consciente</span> antes de agir.
                     </p>
                 </div>
             </div>
+        </div>
 
-            <!-- Slide 18: Referências -->
-            <div id="slide-18" class="slide w-full h-full subtle-bg">
-                <div class="m-auto w-full max-w-3xl text-left">
-                    <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">Referências e Fontes</h2>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="animated-item delay-1 hover-zoom"><strong>Vídeo - Acidente Grave (Procedimento):</strong> <a href="https://www.youtube.com/watch?v=UFfpwCm274c" target="_blank" class="text-emerald-600 hover:underline">youtube.com/watch?v=UFfpwCm274c</a></li>
-                        <li class="animated-item delay-2 hover-zoom"><strong>Vídeo - Acidente Grave (Desatenção):</strong> <a href="https://www.youtube.com/watch?v=GyU1XMIhu_o" target="_blank" class="text-emerald-600 hover:underline">youtube.com/watch?v=GyU1XMIhu_o</a></li>
-                        <li class="animated-item delay-3 hover-zoom"><strong>Vídeo - Teste de Atenção (Gorila):</strong> <a href="https://www.youtube.com/watch?v=LvusDjrYTf4" target="_blank" class="text-emerald-600 hover:underline">youtube.com/watch?v=LvusDjrYTf4</a></li>
-                        <li class="animated-item delay-4 hover-zoom"><strong>Logo Petrobras:</strong> <a href="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" target="_blank" class="text-emerald-600 hover:underline">Wikimedia Commons</a></li>
-                        <li class="animated-item delay-4 hover-zoom"><strong>Logo AGF Engenharia:</strong> <a href="https://www.agfengenharia.com.br" target="_blank" class="text-emerald-600 hover:underline">agfengenharia.com.br</a></li>
-                    </ul>
+        <!-- Slide 6: Os 5 Pilares -->
+        <div id="slide-6" class="slide w-full h-full subtle-bg text-center">
+            <div class="m-auto">
+                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-10">Os 5 Pilares da Inteligência Emocional</h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="animated-item delay-1 px-6 py-3 bg-emerald-600 text-white rounded-full font-bold text-xl shadow-lg">1. Autoconsciência</div>
+                    <div class="animated-item delay-2 px-6 py-3 bg-emerald-500 text-white rounded-full font-bold text-xl shadow-lg">2. Autocontrole</div>
+                    <div class="animated-item delay-3 px-6 py-3 bg-teal-500 text-white rounded-full font-bold text-xl shadow-lg">3. Automotivação</div>
+                    <div class="animated-item delay-4 px-6 py-3 bg-cyan-500 text-white rounded-full font-bold text-xl shadow-lg">4. Empatia</div>
+                    <div class="animated-item delay-5 px-6 py-3 bg-blue-500 text-white rounded-full font-bold text-xl shadow-lg">5. Habilidades Sociais</div>
                 </div>
+                <p class="animated-item delay-6 mt-10 text-xl text-gray-600 max-w-2xl mx-auto">
+                    Esses pilares são um caminho prático para desenvolver<br>a inteligência emocional no dia a dia.
+                </p>
             </div>
+        </div>
 
-            <!-- Slide 19: Conclusão Visual -->
-            <div id="slide-19" class="slide w-full h-full low-opacity-gradient-bg">
-                <div class="m-auto flex flex-col items-center text-gray-800">
-                    <div class="animated-item mb-6 flex items-center justify-center space-x-8">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" alt="Logo Petrobras" class="h-20">
-                        <img src="https://www.agfengenharia.com.br/wp-content/uploads/2018/09/group-20668-211507.png" alt="Logo AGF Engenharia" class="h-20">
+        <!-- Slide 7: Pilar 1 - Autoconsciência -->
+        <div id="slide-7" class="slide w-full h-full text-center">
+            <div class="m-auto w-full max-w-4xl">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="w-12 h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">1</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Autoconsciência</h2>
+                </div>
+                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">
+                    Reconhecer suas próprias emoções e como elas afetam pensamentos e comportamentos.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-md border-l-4 border-emerald-500">
+                        <h3 class="font-bold text-lg text-emerald-700 mb-2">Exemplo na Refinaria:</h3>
+                        <p class="text-lg text-gray-600">Perceber o nível de estresse aumentando em dias de alta demanda ou prazos críticos, e fazer uma pausa para reorganizar as ideias.</p>
                     </div>
-                    <h1 class="animated-item delay-1 text-5xl md:text-7xl font-black leading-tight">A Segurança Começa Com Você</h1>
-                    <p class="animated-item delay-2 mt-6 text-xl md:text-2xl font-semibold">Leve a Percepção de Risco para cada tarefa do seu dia.</p>
-                    <p class="animated-item delay-3 mt-12 text-lg md:text-xl font-semibold">Obrigado pela sua atenção e compromisso.</p>
+                    <div class="animated-item delay-3 bg-emerald-50 p-6 rounded-xl border border-emerald-100">
+                        <h3 class="font-bold text-lg text-emerald-800 mb-2">🔍 Identifique seus Gatilhos:</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>O que te tira do sério? (Cobranças excessivas, mudanças de última hora, ruído?)</li>
+                            <li>Como seu corpo reage? (Tensão muscular, suor frio, coração acelerado?)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Slide 8: Pilar 2 - Autocontrole -->
+        <div id="slide-8" class="slide w-full h-full subtle-bg text-center">
+            <div class="m-auto w-full max-w-4xl">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">2</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Autocontrole</h2>
+                </div>
+                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">
+                    Gerenciar os impulsos e as emoções negativas.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-md border-l-4 border-emerald-500">
+                        <h3 class="font-bold text-lg text-emerald-700 mb-2">Exemplo na Refinaria:</h3>
+                        <p class="text-lg text-gray-600">Manter a postura profissional diante de um imprevisto ou divergência técnica, focando na solução e não no problema.</p>
+                    </div>
+                    <div class="animated-item delay-3 bg-emerald-50 p-6 rounded-xl border border-emerald-100">
+                        <h3 class="font-bold text-lg text-emerald-800 mb-2">⏱️ A Regra dos 6 Segundos:</h3>
+                        <p class="text-gray-700 mb-2">A química da raiva dura cerca de 6 segundos no cérebro.</p>
+                        <p class="text-gray-700"><strong>Dica:</strong> Antes de responder de forma ríspida (seja pessoalmente, no rádio ou e-mail), conte até 6. Evite ruídos na comunicação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Pilar 3 - Automotivação -->
+        <div id="slide-9" class="slide w-full h-full text-center">
+            <div class="m-auto w-full max-w-4xl">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="w-12 h-12 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">3</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Automotivação</h2>
+                </div>
+                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">
+                    Manter foco e energia mesmo diante de desafios.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-md border-l-4 border-teal-500">
+                        <h3 class="font-bold text-lg text-teal-700 mb-2">Exemplo na Refinaria:</h3>
+                        <p class="text-lg text-gray-600">Manter o padrão de excelência e seguir as Regras de Ouro, mesmo quando a supervisão não está presente.</p>
+                    </div>
+                    <div class="animated-item delay-3 bg-teal-50 p-6 rounded-xl border border-teal-100">
+                        <h3 class="font-bold text-lg text-teal-800 mb-2">🎯 Foco no Propósito:</h3>
+                        <p class="text-gray-700">Lembre-se que seguir o padrão salva vidas.</p>
+                        <p class="text-gray-700 mt-2">Pergunte-se: "Como minha atenção agora garante que todos voltem bem para casa?"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Pilar 4 - Empatia -->
+        <div id="slide-10" class="slide w-full h-full subtle-bg text-center">
+            <div class="m-auto w-full max-w-4xl">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="w-12 h-12 bg-cyan-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">4</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Empatia</h2>
+                </div>
+                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">
+                    Compreender sentimentos e perspectivas de outras pessoas.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-md border-l-4 border-cyan-500">
+                        <h3 class="font-bold text-lg text-cyan-700 mb-2">Exemplo na Refinaria:</h3>
+                        <p class="text-lg text-gray-600">Compreender que colegas de outras áreas também têm prazos e pressões, evitando julgamentos precipitados.</p>
+                    </div>
+                    <div class="animated-item delay-3 bg-cyan-50 p-6 rounded-xl border border-cyan-100">
+                        <h3 class="font-bold text-lg text-cyan-800 mb-2">👂 Escuta Ativa:</h3>
+                        <p class="text-gray-700">Não ouça apenas para responder. Ouça para entender.</p>
+                        <p class="text-gray-700 mt-2">Observe a linguagem corporal e o tom de voz. 90% da comunicação não é verbal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Pilar 5 - Habilidades Sociais -->
+        <div id="slide-11" class="slide w-full h-full text-center">
+            <div class="m-auto w-full max-w-4xl">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">5</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Habilidades Sociais</h2>
+                </div>
+                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">
+                    Gerenciar relacionamentos, comunicar-se de forma eficaz e resolver conflitos.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500">
+                        <h3 class="font-bold text-lg text-blue-700 mb-2">Exemplo na Refinaria:</h3>
+                        <p class="text-lg text-gray-600">Comunicar riscos ou instruções de trabalho de forma clara e assertiva, garantindo que a mensagem foi compreendida por todos.</p>
+                    </div>
+                    <div class="animated-item delay-3 bg-blue-50 p-6 rounded-xl border border-blue-100">
+                        <h3 class="font-bold text-lg text-blue-800 mb-2">🤝 Construindo Pontes:</h3>
+                        <p class="text-gray-700">É a capacidade de encontrar um terreno comum e construir relacionamento (Rapport).</p>
+                        <p class="text-gray-700 mt-2">Líderes com boas habilidades sociais são ótimos em persuadir e inspirar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Liderança e Clima -->
+        <div id="slide-12" class="slide w-full h-full subtle-bg text-center">
+            <div class="m-auto w-full max-w-4xl">
+                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Impacto na Liderança e Clima</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="animated-item delay-1 p-6 bg-white rounded-xl shadow-lg border-t-4 border-red-500">
+                        <h3 class="text-xl font-bold text-red-700 mb-4">Liderança Dissonante</h3>
+                        <ul class="space-y-3 text-gray-600 list-inside">
+                            <li class="flex items-start justify-center"><span class="mr-2">❌</span>Falta de empatia</li>
+                            <li class="flex items-start justify-center"><span class="mr-2">❌</span>Gera ansiedade e medo</li>
+                            <li class="flex items-start justify-center"><span class="mr-2">❌</span>Foco apenas em tarefas, não em pessoas</li>
+                            <li class="flex items-start justify-center"><span class="mr-2">❌</span>"Manda quem pode, obedece quem tem juízo"</li>
+                        </ul>
+                    </div>
+                    <div class="animated-item delay-2 p-6 bg-white rounded-xl shadow-lg border-t-4 border-emerald-500">
+                        <h3 class="text-xl font-bold text-emerald-700 mb-4">Liderança Ressonante</h3>
+                        <ul class="space-y-3 text-gray-600 list-inside">
+                            <li class="flex items-start justify-center"><span class="mr-2">✅</span>Sintonia com as emoções da equipe</li>
+                            <li class="flex items-start justify-center"><span class="mr-2">✅</span>Gera entusiasmo e lealdade</li>
+                            <li class="flex items-start justify-center"><span class="mr-2">✅</span>Desenvolve pessoas</li>
+                            <li class="flex items-start justify-center"><span class="mr-2">✅</span>Inspira através do exemplo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Aplicação Estratégica -->
+        <div id="slide-13" class="slide w-full h-full text-center">
+            <div class="m-auto w-full max-w-6xl">
+                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Aplicação Estratégica na Refinaria</h2>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Pilar SMS -->
+                    <div class="animated-item delay-1 bg-white p-6 rounded-xl shadow-lg border-t-8 border-red-600 hover-lift">
+                        <div class="text-5xl mb-4">🛡️</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Segurança (SMS)</h3>
+                        <ul class="space-y-4 text-gray-600 text-sm">
+                            <li class="mb-2">
+                                <span class="text-red-500 text-lg">➤</span> <strong>Combate à Complacência:</strong><br>
+                                A IE mantém o estado de alerta,<br>evitando o "piloto automático"<br>causado pelo tédio ou rotina.
+                            </li>
+                            <li class="mb-2">
+                                <span class="text-red-500 text-lg">➤</span> <strong>Percepção de Risco:</strong><br>
+                                O estresse causa "visão de túnel".<br>O autocontrole amplia a<br>visão periférica dos riscos.
+                            </li>
+                            <li class="mb-2">
+                                <span class="text-red-500 text-lg">➤</span> <strong>Disciplina Operacional:</strong><br>
+                                Seguir procedimentos exige<br>foco mental e estabilidade emocional.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Pilar Produtividade -->
+                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-lg border-t-8 border-yellow-500 hover-lift">
+                        <div class="text-5xl mb-4">⚙️</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Eficiência Operacional</h3>
+                        <ul class="space-y-4 text-gray-600 text-sm">
+                            <li class="mb-2">
+                                <span class="text-yellow-500 text-lg">➤</span> <strong>Comunicação Clara:</strong><br>
+                                Elimina ruídos e interpretações<br>erradas em passagens de turno e PTs.
+                            </li>
+                            <li class="mb-2">
+                                <span class="text-yellow-500 text-lg">➤</span> <strong>Gestão de Crise:</strong><br>
+                                Em paradas ou emergências,<br>a calma é o principal ativo<br>para tomada de decisão rápida.
+                            </li>
+                            <li class="mb-2">
+                                <span class="text-yellow-500 text-lg">➤</span> <strong>Resiliência:</strong><br>
+                                Capacidade de recuperar o foco<br>rapidamente após falhas ou imprevistos.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Pilar Relacionamento -->
+                    <div class="animated-item delay-3 bg-white p-6 rounded-xl shadow-lg border-t-8 border-blue-600 hover-lift">
+                        <div class="text-5xl mb-4">🤝</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Clima & Liderança</h3>
+                        <ul class="space-y-4 text-gray-600 text-sm">
+                            <li class="mb-2">
+                                <span class="text-blue-500 text-lg">➤</span> <strong>Segurança Psicológica:</strong><br>
+                                Criar um ambiente onde a equipe<br>não tem medo de reportar<br>erros ou quase-acidentes.
+                            </li>
+                            <li class="mb-2">
+                                <span class="text-blue-500 text-lg">➤</span> <strong>Gestão de Conflitos:</strong><br>
+                                Resolver divergências entre áreas<br>(Op/Manut) com foco técnico,<br>não pessoal.
+                            </li>
+                            <li class="mb-2">
+                                <span class="text-blue-500 text-lg">➤</span> <strong>Influência:</strong><br>
+                                Liderar pelo exemplo de postura,<br>gerando respeito e confiança.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="animated-item delay-4 mt-8 p-4 bg-gray-100 rounded-lg border border-gray-300">
+                    <p class="text-lg text-gray-800 font-semibold">
+                        "A estabilidade emocional da equipe é tão crítica para a operação quanto a estabilidade do processo."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Dinâmica Termômetro -->
+        <div id="slide-14" class="slide w-full h-full subtle-bg">
+            <div class="m-auto w-full max-w-4xl">
+                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Dinâmica: Termômetro das Emoções</h2>
+                <p class="animated-item delay-1 text-xl text-gray-600 mb-8">Como você reage sob pressão?</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="animated-item delay-2 flex flex-col items-center p-4 bg-green-100 rounded-xl hover-lift">
+                        <div class="w-16 h-16 bg-green-500 rounded-full mb-4 shadow-lg"></div>
+                        <h3 class="font-bold text-green-800 text-xl">CALMO</h3>
+                        <p class="text-sm text-center mt-2">Consigo pensar com clareza e manter o controle.</p>
+                    </div>
+                    <div class="animated-item delay-3 flex flex-col items-center p-4 bg-blue-100 rounded-xl hover-lift">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full mb-4 shadow-lg"></div>
+                        <h3 class="font-bold text-blue-800 text-xl">NEUTRO</h3>
+                        <p class="text-sm text-center mt-2">A situação não me afeta muito, mas noto a emoção.</p>
+                    </div>
+                    <div class="animated-item delay-4 flex flex-col items-center p-4 bg-orange-100 rounded-xl hover-lift">
+                        <div class="w-16 h-16 bg-orange-500 rounded-full mb-4 shadow-lg"></div>
+                        <h3 class="font-bold text-orange-800 text-xl">IRRITADO</h3>
+                        <p class="text-sm text-center mt-2">Sinto desconforto e vontade de reagir.</p>
+                    </div>
+                    <div class="animated-item delay-5 flex flex-col items-center p-4 bg-red-100 rounded-xl hover-lift">
+                        <div class="w-16 h-16 bg-red-600 rounded-full mb-4 shadow-lg"></div>
+                        <h3 class="font-bold text-red-800 text-xl">FURIOSO</h3>
+                        <p class="text-sm text-center mt-2">Perco o controle ou sinto muita raiva.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Interpretação -->
+        <div id="slide-15" class="slide w-full h-full text-center">
+            <div class="m-auto w-full max-w-5xl">
+                <h2 class="animated-item text-2xl md:text-3xl font-bold text-gray-800 mb-6">O que seu termômetro diz?</h2>
+                <div class="grid md:grid-cols-2 gap-6 text-center">
+                    <div class="animated-item delay-1 p-4 border border-green-200 rounded-lg bg-green-50">
+                        <h3 class="font-bold text-green-700 mb-2">🟩 CALMO</h3>
+                        <p class="text-sm">Você demonstra domínio. <strong>Foco:</strong> Automotivação e estabilidade.</p>
+                    </div>
+                    <div class="animated-item delay-2 p-4 border border-blue-200 rounded-lg bg-blue-50">
+                        <h3 class="font-bold text-blue-700 mb-2">🟦 NEUTRO</h3>
+                        <p class="text-sm">Racional, mas cuidado com a supressão. <strong>Foco:</strong> Empatia e habilidades sociais.</p>
+                    </div>
+                    <div class="animated-item delay-3 p-4 border border-orange-200 rounded-lg bg-orange-50">
+                        <h3 class="font-bold text-orange-700 mb-2">🟧 IRRITADO</h3>
+                        <p class="text-sm">Reage emocionalmente ao incômodo. <strong>Foco:</strong> Autoconsciência (gatilhos).</p>
+                    </div>
+                    <div class="animated-item delay-4 p-4 border border-red-200 rounded-lg bg-red-50">
+                        <h3 class="font-bold text-red-700 mb-2">🟥 FURIOSO</h3>
+                        <p class="text-sm">Emoções intensas e impulsividade. <strong>Foco:</strong> Autocontrole (respirar, pensar).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Conclusão -->
+        <div id="slide-16" class="slide w-full h-full subtle-bg text-center">
+            <div class="m-auto w-full max-w-3xl">
+                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Conclusão</h2>
+                <div class="animated-item delay-1 p-8 bg-white rounded-xl shadow-xl border-t-8 border-emerald-500">
+                    <p class="text-2xl font-medium text-gray-700 leading-relaxed text-center">
+                        "Inteligência Emocional não é <strong>não sentir</strong>.<br><br>
+                        É reconhecer, entender e direcionar o que se sente da melhor forma possível."
+                    </p>
+                </div>
+                <p class="animated-item delay-2 mt-8 text-xl text-gray-600">
+                    Visando conviver e lidar de forma melhor com as emoções.
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 17: Créditos -->
+        <div id="slide-17" class="slide w-full h-full low-opacity-gradient-bg">
+            <div class="m-auto flex flex-col items-center text-gray-800">
+                <div class="animated-item mb-6 flex items-center justify-center space-x-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" alt="Logo Petrobras" class="h-20">
+                    <img src="https://www.agfengenharia.com.br/wp-content/uploads/2018/09/group-20668-211507.png" alt="Logo AGF Engenharia" class="h-20">
+                </div>
+                <h1 class="animated-item delay-1 text-5xl md:text-7xl font-black leading-tight">Obrigado!</h1>
+                <div class="animated-item delay-2 mt-12 text-lg md:text-xl font-semibold bg-white/50 p-8 rounded-xl backdrop-blur-sm">
+                    <p class="mb-4 font-bold text-emerald-800 text-2xl">Apresentação:</p>
+                    <p class="text-3xl font-black text-gray-800">Marcelino</p>
+                </div>
+            </div>
+        </div>
             
     </div>
 
@@ -322,7 +540,7 @@
         <button id="prevBtn" class="nav-button" aria-label="Slide anterior">Anterior</button>
         <div class="progress-container">
             <div class="progress-track">
-                <div id="progressBar" class="progress-fill" style="width: 5.26%"></div>
+                <div id="progressBar" class="progress-fill" style="width: 0%"></div>
             </div>
         </div>
         <button id="nextBtn" class="nav-button primary" aria-label="Próximo slide">Próximo</button>

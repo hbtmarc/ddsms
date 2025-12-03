@@ -33,7 +33,7 @@ class ParticlesCanvas {
         
         this.ctx = this.canvas.getContext('2d');
         this.particles = [];
-        this.particleCount = 60;
+        this.particleCount = 35; // Reduced count for cleaner look
         // Petrobras Colors: Green, Yellow, Light Green, Red (Safety)
         this.colors = ['#008542', '#FFCC29', '#00a552', '#ef4444'];
         
@@ -87,12 +87,12 @@ class ParticlesCanvas {
                 const dy = this.particles[j].y - particle.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
-                if (distance < 120) {
+                if (distance < 100) { // Reduced connection distance
                     this.ctx.beginPath();
                     this.ctx.moveTo(particle.x, particle.y);
                     this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
                     this.ctx.strokeStyle = particle.color;
-                    this.ctx.globalAlpha = (1 - distance / 120) * 0.3;
+                    this.ctx.globalAlpha = (1 - distance / 100) * 0.2; // Reduced line opacity
                     this.ctx.lineWidth = 1;
                     this.ctx.stroke();
                     this.ctx.globalAlpha = 1;
@@ -550,6 +550,6 @@ document.addEventListener('DOMContentLoaded', function() {
     new KeyboardShortcutsManager(slideManager, timerController, fullscreenManager);
 
     // Console Easter Egg
-    console.log('%c🛡️ DDSMS - PERCEPÇÃO DE RISCO', 'font-size: 20px; color: #10b981; font-weight: bold;');
+    console.log('%c🧠 INTELIGÊNCIA EMOCIONAL', 'font-size: 20px; color: #10b981; font-weight: bold;');
     console.log('%cApresentação Premium | Pressione ? para ver os atalhos', 'font-size: 14px; color: #facc15;');
 });
