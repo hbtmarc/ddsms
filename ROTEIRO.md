@@ -99,23 +99,25 @@ Líderes ressonantes geram confiança. A equipe joga junto e se protege."
 
 ## Slide 13: Aplicação Estratégica na Refinaria
 **Fala sugerida (Discurso de Autoridade):**
-"Para encerrar a parte teórica, precisamos entender que a Inteligência Emocional não é apenas uma 'soft skill', ela é um requisito operacional crítico em indústrias de alto risco (HROs).
+"Para encerrar a parte teórica, vamos focar no impacto real disso na nossa rotina operacional. Não estamos falando de conceitos abstratos, mas de requisitos para uma operação de alto desempenho.
 Dividimos a aplicação em 3 frentes estratégicas:
 
 1.  **Segurança (SMS):**
-    *   A ciência mostra que o estresse causa 'visão de túnel'. O operador estressado literalmente enxerga menos riscos.
-    *   A complacência (o excesso de confiança) é um estado emocional de baixo alerta. A IE nos mantém vigilantes.
-    *   Disciplina Operacional exige mente presente. Quem está com a cabeça nos problemas de casa, pula etapas.
+    *   O foco aqui é o **Combate à Complacência**. Manter o estado de alerta evita que a rotina nos cegue para os riscos.
+    *   A **Percepção de Risco** depende de uma mente atenta. O estresse fecha nossa visão; a calma amplia.
+    *   **Disciplina Operacional** não é só seguir regra, é ter a presença de espírito para fazer o certo mesmo quando ninguém está olhando.
 
 2.  **Eficiência Operacional:**
-    *   Comunicação: A maioria dos erros de PT ou passagem de turno não são técnicos, são ruídos emocionais (pressa, medo de perguntar, arrogância).
-    *   Gestão de Crise: Em emergências, o pânico trava o raciocínio. A calma é o que permite acessar o treinamento técnico que vocês já têm.
+    *   **Comunicação Assertiva**: Garantir que a passagem de turno ou a instrução de trabalho seja clara, sem margem para dúvidas.
+    *   **Tomada de Decisão**: Em momentos de pressão, a racionalidade deve prevalecer sobre o impulso.
+    *   **Continuidade**: A capacidade de resolver um problema e voltar rapidamente ao foco, sem ficar remoendo o erro.
 
 3.  **Clima e Liderança:**
-    *   Conceito de **Segurança Psicológica**: Se a equipe tem medo do líder (liderança dissonante), ela esconde o 'quase-acidente'. Se esconde o quase-acidente, o acidente real acontece amanhã.
-    *   A IE cria um ambiente onde a verdade aparece e os problemas são resolvidos na raiz, sem briga de ego entre Operação e Manutenção.
+    *   **Confiança Mútua**: Criar um ambiente onde reportar um desvio é visto como solução, não como problema.
+    *   **Trabalho em Equipe**: Unir as áreas. O objetivo da Operação e da Manutenção é o mesmo: produção segura.
+    *   **Postura Profissional**: Liderança não é cargo, é exemplo. A forma como nos portamos define o respeito que recebemos.
 
-**Frase de impacto:** 'A estabilidade emocional da equipe é tão crítica para a operação quanto a estabilidade do processo.'"
+**Frase de impacto:** 'A estabilidade da equipe é tão crítica para a operação quanto a estabilidade do processo.'"
 
 ---
 
