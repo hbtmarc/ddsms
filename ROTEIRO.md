@@ -1,121 +1,71 @@
 1.
----
-Bom dia a todos.
-Hoje vamos falar sobre um recurso técnico tão importante quanto qualquer ferramenta que usamos no dia a dia: a nossa mente.
-Não vamos falar de teoria de livro. Vamos falar sobre *Inteligência Emocional aplicada à segurança e à operação*.
-O objetivo é simples: Falar sobre saúde mental e como gerenciar a pressão para trabalhar melhor e garantir a volta bem para casa.
+
+Bom dia a todos. Hoje o DDSMS é sobre ergonomia no trabalho digital. A gente fala muito de risco “grande”, mas existe um risco silencioso que vai corroendo a saúde e o foco: postura ruim, tempo demais na tela e falta de pausa. A ideia aqui é simples: reduzir dor, evitar LER/DORT e manter atenção, especialmente com o uso intenso do nosso sistema web.
 
 2.
----
-Muita gente confunde Inteligência Emocional com 'ser bonzinho' ou 'aceitar o que é proposto'. Esqueçam isso.
-Trata-se de uma *capacidade técnica*: É reconhecer o que você está sentindo, entender o porquê, e gerenciar a reação.
-Na prática: é sentir raiva por um motivo, mas escolher resolver o problema em vez de ter uma reção explosiva.
-É ter uma resposta consciente, ao invés de reagir no impulso ou piloto automático.
+
+Ergonomia não é “conforto” ou “frescura”. É um tema de SMS: é adaptar o trabalho ao ser humano para manter segurança e desempenho. Se o posto está errado, o corpo paga a conta com dor, e a operação paga com fadiga e queda de atenção.
 
 3.
----
-E por que isso é vital para o nosso trabalho?
-Isso impacta diretamente seis pontos críticos:
-*Comunicação*, *Conflitos*, *Segurança*, *Decisão*, *Clima* e *Liderança*.
-Ler o Slide 3.
+
+Por que isso importa na REGAP-IE? Porque ergonomia impacta diretamente conforto, saúde, foco, decisão e produtividade. E, quando o corpo está incomodado, a atenção cai e o erro sobe. Agora eu vou ler rapidamente os pontos do slide.
 
 4.
----
-Esse conceito vem da ciência.
-Daniel Goleman, psicólogo, escritor e jornalista norte-americano publicou o livro "Inteligência Emocional" em 1995.
-Nele ele defende que o QI (Quociente Intelectual) não é suficiente para definir o sucesso.
-Mas que a inteligência emocional é um fator decisivo para o desempenho pessoal e profissional.
+
+Aqui tem base normativa. A NR-17 define parâmetros para adaptar as condições de trabalho às características psicofisiológicas. Traduzindo: cadeira, monitor, equipamentos e pausas não são detalhe; fazem parte do trabalho bem feito e seguro.
 
 5.
----
-Aqui está o segredo. Nosso cérebro tem dois modos:
-O *Modo Reativo (Instintivo)* é o 'luta ou fuga'.
-Ótimo para percepção de risco e para fugir de incêndio por exemplo, mas péssimo para resolver problema complexo.
-E o *Modo Consciente (Racional)* que é quando você para e reflete antes da tomada de uma decisão.
+
+O mecanismo é sempre o mesmo: exposição versus recuperação. Exposição é postura forçada + repetição + tempo. Recuperação é ajuste + pausa + alternância. Se eu aumento exposição e não recupero, eu vou acumulando dor e risco. Ergonomia é controlar isso antes de virar crônico.
 
 6.
----
-A Inteligência Emocional é a habilidade de criar uma *pausa* estratégica para sair do instinto e ir para a razão antes de agir.
-Para fazer isso, trabalhamos em 5 pilares práticos que são:
-Autoconsciência, Autocontrole, Automotivação, Empatia, Habilidades Sociais
-Vamos ver como cada um funciona na nossa rotina.
+
+Para ficar prático, a gente vai trabalhar em cinco pilares: postura/cadeira, monitor, punhos e periféricos, pausas/visão e ambiente/rotina. A meta é sair daqui com ações simples que cabem no dia a dia.
 
 7.
----
-Primeiro: *Autoconsciência*. É como se fosse seu painel de controle.
-Na refinaria, é perceber quando seu 'termômetro' está subindo.
-Em dias de parada ou alta demanda, você percebe que o pavio está mais curto?
-Identifique seus gatilhos. É cobrança? Mudança de plano? Ruído? Saiba o que te afeta.
+
+Primeiro pilar: postura e cadeira. A regra 90-90-90 é o básico: joelhos e cotovelos perto de 90 graus e pés bem apoiados. Costas no encosto com apoio lombar. Não é “sentar bonito”; é tirar carga desnecessária da coluna.
 
 8.
----
-Segundo: *Autocontrole*. Se a autoconsciência o painel, o autocontrole é o volante.
-É manter a postura quando algo dá errado. Usem a *Regra dos 6 Segundos*.
-A raiva química dura pouco, cerca de 6s no cérebro.
-Conte até 6 antes de responder alguém ou um e-mail de forma ríspida.
-Isso evita muitos problemas.
+
+Segundo: monitor. Se a tela está baixa, a cervical paga. Topo do monitor na altura dos olhos e distância de um braço. E notebook por longos períodos é armadilha: ou ele vira suporte com teclado e mouse externos, ou vira dor no pescoço.
 
 9.
----
-Terceiro: *Automotivação*. É fazer o certo mesmo sem supervisão.
-É seguir a Regra de Ouro e usar o EPI não pelo técnico de segurança, mas pela sua própria excelência e vida.
-É o orgulho de ser profissional.
+
+Terceiro: punhos, teclado e mouse. Punho neutro, toque leve e mouse ajustado para você não “arrastar o braço”. E um clássico: telefone no ombro enquanto digita. Isso é dor cervical garantida; use headset ou viva-voz.
 
 10.
----
-Quarto: *Empatia*. É entender o cenário do outro com a capacidade de se colocar no lugar dele.
-Quando você entende a pressão do colega, você julga menos e resolve ocorrências mais rápido.
+
+Quarto: pausas e descanso visual. Micro-pausas de 2 a 5 minutos a cada 50–60 minutos mudam o jogo. Para os olhos, a regra 20-20-20 é uma referência bem difundida: olhar para longe por 20 segundos a cada 20 minutos. Mesmo que o número exato varie, o ponto é: pausas regulares ajudam muito no conforto visual.
 
 11.
----
-Quinto: *Habilidades Sociais*. É construir pontes.
-É saber comunicar um risco ou instrução de trabalho de forma clara e assertiva a qual o outro compreenda e a receba.
-É fazer uma passagem de turno clara. É liderar pelo exemplo.
+
+Quinto: ambiente e rotina. Reflexo na tela cansa e irrita. Brilho desequilibrado também. Ar muito frio aumenta tensão muscular. E organização: o que você usa toda hora precisa estar ao alcance, para você não torcer o corpo repetidamente.
 
 12.
----
-Como tudo isso define o clima:
-Líderes e colegas que geram medo ou receio causam mais acidentes, pois há licitude para que haja omissão de erros.
-Quem gera confiança faz a equipe jogar junto e se proteger.
+
+Agora o lado de cultura. Quando vira “deixa assim mesmo”, a dor é normalizada e a gente perde foco, paciência e qualidade. Quando vira cultura preventiva, a equipe ajusta antes de começar, faz pausa sem culpa e trabalha melhor. Ergonomia também é liderança pelo exemplo.
 
 13.
----
-Já na prática operacional isso se divide em 3 frentes:
-*Segurança (SMS):* Foco no *Combate à Complacência*.
-A rotina pode cegar. A mente atenta percebe o risco antes do acidente.
-Disciplina Operacional exige presença de espírito.
 
-*Eficiência:* Foco na *Comunicação e Decisão*.
-Uma passagem de turno sem dúvida. Decisão racional sob pressão. Resolver e voltar ao foco.
-
-*Clima:* Foco na *Confiança*.
-Criar um ambiente onde reportar desvio é solução, não problema.
-Inspeção, Operação e Manutenção jogando no mesmo time.
-Lembrem-se: A estabilidade da equipe é tão crítica quanto a estabilidade do processo.
+Aplicando na refinaria: em SMS, mais foco combate complacência e reduz erro. Em eficiência, comunicação e decisão melhoram quando a fadiga cai. E em clima, quando a gente normaliza cuidado, a equipe coopera mais. Estabilidade humana também sustenta estabilidade do processo.
 
 14.
----
-Uma dinâmica rápida e retórica:
-Reflexão rápida: Como você reage sob pressão?
+
+Dinâmica rápida: pensa como você costuma terminar o turno. Está OK? Leve? Moderado? Intenso? A ideia não é expor ninguém; é cada um se perceber.
 
 15.
----
-Sobre a resposta de cada um no slide anterior, aqui temos onde seria o ideal ponto de foco para melhoria.
 
+E o que fazer com isso: se está OK, manter hábitos. Se é leve, ajuste cadeira/monitor e crie micro-pausas. Se é moderado, precisa corrigir o posto e alternar postura, e sinalizar adequação. Se é intenso, não normalize: interrompa exposição e procure orientação.
 
 16.
----
-Para concluir:
-A inteligência emocional não é sobre deixar de sentir.
-É sobre não deixar a emoção controlar sua ação.
-É reconhecer, entender e direcionar o que se sente para a melhor atitude possível.
+
+Para concluir: ergonomia não é só conforto. É controle de risco. Ajuste + pausa + rotina sustentam saúde, foco e segurança. Trabalhar bem inclui posto bem ajustado.
 
 17.
----
-Gostaria de deixar um agradecimento especial à Luiza Medeiros, graduanda em RH pela UEMG, que prestou consultoria técnica para o embasamento teórico deste material, garantindo que o conteúdo estivesse alinhado com as melhores práticas de gestão de pessoas.
+
+Aqui ficam as referências: NR-17 e materiais de LER/DORT do Ministério da Saúde. Se dor persistir, procure SESMT/saúde ocupacional. LER/DORT existe, é real, e quanto mais cedo agir, melhor.
 
 18.
----
-Obrigado a todos, este foi meu dds.
-Deixo aberto a adições e discussões!
-E vamos buscar aplicar isso no nosso dia a dia!
+
+Obrigado a todos. Fico aberto para dúvidas, experiências e sugestões práticas de melhoria nos postos de trabalho e na rotina, especialmente para quem está usando o sistema web de forma mais intensa.

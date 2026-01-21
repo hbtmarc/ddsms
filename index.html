@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Inteligência Emocional | Apresentação Premium</title>
-    <meta name="description" content="Apresentação interativa sobre Inteligência Emocional no ambiente de trabalho.">
-    <meta name="keywords" content="Inteligência Emocional, Daniel Goleman, Soft Skills, Petrobras, AGF Engenharia">
+    <title>Ergonomia no Trabalho Digital | DDSMS</title>
+    <meta name="description" content="DDSMS sobre ergonomia no trabalho digital: postura, pausas, NR-17 e prevenção de LER/DORT.">
+    <meta name="keywords" content="Ergonomia, NR-17, LER/DORT, DDSMS, Petrobras, Saúde e Segurança, Trabalho Digital">
     <meta name="author" content="Petrobras | AGF Engenharia">
     
     <!-- Fonts -->
@@ -15,55 +15,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS (via CDN for rapid development/compatibility) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        petrobras: {
-                            green: '#008542',
-                            yellow: '#FFCC29',
-                            lightgreen: '#00a552'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- CSS Premium -->
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-
-<!-- Loading Screen Premium -->
-<div id="loading-screen">
-    <div class="loader-spinner"></div>
-    <div class="loader-text">Carregando Apresentação</div>
-</div>
-
-<!-- Particles Canvas -->
-<canvas id="particles-canvas"></canvas>
-
-<main id="presentationCard">
-    <!-- Slides Container -->
-    <div class="slides-container">
-
-        <!-- Timer e Fullscreen -->
-        <div id="timer">00:00</div>
-        <button id="fullscreenBtn" aria-label="Alternar tela cheia">
-            <svg id="fs-enter-icon" class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 0h-4m4 0l-5-5"></path></svg>
-            <svg id="fs-exit-icon" class="icon-svg hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-
-        <!-- Indicador de Slide -->
-        <div id="slideIndicator" class="slide-indicator">1 / 18</div>
-
+    <div id="loading-screen">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Carregando apresentação...</div>
+    </div>
+    <canvas id="particles-canvas"></canvas>
+    <main id="presentationCard">
+        <div class="presentation-header">
+            <div class="header-left">
+                <div class="brand-pill">DDSMS | ERGONOMIA</div>
+                <div id="slideIndicator" class="slide-indicator" aria-live="polite">1 / 18</div>
+            </div>
+            <div class="header-right">
+                <div id="timer" class="hud-chip" aria-label="Timer da apresentação">00:00</div>
+                <button id="fullscreenBtn" class="hud-chip" aria-label="Alternar tela cheia">
+                    <span id="fs-enter-icon" aria-hidden="true">⛶</span>
+                    <span id="fs-exit-icon" class="hidden" aria-hidden="true">🗗</span>
+                </button>
+            </div>
+        </div>
+        <div class="slides-container">
         <!-- Slide 1: Título -->
         <section id="slide-1" class="slide active gradient-bg text-center">
             <div class="slide-content">
@@ -71,22 +47,30 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" alt="Logo Petrobras">
                     <img src="https://www.agfengenharia.com.br/wp-content/uploads/2018/09/group-20668-211507.png" alt="Logo AGF Engenharia">
                 </div>
-                <div class="animated-item delay-1 badge mb-4">DDSMS | DESENVOLVIMENTO PESSOAL</div>
-                <h1 class="animated-item delay-2">Inteligência Emocional</h1>
-                <p class="animated-item delay-3 mt-4 text-xl md:text-3xl font-semibold">Como reconhecer, entender e gerenciar nossas emoções<br>para melhorar relações e resultados.</p>
+                <div class="animated-item delay-1 section-kicker mb-4">DDSMS | Saúde e Segurança</div>
+                <h1 class="animated-item delay-2 section-title">
+                    <span class="title-line">Ergonomia no</span>
+                    <span class="title-line">Trabalho <span class="title-accent">Digital</span></span>
+                </h1>
+                <p class="animated-item delay-3 mt-6 section-lead">
+                    Reduzir dor, evitar LER/DORT e manter foco no uso intenso de computador e sistemas web.
+                </p>
             </div>
         </section>
 
-        <!-- Slide 2: O que é? -->
+        <!-- Slide 2: O que é Ergonomia -->
         <div id="slide-2" class="slide w-full h-full subtle-bg text-center">
              <div class="m-auto w-full max-w-3xl">
-                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">O que é Inteligência Emocional?</h2>
-                <div class="animated-item delay-1 p-8 bg-white rounded-xl shadow-lg border-l-8 border-emerald-500">
+                <div class="animated-item section-kicker mb-3">Conceito</div>
+                <h2 class="animated-item section-title text-gray-800 mb-6">O que é ergonomia?</h2>
+                <div class="animated-item delay-1 card card--success">
                     <p class="text-2xl text-gray-700 leading-relaxed">
-                        É a capacidade de <strong>reconhecer</strong>, <strong>compreender</strong><br>e <strong>gerenciar</strong> emoções próprias e alheias.
+                        Adaptar o trabalho às características do trabalhador.
+                        <br>
+                        Objetivo: conforto, segurança e desempenho sustentável.
                     </p>
                     <p class="mt-6 text-xl text-gray-600">
-                        Permite responder de forma consciente,<br>em vez de reagir impulsivamente.
+                        Ergonomia não é “frescura”. É prevenção de risco ocupacional.
                     </p>
                 </div>
             </div>
@@ -95,108 +79,111 @@
         <!-- Slide 3: Benefícios -->
         <div id="slide-3" class="slide w-full h-full text-center">
             <div class="m-auto w-full max-w-5xl">
-                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Como ajuda no trabalho?</h2>
+                <div class="animated-item section-kicker mb-2">Benefícios</div>
+                <h2 class="animated-item section-title text-gray-800 mb-8">Como ajuda no trabalho?</h2>
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="animated-item delay-1 p-4 bg-blue-50 rounded-lg hover-lift text-center">
-                        <div class="text-4xl mb-2">🗣️</div>
-                        <h3 class="font-bold text-lg text-blue-800">Comunicação Assertiva</h3>
-                        <p class="text-sm text-gray-600 mt-1">Clareza na passagem de informações e instruções.</p>
+                    <div class="animated-item delay-1 card hover-lift text-center">
+                        <div class="icon-pill icon-pill--emerald mx-auto mb-3">
+                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_couch_24_filled.svg" alt="Conforto e postura">
+                        </div>
+                        <div class="card-title">Conforto e Postura</div>
+                        <p class="text-sm text-gray-600">Menos dor no pescoço, ombros e lombar.</p>
                     </div>
-                    <div class="animated-item delay-2 p-4 bg-green-50 rounded-lg hover-lift text-center">
-                        <div class="text-4xl mb-2">🤝</div>
-                        <h3 class="font-bold text-lg text-green-800">Gestão de Conflitos</h3>
-                        <p class="text-sm text-gray-600 mt-1">Resolver divergências sem afetar a operação.</p>
+                    <div class="animated-item delay-2 card hover-lift text-center">
+                        <div class="icon-pill icon-pill--blue mx-auto mb-3">
+                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_thinking_24_filled.svg" alt="Atenção e decisão">
+                        </div>
+                        <div class="card-title">Atenção e Decisão</div>
+                        <p class="text-sm text-gray-600">Menos fadiga = menos erro e mais clareza.</p>
                     </div>
-                    <div class="animated-item delay-3 p-4 bg-yellow-50 rounded-lg hover-lift text-center">
-                        <div class="text-4xl mb-2">🛡️</div>
-                        <h3 class="font-bold text-lg text-yellow-800">Segurança e Foco</h3>
-                        <p class="text-sm text-gray-600 mt-1">Atenção plena reduz riscos de acidentes.</p>
+                    <div class="animated-item delay-3 card hover-lift text-center">
+                        <div class="icon-pill icon-pill--yellow mx-auto mb-3">
+                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_eye_show_24_filled.svg" alt="Saúde visual">
+                        </div>
+                        <div class="card-title">Saúde Visual</div>
+                        <p class="text-sm text-gray-600">Reduz cansaço ocular e dor de cabeça.</p>
                     </div>
-                    <div class="animated-item delay-4 p-4 bg-purple-50 rounded-lg hover-lift text-center">
-                        <div class="text-4xl mb-2">🧠</div>
-                        <h3 class="font-bold text-lg text-purple-800">Tomada de Decisão</h3>
-                        <p class="text-sm text-gray-600 mt-1">Escolhas racionais mesmo sob pressão.</p>
+                    <div class="animated-item delay-4 card hover-lift text-center">
+                        <div class="icon-pill icon-pill--purple mx-auto mb-3">
+                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_clock_24_filled.svg" alt="Ritmo sustentável">
+                        </div>
+                        <div class="card-title">Ritmo Sustentável</div>
+                        <p class="text-sm text-gray-600">Pausas curtas preservam performance.</p>
                     </div>
-                    <div class="animated-item delay-5 p-4 bg-orange-50 rounded-lg hover-lift text-center">
-                        <div class="text-4xl mb-2">☀️</div>
-                        <h3 class="font-bold text-lg text-orange-800">Clima Positivo</h3>
-                        <p class="text-sm text-gray-600 mt-1">Equipes mais unidas e colaborativas.</p>
+                    <div class="animated-item delay-5 card hover-lift text-center">
+                        <div class="icon-pill icon-pill--orange mx-auto mb-3">
+                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_shield_24_filled.svg" alt="Segurança SMS">
+                        </div>
+                        <div class="card-title">Segurança (SMS)</div>
+                        <p class="text-sm text-gray-600">Foco e disciplina operacional com menos distração.</p>
                     </div>
-                    <div class="animated-item delay-6 p-4 bg-teal-50 rounded-lg hover-lift text-center">
-                        <div class="text-4xl mb-2">⭐</div>
-                        <h3 class="font-bold text-lg text-teal-800">Liderança Pessoal</h3>
-                        <p class="text-sm text-gray-600 mt-1">Ser exemplo de postura e conduta.</p>
+                    <div class="animated-item delay-6 card hover-lift text-center">
+                        <div class="icon-pill icon-pill--teal mx-auto mb-3">
+                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_chart_person_24_filled.svg" alt="Produtividade">
+                        </div>
+                        <div class="card-title">Produtividade</div>
+                        <p class="text-sm text-gray-600">Mais constância e menos afastamentos.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 4: Daniel Goleman -->
+        <!-- Slide 4: Base Normativa -->
         <div id="slide-4" class="slide w-full h-full subtle-bg text-center">
             <div class="m-auto w-full max-w-4xl flex flex-col md:flex-row items-center gap-8">
                 <div class="md:w-1/3 animated-item">
-                    <!-- Daniel Goleman Image -->
-                    <div class="w-48 h-48 rounded-full mx-auto overflow-hidden shadow-xl border-4 border-emerald-500">
-                        <img src="https://cdl-static.s3-sa-east-1.amazonaws.com/colaboradores/04392_gg.jpg" alt="Daniel Goleman" class="w-full h-full object-cover">
+                    <div class="w-40 h-40 rounded-full mx-auto overflow-hidden shadow-xl border-4 border-emerald-500 flex items-center justify-center bg-white">
+                        <img class="icon-img" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_document_24_filled.svg" alt="NR-17">
                     </div>
                 </div>
                 <div class="md:w-2/3 text-center">
-                    <h2 class="animated-item delay-1 text-3xl md:text-4xl font-bold text-gray-800 mb-4">Quem é Daniel Goleman?</h2>
-                    <ul class="space-y-4 text-lg text-gray-700 animated-item delay-2 list-inside">
-                        <li>• Psicólogo, escritor e jornalista norte-americano.</li>
-                        <li>• Publicou o livro <strong>"Inteligência Emocional"</strong> em 1995.</li>
-                        <li>• Mostrou que o <strong>QI (Quociente Intelectual)</strong> não é suficiente para explicar o sucesso.</li>
-                        <li>• A inteligência emocional é um fator decisivo para o desempenho pessoal e profissional.</li>
+                    <div class="animated-item delay-1 section-kicker mb-2">Base Normativa</div>
+                    <h2 class="animated-item section-title text-gray-800 mb-4">NR-17 em 3 pontos</h2>
+                    <p class="animated-item delay-2 text-lg text-gray-700">
+                        A NR-17 estabelece parâmetros para adaptar as condições de trabalho às características psicofisiológicas.
+                    </p>
+                    <ul class="animated-item delay-3 mt-6 space-y-3 text-lg text-gray-700 list-inside">
+                        <li>• Posto de trabalho (cadeira e mesa)</li>
+                        <li>• Equipamentos (monitor, teclado, mouse)</li>
+                        <li>• Organização do trabalho (pausas e alternância)</li>
                     </ul>
-                    <blockquote class="animated-item delay-3 mt-6 p-4 border-l-4 border-emerald-500 bg-emerald-50 italic text-gray-600">
-                        "O que realmente diferencia as pessoas bem-sucedidas não é o QI, mas a forma como elas lidam com as próprias emoções."
-                    </blockquote>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 5: Reagir vs Responder -->
+        <!-- Slide 5: Exposição vs Recuperação -->
         <div id="slide-5" class="slide w-full h-full text-center">
             <div class="m-auto w-full max-w-5xl">
-                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">O Mecanismo da Decisão: Reagir vs. Responder</h2>
+                <div class="animated-item section-kicker mb-2">Mecanismo do Risco</div>
+                <h2 class="animated-item section-title text-gray-800 mb-8">Exposição vs. Recuperação</h2>
                 
                 <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Modo Reativo -->
-                    <div class="animated-item delay-1 bg-red-50 p-6 rounded-xl border-t-8 border-red-500 shadow-lg">
-                        <h3 class="text-2xl font-bold text-red-800 mb-4">🔥 Modo Reativo (Instinto)</h3>
-                        <p class="text-gray-700 mb-4">
-                            Acionado quando nos sentimos ameaçados<br> (física ou emocionalmente).<br>O cérebro "desliga" o raciocínio para agir rápido.
-                        </p>
-                        <ul class="space-y-2 text-red-900 font-medium list-inside">
-                            <li>⚡ Ação imediata e impulsiva.</li>
-                            <li>🚫 Sem análise de consequências.</li>
-                            <li>⚠️ Alto risco de erro ou conflito.</li>
+                    <div class="animated-item delay-1 card card--danger">
+                        <div class="card-title">Exposição</div>
+                        <div class="card-heading text-red-700">Risco Cresce</div>
+                        <p class="text-gray-700 mb-4">Postura forçada + repetição + tempo</p>
+                        <ul class="card-list text-red-900">
+                            <li><span>•</span><span>Dor e tensão muscular</span></li>
+                            <li><span>•</span><span>Formigamento ou perda de força</span></li>
+                            <li><span>•</span><span>Cansaço visual e queda de foco</span></li>
                         </ul>
-                        <div class="mt-4 text-sm text-gray-500 italic">
-                            "Útil para fugir de um incêndio,<br>perigoso para lidar com uma crítica."
-                        </div>
                     </div>
 
-                    <!-- Modo Consciente -->
-                    <div class="animated-item delay-2 bg-blue-50 p-6 rounded-xl border-t-8 border-blue-500 shadow-lg">
-                        <h3 class="text-2xl font-bold text-blue-800 mb-4">🧠 Modo Consciente (Razão)</h3>
-                        <p class="text-gray-700 mb-4">
-                            Quando conseguimos fazer uma<br><strong>pausa</strong> entre o estímulo e a resposta.<br>O raciocínio retoma o controle.
-                        </p>
-                        <ul class="space-y-2 text-blue-900 font-medium list-inside">
-                            <li>🛑 Pausa para análise.</li>
-                            <li>✅ Avaliação de riscos e alternativas.</li>
-                            <li>🎯 Decisão assertiva e segura.</li>
+                    <div class="animated-item delay-2 card card--success">
+                        <div class="card-title">Recuperação</div>
+                        <div class="card-heading text-emerald-700">Risco Cai</div>
+                        <p class="text-gray-700 mb-4">Ajuste + pausas + alternância</p>
+                        <ul class="card-list text-emerald-800">
+                            <li><span>•</span><span>Postura neutra</span></li>
+                            <li><span>•</span><span>Micro‑pausas</span></li>
+                            <li><span>•</span><span>Movimento e alongamento leve</span></li>
                         </ul>
-                        <div class="mt-4 text-sm text-gray-500 italic">
-                            "Essencial para operações complexas e liderança."
-                        </div>
                     </div>
                 </div>
 
-                <div class="animated-item delay-3 mt-8 p-4 bg-gray-100 rounded-lg text-center border border-gray-300">
+                <div class="animated-item delay-3 mt-8 card card--soft text-center">
                     <p class="text-xl text-gray-800 font-semibold">
-                        A Inteligência Emocional é a capacidade de sair do <span class="text-red-600">Modo Reativo</span><br>e acessar o <span class="text-blue-600">Modo Consciente</span> antes de agir.
+                        Ergonomia é reduzir exposição e aumentar recuperação.
                     </p>
                 </div>
             </div>
@@ -205,163 +192,160 @@
         <!-- Slide 6: Os 5 Pilares -->
         <div id="slide-6" class="slide w-full h-full subtle-bg text-center">
             <div class="m-auto">
-                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-10">Os 5 Pilares da Inteligência Emocional</h2>
+                <div class="animated-item section-kicker mb-2">Estrutura</div>
+                <h2 class="animated-item section-title text-gray-800 mb-10">Os 5 Pilares da Ergonomia Prática</h2>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <div class="animated-item delay-1 px-6 py-3 bg-emerald-600 text-white rounded-full font-bold text-xl shadow-lg">1. Autoconsciência</div>
-                    <div class="animated-item delay-2 px-6 py-3 bg-emerald-500 text-white rounded-full font-bold text-xl shadow-lg">2. Autocontrole</div>
-                    <div class="animated-item delay-3 px-6 py-3 bg-teal-500 text-white rounded-full font-bold text-xl shadow-lg">3. Automotivação</div>
-                    <div class="animated-item delay-4 px-6 py-3 bg-cyan-500 text-white rounded-full font-bold text-xl shadow-lg">4. Empatia</div>
-                    <div class="animated-item delay-5 px-6 py-3 bg-blue-500 text-white rounded-full font-bold text-xl shadow-lg">5. Habilidades Sociais</div>
+                    <div class="animated-item delay-1 px-6 py-3 bg-emerald-600 text-white rounded-full font-bold text-xl shadow-lg flex items-center gap-3">
+                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_couch_24_filled.svg" alt="Postura e cadeira"> 1. Postura e cadeira
+                    </div>
+                    <div class="animated-item delay-2 px-6 py-3 bg-emerald-500 text-white rounded-full font-bold text-xl shadow-lg flex items-center gap-3">
+                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_desktop_24_filled.svg" alt="Monitor e visão"> 2. Monitor e linha de visão
+                    </div>
+                    <div class="animated-item delay-3 px-6 py-3 bg-teal-500 text-white rounded-full font-bold text-xl shadow-lg flex items-center gap-3">
+                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_keyboard_shift_24_filled.svg" alt="Teclado e mouse"> 3. Teclado, mouse e punhos
+                    </div>
+                    <div class="animated-item delay-4 px-6 py-3 bg-cyan-500 text-white rounded-full font-bold text-xl shadow-lg flex items-center gap-3">
+                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_clock_24_filled.svg" alt="Pausas e visão"> 4. Pausas e descanso visual
+                    </div>
+                    <div class="animated-item delay-5 px-6 py-3 bg-blue-500 text-white rounded-full font-bold text-xl shadow-lg flex items-center gap-3">
+                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_temperature_24_filled.svg" alt="Ambiente e rotina"> 5. Ambiente e rotina
+                    </div>
                 </div>
-                <p class="animated-item delay-6 mt-10 text-xl text-gray-600 max-w-2xl mx-auto">
-                    Esses pilares são um caminho prático para desenvolver<br>a inteligência emocional no dia a dia.
+                <p class="animated-item delay-6 mt-10 section-lead">
+                    A meta é sair daqui com ações simples e aplicáveis no dia a dia.
                 </p>
             </div>
         </div>
 
-        <!-- Slide 7: Pilar 1 - Autoconsciência -->
+        <!-- Slide 7: Postura e Cadeira -->
         <div id="slide-7" class="slide w-full h-full text-center">
             <div class="m-auto w-full max-w-4xl">
                 <div class="flex items-center justify-center mb-6">
                     <div class="w-12 h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">1</div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Autoconsciência</h2>
+                    <h2 class="section-title text-gray-800">Postura e Cadeira</h2>
                 </div>
-                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">
-                    Reconhecer suas próprias emoções e como elas afetam pensamentos e comportamentos.
-                </p>
+                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">Regra prática: <strong>90–90–90</strong></p>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-md border-l-4 border-emerald-500">
-                        <h3 class="font-bold text-lg text-emerald-700 mb-2">Exemplo na Refinaria:</h3>
-                        <p class="text-lg text-gray-600">Perceber o nível de estresse aumentando em dias de alta demanda ou prazos críticos, e fazer uma pausa para reorganizar as ideias.</p>
-                    </div>
-                    <div class="animated-item delay-3 bg-emerald-50 p-6 rounded-xl border border-emerald-100">
-                        <h3 class="font-bold text-lg text-emerald-800 mb-2">🔍 Identifique seus Gatilhos:</h3>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>O que te tira do sério? (Cobranças excessivas, mudanças de última hora, ruído?)</li>
-                            <li>Como seu corpo reage? (Tensão muscular, suor frio, coração acelerado?)</li>
+                    <div class="animated-item delay-2 card card--success">
+                        <div class="card-title">Ângulos</div>
+                        <ul class="card-list">
+                            <li><span>•</span><span>Joelhos ~90°</span></li>
+                            <li><span>•</span><span>Cotovelos ~90°</span></li>
+                            <li><span>•</span><span>Pés totalmente apoiados</span></li>
                         </ul>
+                    </div>
+                    <div class="animated-item delay-3 card card--soft">
+                        <div class="card-title">Apoio</div>
+                        <p class="text-gray-700 text-lg">Costas no encosto e apoio lombar. Não é “sentar bonito”; é reduzir carga na coluna.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 8: Pilar 2 - Autocontrole -->
+        <!-- Slide 8: Monitor e Linha de Visão -->
         <div id="slide-8" class="slide w-full h-full subtle-bg text-center">
             <div class="m-auto w-full max-w-4xl">
                 <div class="flex items-center justify-center mb-6">
                     <div class="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">2</div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Autocontrole</h2>
+                    <h2 class="section-title text-gray-800">Monitor e Linha de Visão</h2>
                 </div>
-                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">
-                    Gerenciar os impulsos e as emoções negativas.
-                </p>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-md border-l-4 border-emerald-500">
-                        <h3 class="font-bold text-lg text-emerald-700 mb-2">Exemplo na Refinaria:</h3>
-                        <p class="text-lg text-gray-600">Manter a postura profissional diante de um imprevisto ou divergência técnica, focando na solução e não no problema.</p>
+                    <div class="animated-item delay-1 card card--success">
+                        <div class="card-title">Altura e Distância</div>
+                        <p class="text-lg text-gray-600">Topo da tela na altura dos olhos (ou levemente abaixo). Distância: ~um braço.</p>
                     </div>
-                    <div class="animated-item delay-3 bg-emerald-50 p-6 rounded-xl border border-emerald-100">
-                        <h3 class="font-bold text-lg text-emerald-800 mb-2">⏱️ A Regra dos 6 Segundos:</h3>
-                        <p class="text-gray-700 mb-2">A química da raiva dura cerca de 6 segundos no cérebro.</p>
-                        <p class="text-gray-700"><strong>Dica:</strong> Antes de responder de forma ríspida (seja pessoalmente, no rádio ou e-mail), conte até 6. Evite ruídos na comunicação.</p>
+                    <div class="animated-item delay-2 card card--soft">
+                        <div class="card-title">Notebook</div>
+                        <p class="text-gray-700 text-lg">Evite trabalhar olhando para baixo. Use suporte + teclado e mouse externos.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 9: Pilar 3 - Automotivação -->
+        <!-- Slide 9: Teclado, Mouse e Punhos -->
         <div id="slide-9" class="slide w-full h-full text-center">
             <div class="m-auto w-full max-w-4xl">
                 <div class="flex items-center justify-center mb-6">
                     <div class="w-12 h-12 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">3</div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Automotivação</h2>
+                    <h2 class="section-title text-gray-800">Teclado, Mouse e Punhos</h2>
                 </div>
-                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">
-                    Manter foco e energia mesmo diante de desafios.
-                </p>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-md border-l-4 border-teal-500">
-                        <h3 class="font-bold text-lg text-teal-700 mb-2">Exemplo na Refinaria:</h3>
-                        <p class="text-lg text-gray-600">Manter o padrão de excelência e seguir as Regras de Ouro, mesmo quando a supervisão não está presente.</p>
+                    <div class="animated-item delay-1 card card--success">
+                        <div class="card-title">Postura Neutra</div>
+                        <p class="text-lg text-gray-600">Punhos neutros, toque leve no teclado e mouse com sensibilidade ajustada.</p>
                     </div>
-                    <div class="animated-item delay-3 bg-teal-50 p-6 rounded-xl border border-teal-100">
-                        <h3 class="font-bold text-lg text-teal-800 mb-2">🎯 Foco no Propósito:</h3>
-                        <p class="text-gray-700">Lembre-se que seguir o padrão salva vidas.</p>
-                        <p class="text-gray-700 mt-2">Pergunte-se: "Como minha atenção agora garante que todos voltem bem para casa?"</p>
+                    <div class="animated-item delay-2 card card--soft">
+                        <div class="card-title">Telefonia</div>
+                        <p class="text-gray-700 text-lg">Evite telefone no ombro: use headset ou viva‑voz.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 10: Pilar 4 - Empatia -->
+        <!-- Slide 10: Pausas e Descanso Visual -->
         <div id="slide-10" class="slide w-full h-full subtle-bg text-center">
             <div class="m-auto w-full max-w-4xl">
                 <div class="flex items-center justify-center mb-6">
                     <div class="w-12 h-12 bg-cyan-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">4</div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Empatia</h2>
+                    <h2 class="section-title text-gray-800">Pausas e Descanso Visual</h2>
                 </div>
-                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">
-                    Compreender sentimentos e perspectivas de outras pessoas.
-                </p>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-md border-l-4 border-cyan-500">
-                        <h3 class="font-bold text-lg text-cyan-700 mb-2">Exemplo na Refinaria:</h3>
-                        <p class="text-lg text-gray-600">Compreender que colegas de outras áreas também têm prazos e pressões, evitando julgamentos precipitados.</p>
+                    <div class="animated-item delay-1 card card--success">
+                        <div class="card-title">Rotina</div>
+                        <p class="text-lg text-gray-600">Micro‑pausa: <strong>2–5 min</strong> a cada <strong>50–60 min</strong>.</p>
+                        <p class="text-lg text-gray-600 mt-2">Regra <strong>20‑20‑20</strong>: a cada 20 min, olhar 20 s para algo distante (~6 m).</p>
                     </div>
-                    <div class="animated-item delay-3 bg-cyan-50 p-6 rounded-xl border border-cyan-100">
-                        <h3 class="font-bold text-lg text-cyan-800 mb-2">👂 Escuta Ativa:</h3>
-                        <p class="text-gray-700">Não ouça apenas para responder.<br>Ouça para entender.</p>
-                        <p class="text-gray-700 mt-2">Observe a linguagem corporal e o tom de voz. 90% da comunicação não é verbal.</p>
+                    <div class="animated-item delay-2 card card--soft">
+                        <div class="card-title">Impacto</div>
+                        <p class="text-gray-700 text-lg">Pausas curtas preservam foco e reduzem erro.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 11: Pilar 5 - Habilidades Sociais -->
+        <!-- Slide 11: Ambiente e Rotina -->
         <div id="slide-11" class="slide w-full h-full text-center">
             <div class="m-auto w-full max-w-4xl">
                 <div class="flex items-center justify-center mb-6">
                     <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">5</div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Habilidades Sociais</h2>
+                    <h2 class="section-title text-gray-800">Ambiente e Rotina</h2>
                 </div>
-                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">
-                    Gerenciar relacionamentos, comunicar-se de forma eficaz e resolver conflitos.
-                </p>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500">
-                        <h3 class="font-bold text-lg text-blue-700 mb-2">Exemplo na Refinaria:</h3>
-                        <p class="text-lg text-gray-600">Comunicar riscos ou instruções de trabalho de forma clara e assertiva, garantindo que a mensagem foi compreendida por todos.</p>
+                    <div class="animated-item delay-1 card card--success">
+                        <div class="card-title">Ambiente</div>
+                        <p class="text-lg text-gray-600">Iluminação sem reflexo na tela e brilho equilibrado.</p>
+                        <p class="text-lg text-gray-600 mt-2">Ar muito frio aumenta tensão muscular: manter conforto térmico.</p>
                     </div>
-                    <div class="animated-item delay-3 bg-blue-50 p-6 rounded-xl border border-blue-100">
-                        <h3 class="font-bold text-lg text-blue-800 mb-2">🤝 Construindo Pontes:</h3>
-                        <p class="text-gray-700">É a capacidade de encontrar um terreno comum e construir relacionamento (Rapport).</p>
-                        <p class="text-gray-700 mt-2">Líderes com boas habilidades sociais são ótimos em persuadir e inspirar.</p>
+                    <div class="animated-item delay-2 card card--soft">
+                        <div class="card-title">Organização</div>
+                        <p class="text-gray-700 text-lg">O que você usa mais deve estar ao alcance.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 12: Liderança e Clima -->
+        <!-- Slide 12: Impacto no Clima -->
         <div id="slide-12" class="slide w-full h-full subtle-bg text-center">
             <div class="m-auto w-full max-w-4xl">
-                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Impacto no Clima</h2>
+                <div class="animated-item section-kicker mb-2">Clima Organizacional</div>
+                <h2 class="animated-item section-title text-gray-800 mb-8">Impacto no Clima</h2>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="animated-item delay-1 p-6 bg-white rounded-xl shadow-lg border-t-4 border-red-500">
-                        <h3 class="text-xl font-bold text-red-700 mb-4">Liderança Dissonante</h3>
-                        <ul class="space-y-3 text-gray-600 list-inside">
-                            <li class="flex items-start justify-center"><span class="mr-2">❌</span>Falta de empatia</li>
-                            <li class="flex items-start justify-center"><span class="mr-2">❌</span>Gera ansiedade e medo</li>
-                            <li class="flex items-start justify-center"><span class="mr-2">❌</span>Foco apenas em tarefas, não em pessoas</li>
-                            <li class="flex items-start justify-center"><span class="mr-2">❌</span>"Manda quem pode, obedece quem tem juízo"</li>
+                    <div class="animated-item delay-1 card card--danger">
+                        <div class="card-title">Cultura de Improviso</div>
+                        <ul class="card-list text-gray-600">
+                            <li><span>❌</span><span>“Deixa assim mesmo”</span></li>
+                            <li><span>❌</span><span>Dor normalizada</span></li>
+                            <li><span>❌</span><span>Mais irritação e distração</span></li>
+                            <li><span>❌</span><span>Mais ruído na comunicação</span></li>
                         </ul>
                     </div>
-                    <div class="animated-item delay-2 p-6 bg-white rounded-xl shadow-lg border-t-4 border-emerald-500">
-                        <h3 class="text-xl font-bold text-emerald-700 mb-4">Liderança Ressonante</h3>
-                        <ul class="space-y-3 text-gray-600 list-inside">
-                            <li class="flex items-start justify-center"><span class="mr-2">✅</span>Sintonia com as emoções da equipe</li>
-                            <li class="flex items-start justify-center"><span class="mr-2">✅</span>Gera entusiasmo e lealdade</li>
-                            <li class="flex items-start justify-center"><span class="mr-2">✅</span>Desenvolve pessoas</li>
-                            <li class="flex items-start justify-center"><span class="mr-2">✅</span>Inspira através do exemplo</li>
+                    <div class="animated-item delay-2 card card--success">
+                        <div class="card-title">Cultura Preventiva</div>
+                        <ul class="card-list text-gray-600">
+                            <li><span>✅</span><span>Ajuste antes de começar</span></li>
+                            <li><span>✅</span><span>Pausas sem culpa</span></li>
+                            <li><span>✅</span><span>Mais atenção e qualidade</span></li>
+                            <li><span>✅</span><span>Exemplo contagia o time</span></li>
                         </ul>
                     </div>
                 </div>
@@ -371,73 +355,42 @@
         <!-- Slide 13: Aplicação Estratégica -->
         <div id="slide-13" class="slide w-full h-full text-center">
             <div class="m-auto w-full max-w-6xl">
-                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Aplicação Estratégica na Refinaria</h2>
+                <div class="animated-item section-kicker mb-2">Aplicação</div>
+                <h2 class="animated-item section-title text-gray-800 mb-8">Aplicação Estratégica na Refinaria</h2>
                 
                 <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Pilar SMS -->
-                    <div class="animated-item delay-1 bg-white p-6 rounded-xl shadow-lg border-t-8 border-red-600 hover-lift">
-                        <div class="text-5xl mb-4">🛡️</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Segurança (SMS)</h3>
-                        <ul class="space-y-4 text-gray-600 text-sm">
-                            <li class="mb-2">
-                                <span class="text-red-500 text-lg">➤</span> <strong>Combate à Complacência:</strong><br>
-                                Manter o estado de alerta constante,<br>evitando o "piloto automático"<br>em tarefas rotineiras.
-                            </li>
-                            <li class="mb-2">
-                                <span class="text-red-500 text-lg">➤</span> <strong>Percepção de Risco:</strong><br>
-                                Ampliar a visão periférica<br>para identificar perigos<br>antes que se tornem incidentes.
-                            </li>
-                            <li class="mb-2">
-                                <span class="text-red-500 text-lg">➤</span> <strong>Disciplina Operacional:</strong><br>
-                                O foco mental é a base<br>para seguir procedimentos<br>com rigor e precisão.
-                            </li>
+                    <div class="animated-item delay-1 card card--danger hover-lift">
+                        <img class="icon-img mb-4" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_shield_24_filled.svg" alt="Segurança">
+                        <div class="card-title">Segurança (SMS)</div>
+                        <h3 class="card-heading">Menos erro operacional</h3>
+                        <ul class="card-list text-gray-600 text-sm">
+                            <li><span>•</span><span>Mais foco reduz complacência.</span></li>
+                            <li><span>•</span><span>Presença mental e disciplina.</span></li>
                         </ul>
                     </div>
-
-                    <!-- Pilar Produtividade -->
-                    <div class="animated-item delay-2 bg-white p-6 rounded-xl shadow-lg border-t-8 border-yellow-500 hover-lift">
-                        <div class="text-5xl mb-4">⚙️</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Eficiência Operacional</h3>
-                        <ul class="space-y-4 text-gray-600 text-sm">
-                            <li class="mb-2">
-                                <span class="text-yellow-500 text-lg">➤</span> <strong>Comunicação Assertiva:</strong><br>
-                                Garantir que a informação<br>chegue clara e sem ruídos<br>nas passagens de turno.
-                            </li>
-                            <li class="mb-2">
-                                <span class="text-yellow-500 text-lg">➤</span> <strong>Tomada de Decisão:</strong><br>
-                                Manter a racionalidade<br>para agir com precisão<br>mesmo sob forte pressão.
-                            </li>
-                            <li class="mb-2">
-                                <span class="text-yellow-500 text-lg">➤</span> <strong>Continuidade:</strong><br>
-                                Recuperar o ritmo rapidamente<br>após imprevistos,<br>focando na solução.
-                            </li>
+                    <div class="animated-item delay-2 card card--warning hover-lift">
+                        <img class="icon-img mb-4" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_chart_person_24_filled.svg" alt="Eficiência">
+                        <div class="card-title">Eficiência Operacional</div>
+                        <h3 class="card-heading">Decisão com clareza</h3>
+                        <ul class="card-list text-gray-600 text-sm">
+                            <li><span>•</span><span>Comunicação mais clara.</span></li>
+                            <li><span>•</span><span>Continuidade após imprevistos.</span></li>
                         </ul>
                     </div>
-
-                    <!-- Pilar Relacionamento -->
-                    <div class="animated-item delay-3 bg-white p-6 rounded-xl shadow-lg border-t-8 border-blue-600 hover-lift">
-                        <div class="text-5xl mb-4">🤝</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Clima & Liderança</h3>
-                        <ul class="space-y-4 text-gray-600 text-sm">
-                            <li class="mb-2">
-                                <span class="text-blue-500 text-lg">➤</span> <strong>Confiança Mútua:</strong><br>
-                                Criar um ambiente onde<br>todos se sentem seguros<br>para reportar desvios.
-                            </li>
-                            <li class="mb-2">
-                                <span class="text-blue-500 text-lg">➤</span> <strong>Trabalho em Equipe:</strong><br>
-                                Unir Operação e Manutenção<br>com foco no objetivo comum,<br>superando divergências.
-                            </li>
-                            <li class="mb-2">
-                                <span class="text-blue-500 text-lg">➤</span> <strong>Postura Profissional:</strong><br>
-                                Liderar pelo exemplo,<br>inspirando respeito<br>através da conduta.
-                            </li>
+                    <div class="animated-item delay-3 card card--success hover-lift">
+                        <img class="icon-img mb-4" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_people_add_24_filled.svg" alt="Clima e liderança">
+                        <div class="card-title">Clima & Liderança</div>
+                        <h3 class="card-heading">Equipe sustentável</h3>
+                        <ul class="card-list text-gray-600 text-sm">
+                            <li><span>•</span><span>Normalizar pausas e ajustes.</span></li>
+                            <li><span>•</span><span>Liderar pelo exemplo.</span></li>
                         </ul>
                     </div>
                 </div>
                 
-                <div class="animated-item delay-4 mt-8 p-4 bg-gray-100 rounded-lg border border-gray-300">
+                <div class="animated-item delay-4 mt-8 card card--soft text-center">
                     <p class="text-lg text-gray-800 font-semibold">
-                        "A estabilidade da equipe é tão crítica para a operação quanto a estabilidade do processo."
+                        “A estabilidade da equipe é tão crítica quanto a estabilidade do processo.”
                     </p>
                 </div>
             </div>
@@ -446,29 +399,30 @@
         <!-- Slide 14: Dinâmica Termômetro -->
         <div id="slide-14" class="slide w-full h-full subtle-bg">
             <div class="m-auto w-full max-w-4xl">
-                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Dinâmica: Termômetro das Emoções</h2>
-                <p class="animated-item delay-1 text-xl text-gray-600 mb-8">Como você reage sob pressão?</p>
+                <div class="animated-item section-kicker mb-2">Dinâmica</div>
+                <h2 class="animated-item section-title text-gray-800 mb-6">Termômetro do Desconforto</h2>
+                <p class="animated-item delay-1 section-lead mb-8">Como você termina o turno?</p>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="animated-item delay-2 flex flex-col items-center p-4 bg-green-100 rounded-xl hover-lift">
-                        <div class="w-16 h-16 bg-green-500 rounded-full mb-4 shadow-lg"></div>
-                        <h3 class="font-bold text-green-800 text-xl">CALMO</h3>
-                        <p class="text-sm text-center mt-2">Consigo pensar com clareza e manter o controle.</p>
+                    <div class="animated-item delay-2 card card--success hover-lift text-center">
+                        <div class="w-14 h-14 bg-green-500 rounded-2xl mb-4 shadow-lg mx-auto"></div>
+                        <div class="card-title">OK</div>
+                        <p class="text-sm">Sem dor relevante.</p>
                     </div>
-                    <div class="animated-item delay-3 flex flex-col items-center p-4 bg-blue-100 rounded-xl hover-lift">
-                        <div class="w-16 h-16 bg-blue-500 rounded-full mb-4 shadow-lg"></div>
-                        <h3 class="font-bold text-blue-800 text-xl">NEUTRO</h3>
-                        <p class="text-sm text-center mt-2">A situação não me afeta muito, mas noto a emoção.</p>
+                    <div class="animated-item delay-3 card card--success hover-lift text-center">
+                        <div class="w-14 h-14 bg-blue-500 rounded-2xl mb-4 shadow-lg mx-auto"></div>
+                        <div class="card-title">Leve</div>
+                        <p class="text-sm">Incômodo pontual (pescoço/olhos).</p>
                     </div>
-                    <div class="animated-item delay-4 flex flex-col items-center p-4 bg-orange-100 rounded-xl hover-lift">
-                        <div class="w-16 h-16 bg-orange-500 rounded-full mb-4 shadow-lg"></div>
-                        <h3 class="font-bold text-orange-800 text-xl">IRRITADO</h3>
-                        <p class="text-sm text-center mt-2">Sinto desconforto e vontade de reagir.</p>
+                    <div class="animated-item delay-4 card card--warning hover-lift text-center">
+                        <div class="w-14 h-14 bg-orange-500 rounded-2xl mb-4 shadow-lg mx-auto"></div>
+                        <div class="card-title">Moderado</div>
+                        <p class="text-sm">Dor recorrente, atrapalha foco.</p>
                     </div>
-                    <div class="animated-item delay-5 flex flex-col items-center p-4 bg-red-100 rounded-xl hover-lift">
-                        <div class="w-16 h-16 bg-red-600 rounded-full mb-4 shadow-lg"></div>
-                        <h3 class="font-bold text-red-800 text-xl">FURIOSO</h3>
-                        <p class="text-sm text-center mt-2">Perco o controle ou sinto muita raiva.</p>
+                    <div class="animated-item delay-5 card card--danger hover-lift text-center">
+                        <div class="w-14 h-14 bg-red-600 rounded-2xl mb-4 shadow-lg mx-auto"></div>
+                        <div class="card-title">Intenso</div>
+                        <p class="text-sm">Dor forte, formigamento ou perda de força.</p>
                     </div>
                 </div>
             </div>
@@ -477,23 +431,24 @@
         <!-- Slide 15: Interpretação -->
         <div id="slide-15" class="slide w-full h-full text-center">
             <div class="m-auto w-full max-w-5xl">
-                <h2 class="animated-item text-2xl md:text-3xl font-bold text-gray-800 mb-6">O que seu termômetro diz?</h2>
+                <div class="animated-item section-kicker mb-2">Interpretação</div>
+                <h2 class="animated-item section-title text-gray-800 mb-6">O que seu termômetro diz?</h2>
                 <div class="grid md:grid-cols-2 gap-6 text-center">
-                    <div class="animated-item delay-1 p-4 border border-green-200 rounded-lg bg-green-50">
-                        <h3 class="font-bold text-green-700 mb-2">🟩 CALMO</h3>
-                        <p class="text-sm">Você demonstra domínio. <strong><br>Foco:</strong> Automotivação e estabilidade.</p>
+                    <div class="animated-item delay-1 card card--success">
+                        <div class="card-title">OK</div>
+                        <p class="text-sm">Manter hábitos (pausas + postura).</p>
                     </div>
-                    <div class="animated-item delay-2 p-4 border border-blue-200 rounded-lg bg-blue-50">
-                        <h3 class="font-bold text-blue-700 mb-2">🟦 NEUTRO</h3>
-                        <p class="text-sm">Racional, mas cuidado com a supressão. <strong><br>Foco:</strong> Empatia e habilidades sociais.</p>
+                    <div class="animated-item delay-2 card card--success">
+                        <div class="card-title">Leve</div>
+                        <p class="text-sm">Ajuste de monitor/cadeira + micro‑pausas.</p>
                     </div>
-                    <div class="animated-item delay-3 p-4 border border-orange-200 rounded-lg bg-orange-50">
-                        <h3 class="font-bold text-orange-700 mb-2">🟧 IRRITADO</h3>
-                        <p class="text-sm">Reage emocionalmente ao incômodo. <strong><br>Foco:</strong> Autoconsciência (gatilhos).</p>
+                    <div class="animated-item delay-3 card card--warning">
+                        <div class="card-title">Moderado</div>
+                        <p class="text-sm">Corrigir posto + alternância de postura; sinalize adequação.</p>
                     </div>
-                    <div class="animated-item delay-4 p-4 border border-red-200 rounded-lg bg-red-50">
-                        <h3 class="font-bold text-red-700 mb-2">🟥 FURIOSO</h3>
-                        <p class="text-sm">Emoções intensas e impulsividade. <strong><br>Foco:</strong> Autocontrole (respirar, pensar).</p>
+                    <div class="animated-item delay-4 card card--danger">
+                        <div class="card-title">Intenso</div>
+                        <p class="text-sm">Interromper exposição e procurar orientação; não normalize.</p>
                     </div>
                 </div>
             </div>
@@ -502,15 +457,15 @@
         <!-- Slide 16: Conclusão -->
         <div id="slide-16" class="slide w-full h-full subtle-bg text-center">
             <div class="m-auto w-full max-w-3xl">
-                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-8">Conclusão</h2>
-                <div class="animated-item delay-1 p-8 bg-white rounded-xl shadow-xl border-t-8 border-emerald-500">
+                <div class="animated-item section-kicker mb-2">Conclusão</div>
+                <h2 class="animated-item section-title text-gray-800 mb-6">Ergonomia é prevenção</h2>
+                <div class="animated-item delay-1 card card--success">
                     <p class="text-2xl font-medium text-gray-700 leading-relaxed text-center">
-                        "Inteligência Emocional não é <strong>não sentir</strong>.<br><br>
-                        É reconhecer, entender e direcionar o que se sente da melhor forma possível."
+                        Ergonomia não é luxo: é prevenção, saúde e performance sustentável. Pequenos ajustes diários evitam dor, LER/DORT e perda de foco.
                     </p>
                 </div>
-                <p class="animated-item delay-2 mt-8 text-xl text-gray-600">
-                    Visando conviver e lidar de forma melhor com as emoções.
+                <p class="animated-item delay-2 mt-6 section-lead">
+                    Ajuste o posto, respeite pausas e cuide da visão: seu corpo agradece.
                 </p>
             </div>
         </div>
@@ -518,13 +473,16 @@
         <!-- Slide 17: Referências -->
         <div id="slide-17" class="slide w-full h-full text-center">
             <div class="m-auto w-full max-w-4xl">
-                <h2 class="animated-item text-3xl md:text-4xl font-bold text-gray-800 mb-12">Referências e Agradecimentos</h2>
+                <div class="animated-item section-kicker mb-2">Referências</div>
+                <h2 class="animated-item section-title text-gray-800 mb-8">Referências e Apoios</h2>
                 
-                <div class="animated-item delay-1 p-8 bg-white rounded-xl shadow-lg border-l-8 border-emerald-500 text-left">
-                    <p class="text-lg text-gray-600 mb-4 italic">Agradecimento especial pela consultoria técnica e revisão de conteúdo:</p>
-                    <p class="text-xl text-gray-800 font-serif leading-relaxed">
-                        FARIA, Luiza Medeiros Alves de. <strong>Inteligência Emocional e Comportamento Organizacional</strong>. 2025. Consultoria Técnica. Graduanda em Recursos Humanos – Universidade do Estado de Minas Gerais (UEMG), Faculdade de Políticas Públicas e Gestão de Negócios (FaPPGeN).
-                    </p>
+                <div class="animated-item delay-1 card card--soft text-left">
+                    <p class="text-lg text-gray-600 mb-4">Materiais de apoio e boas práticas:</p>
+                    <ul class="card-list text-gray-700">
+                        <li><span>•</span><span>NR‑17 — Ergonomia (parâmetros para adaptação do trabalho)</span></li>
+                        <li><span>•</span><span>Diretrizes internas de SMS e DDSMS</span></li>
+                        <li><span>•</span><span>Boas práticas de ergonomia para uso de computador</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -547,7 +505,7 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="navigation-bar">
+    <nav class="navigation-bar glass">
         <button id="prevBtn" class="nav-button" aria-label="Slide anterior">Anterior</button>
         <div class="progress-container">
             <div class="progress-track">

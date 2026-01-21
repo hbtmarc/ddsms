@@ -123,8 +123,12 @@ class SlideManager {
 
     init() {
         // Eventos de navegação
-        this.prevBtn.addEventListener('click', () => this.previousSlide());
-        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.previousSlide());
+        }
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+        }
         
         // Navegação por teclado
         document.addEventListener('keydown', (e) => this.handleKeyboard(e));
@@ -173,22 +177,28 @@ class SlideManager {
 
     updateControls() {
         // Botão anterior
-        this.prevBtn.disabled = this.currentSlide === 1;
+        if (this.prevBtn) {
+            this.prevBtn.disabled = this.currentSlide === 1;
+        }
         
         // Botão próximo
-        if (this.currentSlide === this.totalSlides) {
-            this.nextBtn.textContent = 'Reiniciar';
-            this.nextBtn.classList.remove('primary');
-            this.nextBtn.classList.add('secondary');
-        } else {
-            this.nextBtn.textContent = 'Próximo';
-            this.nextBtn.classList.add('primary');
-            this.nextBtn.classList.remove('secondary');
+        if (this.nextBtn) {
+            if (this.currentSlide === this.totalSlides) {
+                this.nextBtn.textContent = 'Reiniciar';
+                this.nextBtn.classList.remove('primary');
+                this.nextBtn.classList.add('secondary');
+            } else {
+                this.nextBtn.textContent = 'Próximo';
+                this.nextBtn.classList.add('primary');
+                this.nextBtn.classList.remove('secondary');
+            }
         }
         
         // Barra de progresso
-        const progressPercentage = (this.currentSlide / this.totalSlides) * 100;
-        this.progressBar.style.width = `${progressPercentage}%`;
+        if (this.progressBar) {
+            const progressPercentage = (this.currentSlide / this.totalSlides) * 100;
+            this.progressBar.style.width = `${progressPercentage}%`;
+        }
     }
 
     nextSlide() {
@@ -240,6 +250,9 @@ class SlideManager {
         let touchEndX = 0;
         
         const presentationCard = document.getElementById('presentationCard');
+        if (!presentationCard) {
+            return;
+        }
         
         presentationCard.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
@@ -289,6 +302,9 @@ class TimerController {
     }
 
     init() {
+        if (!this.timerElement) {
+            return;
+        }
         this.start();
         
         // Reset ao clicar
@@ -296,6 +312,9 @@ class TimerController {
     }
 
     start() {
+        if (!this.timerElement) {
+            return;
+        }
         if (this.interval) clearInterval(this.interval);
         
         this.interval = setInterval(() => {
@@ -305,6 +324,9 @@ class TimerController {
     }
 
     reset() {
+        if (!this.timerElement) {
+            return;
+        }
         this.seconds = 0;
         this.updateDisplay();
         
@@ -320,9 +342,17 @@ class TimerController {
     }
 
     updateDisplay() {
-        const mins = Math.floor(this.seconds / 60).toString().padStart(2, '0');
-        const secs = (this.seconds % 60).toString().padStart(2, '0');
-        this.timerElement.textContent = `${mins}:${secs}`;
+        if (!this.timerElement || !this.timerElement.isConnected) {
+            this.pause();
+            return;
+        }
+        try {
+            const mins = Math.floor(this.seconds / 60).toString().padStart(2, '0');
+            const secs = (this.seconds % 60).toString().padStart(2, '0');
+            this.timerElement.textContent = `${mins}:${secs}`;
+        } catch (error) {
+            this.pause();
+        }
     }
 
     pause() {
@@ -357,6 +387,10 @@ class FullscreenManager {
     }
 
     init() {
+        if (!this.fullscreenBtn || !this.presentationCard) {
+            return;
+        }
+
         this.fullscreenBtn.addEventListener('click', () => this.toggle());
         
         document.addEventListener('fullscreenchange', () => this.updateUI());
@@ -383,6 +417,9 @@ class FullscreenManager {
 
     enter() {
         const element = this.presentationCard;
+        if (!element) {
+            return;
+        }
         
         if (element.requestFullscreen) {
             element.requestFullscreen();
@@ -424,7 +461,9 @@ class FullscreenManager {
         }
         
         // Atualizar classe do card
-        this.presentationCard.classList.toggle('fullscreen', isFullscreen);
+        if (this.presentationCard) {
+            this.presentationCard.classList.toggle('fullscreen', isFullscreen);
+        }
     }
 }
 
@@ -550,6 +589,6 @@ document.addEventListener('DOMContentLoaded', function() {
     new KeyboardShortcutsManager(slideManager, timerController, fullscreenManager);
 
     // Console Easter Egg
-    console.log('%c🧠 INTELIGÊNCIA EMOCIONAL', 'font-size: 20px; color: #10b981; font-weight: bold;');
+    console.log('%c💺 ERGONOMIA NO TRABALHO DIGITAL', 'font-size: 20px; color: #10b981; font-weight: bold;');
     console.log('%cApresentação Premium | Pressione ? para ver os atalhos', 'font-size: 14px; color: #facc15;');
 });
