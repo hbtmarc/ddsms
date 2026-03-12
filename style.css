@@ -1354,13 +1354,82 @@ button, .nav-button { cursor: pointer; }
 }
 
 /* ============================================
-   TEXT PARAGRAPHS — breathing
+   CONTENT MOTION — text, cards and lists
    ============================================ */
 .slide.active .card p {
     animation: textBreathe 6s ease-in-out infinite;
 }
 @keyframes textBreathe {
     0%, 100% { opacity: .9; }
+    50%      { opacity: 1; }
+}
+
+/* Headings com brilho suave em loop */
+.slide.active .card-heading {
+    background: linear-gradient(90deg, var(--color-text-primary) 0%, var(--color-primary) 45%, var(--color-text-primary) 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: headingFlow 6.5s ease-in-out infinite;
+}
+@keyframes headingFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+}
+
+/* Realce dinâmico nas caixas sem alterar estrutura */
+.slide.active .card {
+    position: relative;
+    overflow: hidden;
+}
+.slide.active .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.15) 45%, transparent 90%);
+    transform: translateX(-120%);
+    animation: cardSweep 8s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes cardSweep {
+    0%, 20%   { transform: translateX(-120%); opacity: 0; }
+    28%, 52%  { transform: translateX(120%); opacity: 1; }
+    60%, 100% { transform: translateX(120%); opacity: 0; }
+}
+
+/* Marcadores das listas com micro movimento */
+.slide.active .card-list li span:first-child {
+    animation: bulletPulse 2.8s ease-in-out infinite;
+}
+.slide.active .card-list li:nth-child(2) span:first-child { animation-delay: .25s; }
+.slide.active .card-list li:nth-child(3) span:first-child { animation-delay: .5s; }
+.slide.active .card-list li:nth-child(4) span:first-child { animation-delay: .75s; }
+.slide.active .card-list li:nth-child(5) span:first-child { animation-delay: 1s; }
+@keyframes bulletPulse {
+    0%, 100% { transform: scale(1); opacity: .85; }
+    50%      { transform: scale(1.25); opacity: 1; }
+}
+
+/* Listas textuais fora de cards (ex.: slide 4) */
+.slide.active ul.list-inside li {
+    animation: outsideListWave 5.5s ease-in-out infinite;
+}
+.slide.active ul.list-inside li:nth-child(2) { animation-delay: .3s; }
+.slide.active ul.list-inside li:nth-child(3) { animation-delay: .6s; }
+.slide.active ul.list-inside li:nth-child(4) { animation-delay: .9s; }
+@keyframes outsideListWave {
+    0%, 100% { opacity: .9; transform: translateX(0); }
+    50%      { opacity: 1; transform: translateX(3px); }
+}
+
+/* Parágrafos de bloco principal ganham respiração sutil */
+.slide.active .m-auto > p,
+.slide.active .slide-content > p {
+    animation: bodyTextBreathe 6.2s ease-in-out infinite;
+}
+@keyframes bodyTextBreathe {
+    0%, 100% { opacity: .88; }
     50%      { opacity: 1; }
 }
 
