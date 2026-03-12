@@ -122,6 +122,12 @@ class SlideManager {
     }
 
     init() {
+        if (!this.totalSlides) {
+            return;
+        }
+
+        this.syncCurrentSlideFromDOM();
+
         // Eventos de navegação
         if (this.prevBtn) {
             this.prevBtn.addEventListener('click', () => this.previousSlide());
@@ -140,14 +146,32 @@ class SlideManager {
         this.showSlide(this.currentSlide);
     }
 
+    syncCurrentSlideFromDOM() {
+        const activeFromMarkup = document.querySelector('.slide.active[id^="slide-"]');
+        if (!activeFromMarkup) {
+            return;
+        }
+
+        const numericId = Number(activeFromMarkup.id.replace('slide-', ''));
+        if (Number.isInteger(numericId) && numericId >= 1 && numericId <= this.totalSlides) {
+            this.currentSlide = numericId;
+        }
+    }
+
     showSlide(slideNumber) {
-        // Remover classe active de todos
-        this.slides.forEach(slide => slide.classList.remove('active'));
+        // Remover classe active de todos e ocultar de forma determinística
+        this.slides.forEach(slide => {
+            slide.classList.remove('active');
+            slide.hidden = true;
+            slide.setAttribute('aria-hidden', 'true');
+        });
         
         // Adicionar classe active ao slide atual
         const currentSlideElement = document.getElementById(`slide-${slideNumber}`);
         if (currentSlideElement) {
             currentSlideElement.classList.add('active');
+            currentSlideElement.hidden = false;
+            currentSlideElement.setAttribute('aria-hidden', 'false');
         }
         
         // Atualizar controles
@@ -173,6 +197,15 @@ class SlideManager {
             void item.offsetWidth; // Trigger reflow
             item.style.animation = '';
         });
+
+        // Fallback para ambientes onde animações podem não iniciar
+        setTimeout(() => {
+            animatedItems.forEach(item => {
+                if (item.isConnected && getComputedStyle(item).opacity === '0') {
+                    item.style.opacity = '1';
+                }
+            });
+        }, 850);
     }
 
     updateControls() {
