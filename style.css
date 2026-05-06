@@ -313,9 +313,9 @@ body {
     color: var(--color-text-primary);
 }
 .slide.active .section-title {
-    animation: titleBreathe 5s ease-in-out infinite;
+    animation: titleFocus 5s ease-in-out infinite;
 }
-@keyframes titleBreathe {
+@keyframes titleFocus {
     0%, 100% { letter-spacing: -.02em; }
     50%      { letter-spacing: .01em; }
 }
@@ -827,126 +827,147 @@ button, .nav-button { cursor: pointer; }
 .illust-svg--wide { width: 160px; height: 45px; }
 .slide-illust--sm { margin: .25rem auto .5rem; }
 
-/* — Slide 1: Breathing lungs + weather — */
-.slide.active .s1-lung-l,
-.slide.active .s1-lung-r {
-    animation: s1Breathe 3.5s ease-in-out infinite;
+/* — Slide 1: Ameaça x proteção (pulse de bloqueio) — */
+.slide.active .s1-login-card,
+.slide.active .s1-data-card {
+    animation: s1LockPulse 3.8s ease-in-out infinite;
+    transform-origin: center;
 }
-.slide.active .s1-lung-r { animation-delay: .15s; }
-@keyframes s1Breathe {
-    0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.07); }
+.slide.active .s1-data-card { animation-delay: .15s; }
+@keyframes s1LockPulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(37,99,235,0)); }
+    50%      { transform: scale(1.04); filter: drop-shadow(0 0 8px rgba(37,99,235,.32)); }
 }
-.slide.active .s1-sun {
-    animation: s1Sun 6s ease-in-out infinite;
+.slide.active .s1-risk-dot {
+    animation: s1RiskBlink 6s ease-in-out infinite;
 }
-.slide.active .s1-snow {
-    animation: s1Snow 6s ease-in-out infinite;
+.slide.active .s1-lock-icon {
+    animation: s1SafeBlink 6s ease-in-out infinite;
 }
-@keyframes s1Sun {
+@keyframes s1RiskBlink {
     0%, 45%  { opacity: 1; }
     50%, 95% { opacity: 0; }
     100%     { opacity: 1; }
 }
-@keyframes s1Snow {
+@keyframes s1SafeBlink {
     0%, 45%  { opacity: 0; }
     50%, 95% { opacity: 1; }
     100%     { opacity: 0; }
 }
 
-/* — Slide 2: Thermometer + viruses — */
-.slide.active .s2-mercury {
-    animation: s2Mercury 4s ease-in-out infinite;
+/* — Slide 2: Nível de risco + varredura de sinais — */
+.slide.active .s2-risk-fill {
+    animation: s2RiskLevel 4.8s ease-in-out infinite;
 }
-@keyframes s2Mercury {
-    0%, 100% { height: 26px; y: 22; }
-    50%      { height: 16px; y: 32; }
+@keyframes s2RiskLevel {
+    0%, 100% { height: 14px; y: 34; }
+    50%      { height: 26px; y: 22; }
 }
-.slide.active .s2-v1 { animation: s2Float 3s ease-in-out infinite; }
-.slide.active .s2-v2 { animation: s2Float 3s .8s ease-in-out infinite; }
-.slide.active .s2-v3 { animation: s2Float 3s 1.6s ease-in-out infinite; }
-@keyframes s2Float {
-    0%, 100% { transform: translateY(0); opacity: .5; }
-    50%      { transform: translateY(-6px); opacity: .8; }
+.slide.active .s2-v1 { animation: s2SignalPing 2.8s ease-in-out infinite; }
+.slide.active .s2-v2 { animation: s2SignalPing 2.8s .5s ease-in-out infinite; }
+.slide.active .s2-v3 { animation: s2SignalPing 2.8s 1s ease-in-out infinite; }
+@keyframes s2SignalPing {
+    0%, 100% { transform: scale(.75); opacity: .35; }
+    50%      { transform: scale(1.15); opacity: .85; }
 }
 
-/* — Slide 3: Season cycle — */
+/* — Slide 3: Ciclo de engenharia social — */
 .slide.active .s3-arrow {
-    animation: s3Rotate 5s linear infinite;
+    animation: s3Loop 6s linear infinite;
     transform-origin: 30px 30px;
 }
-@keyframes s3Rotate {
+@keyframes s3Loop {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
 }
-.slide.active .s3-sun {
-    animation: s1Sun 5s ease-in-out infinite;
+.slide.active .s3-risk {
+    animation: s3FlagRisk 5s ease-in-out infinite;
 }
-.slide.active .s3-cold {
-    animation: s1Snow 5s ease-in-out infinite;
+.slide.active .s3-verify {
+    animation: s3FlagSafe 5s ease-in-out infinite;
 }
-
-/* — Slide 4: Particles falling into airway — */
-.slide.active .s4-p1 { animation: s4Fall 3s ease-in infinite; }
-.slide.active .s4-p2 { animation: s4Fall 3s .6s ease-in infinite; }
-.slide.active .s4-p3 { animation: s4Fall 3s 1.2s ease-in infinite; }
-@keyframes s4Fall {
-    0%   { transform: translateY(0); opacity: 1; }
-    70%  { opacity: .6; }
-    100% { transform: translateY(52px); opacity: 0; }
+@keyframes s3FlagRisk {
+    0%, 40%  { opacity: 1; transform: scale(1); }
+    50%, 100%{ opacity: 0; transform: scale(.7); }
+}
+@keyframes s3FlagSafe {
+    0%, 40%  { opacity: 0; transform: scale(.7); }
+    50%, 100%{ opacity: 1; transform: scale(1); }
 }
 
-/* — Slide 5: Symptom dots blinking — */
+/* — Slide 4: Fluxo de ataque (mensagem > clique > captura) — */
+.slide.active .s4-flow-dot {
+    animation: s4Packet 3.2s ease-in-out infinite;
+    transform-origin: center;
+}
+.slide.active .s4-p2 { animation-delay: .35s; }
+.slide.active .s4-p3 { animation-delay: .7s; }
+@keyframes s4Packet {
+    0%, 100% { transform: scale(.75); opacity: .35; }
+    35%, 65% { transform: scale(1.25); opacity: 1; filter: drop-shadow(0 0 6px rgba(239,68,68,.35)); }
+}
+
+/* — Slide 5: Gatilhos em sequência — */
 .slide.active .s5-d1 { animation: s5Blink 4s .0s ease-in-out infinite; }
 .slide.active .s5-d2 { animation: s5Blink 4s .5s ease-in-out infinite; }
 .slide.active .s5-d3 { animation: s5Blink 4s 1.0s ease-in-out infinite; }
 .slide.active .s5-d4 { animation: s5Blink 4s 1.5s ease-in-out infinite; }
 @keyframes s5Blink {
-    0%, 20%  { opacity: 0; transform: scale(.5); }
-    30%, 70% { opacity: .9; transform: scale(1); }
-    80%, 100%{ opacity: 0; transform: scale(.5); }
+    0%, 20%  { opacity: 0; transform: scale(.55); }
+    30%, 70% { opacity: .9; transform: scale(1); filter: drop-shadow(0 0 5px rgba(239,68,68,.35)); }
+    80%, 100%{ opacity: 0; transform: scale(.55); }
 }
 
-/* — Slide 6: ECG scrolling — */
-.s6-ecg {
-    stroke-dasharray: 320;
-    stroke-dashoffset: 320;
+/* — Slide 6: Varredura de urgência falsa — */
+.slide.active .s6-alert-line {
+    animation: s6Scan 2.5s linear infinite, s6WarnGlow 2.5s ease-in-out infinite;
 }
-.slide.active .s6-ecg {
-    animation: s6Draw 2.5s linear infinite;
+.slide.active .s6-alert-pulse {
+    animation: s6PulseRing 2.5s ease-out infinite;
+    transform-origin: 80px 20px;
 }
-@keyframes s6Draw {
-    to { stroke-dashoffset: 0; }
+@keyframes s6Scan {
+    from { stroke-dashoffset: 0; }
+    to   { stroke-dashoffset: -60; }
+}
+@keyframes s6WarnGlow {
+    0%, 100% { filter: drop-shadow(0 0 0 rgba(239,68,68,0)); }
+    50%      { filter: drop-shadow(0 0 5px rgba(239,68,68,.4)); }
+}
+@keyframes s6PulseRing {
+    0%   { opacity: .85; transform: scale(.65); }
+    100% { opacity: 0; transform: scale(1.6); }
 }
 
-/* — Slide 7: O2 bar dropping — */
-.slide.active .s7-bar {
-    animation: s7Drop 5s ease-in-out infinite;
+/* — Slide 7: Domínio suspeito (queda de confiança) — */
+.slide.active .s7-trust-meter {
+    animation: s7Drop 4.6s ease-in-out infinite;
 }
 @keyframes s7Drop {
-    0%, 10%  { height: 24px; y: 24; fill: #22c55e; }
+    0%, 10%  { height: 26px; y: 22; fill: #22c55e; }
     50%      { height: 8px; y: 40; fill: #ef4444; }
-    90%, 100%{ height: 24px; y: 24; fill: #22c55e; }
+    90%, 100%{ height: 26px; y: 22; fill: #22c55e; }
 }
-.slide.active .s7-lung-l,
-.slide.active .s7-lung-r {
-    animation: s7Flush 5s ease-in-out infinite;
+.slide.active .s7-url-box,
+.slide.active .s7-domain-alert,
+.slide.active .s7-spoof-dot {
+    animation: s7SpoofPulse 4.6s ease-in-out infinite;
 }
-@keyframes s7Flush {
-    0%, 10%  { fill: #fecaca; }
-    50%      { fill: #ef4444; }
-    90%, 100%{ fill: #fecaca; }
+@keyframes s7SpoofPulse {
+    0%, 10%  { opacity: .75; filter: drop-shadow(0 0 0 rgba(239,68,68,0)); }
+    50%      { opacity: 1; transform: translateX(.8px); filter: drop-shadow(0 0 6px rgba(239,68,68,.3)); }
+    90%, 100%{ opacity: .75; filter: drop-shadow(0 0 0 rgba(239,68,68,0)); }
 }
 
-/* — Slide 9: Balance scale tilting — */
+/* — Slide 9: Decisão em desequilíbrio — */
 .s9-beam { transform-origin: 60px 26px; }
 .slide.active .s9-beam {
-    animation: s9Tilt 4s ease-in-out infinite;
+    animation: s9Tilt 4.4s ease-in-out infinite;
 }
 @keyframes s9Tilt {
     0%, 100% { transform: rotate(0deg); }
-    25%      { transform: rotate(8deg); }
-    75%      { transform: rotate(-8deg); }
+    25%      { transform: rotate(6deg); }
+    75%      { transform: rotate(-6deg); }
 }
 
 /* — Slide 10: Escalation steps lighting up — */
@@ -978,7 +999,7 @@ button, .nav-button { cursor: pointer; }
     95%, 100%{ opacity: .4; }
 }
 
-/* — Slide 11: Shield pulsing — */
+/* — Slide 11: Escudo ativo contra MFA fatigue — */
 .slide.active .s11-shield {
     animation: s11Pulse 3s ease-in-out infinite;
 }
@@ -987,13 +1008,23 @@ button, .nav-button { cursor: pointer; }
     50%      { fill: rgba(0,133,66,.22); filter: drop-shadow(0 0 8px rgba(0,133,66,.3)); }
 }
 
-/* — Slide 12: Syringe + shield fill — */
-.slide.active .s12-plunger {
-    animation: s12Push 5s ease-in-out infinite;
+/* — Slide 12: Checagem e validação em camadas — */
+.slide.active .s12-warning-row {
+    animation: s12WarningRow 5s ease-in-out infinite;
 }
-@keyframes s12Push {
-    0%, 15%  { x: 2; }
-    45%, 100%{ x: 32; }
+.slide.active .s12-active-row {
+    animation: s12ActiveRow 5s ease-in-out infinite;
+    transform-origin: 14px 30px;
+}
+@keyframes s12WarningRow {
+    0%, 35%  { fill: #cbd5e1; }
+    50%, 75% { fill: #fca5a5; }
+    95%, 100%{ fill: #cbd5e1; }
+}
+@keyframes s12ActiveRow {
+    0%, 35%  { transform: scaleX(.7); opacity: .55; }
+    50%, 75% { transform: scaleX(1.25); opacity: 1; }
+    95%, 100%{ transform: scaleX(.7); opacity: .55; }
 }
 .slide.active .s12-shield {
     animation: s12Fill 5s ease-in-out infinite;
@@ -1012,14 +1043,14 @@ button, .nav-button { cursor: pointer; }
     95%, 100%{ opacity: 0; transform: scale(.5); }
 }
 
-/* — Slide 13: Handwash drops + sparkle — */
+/* — Slide 13: Queda de credencial + bloqueio — */
 .slide.active .s13-d1 { animation: s13Drop 3s ease-in infinite; }
 .slide.active .s13-d2 { animation: s13Drop 3s .4s ease-in infinite; }
 .slide.active .s13-d3 { animation: s13Drop 3s .8s ease-in infinite; }
 @keyframes s13Drop {
     0%   { transform: translateY(0); opacity: 1; }
-    80%  { opacity: .4; }
-    100% { transform: translateY(18px); opacity: 0; }
+    80%  { opacity: .45; }
+    100% { transform: translateY(14px); opacity: 0; }
 }
 .slide.active .s13-sparkle {
     animation: s13Sparkle 3s 1s ease-in-out infinite;
@@ -1030,24 +1061,24 @@ button, .nav-button { cursor: pointer; }
     90%, 100%{ opacity: 0; }
 }
 
-/* — Slide 14: Air flow + particles exiting — */
+/* — Slide 14: Fluxo seguro contínuo — */
 .slide.active .s14-f1 { animation: s14Flow 3s ease-in-out infinite; }
 .slide.active .s14-f2 { animation: s14Flow 3s .3s ease-in-out infinite; }
 .slide.active .s14-f3 { animation: s14Flow 3s .6s ease-in-out infinite; }
 @keyframes s14Flow {
-    0%   { opacity: .3; transform: translateX(0); }
-    50%  { opacity: .7; }
-    100% { opacity: .3; transform: translateX(8px); }
+    0%   { opacity: .35; transform: translateX(0); }
+    50%  { opacity: .8; }
+    100% { opacity: .35; transform: translateX(8px); }
 }
 .slide.active .s14-px1 { animation: s14Exit 2.5s ease-in infinite; }
 .slide.active .s14-px2 { animation: s14Exit 2.5s .5s ease-in infinite; }
 .slide.active .s14-px3 { animation: s14Exit 2.5s 1s ease-in infinite; }
 @keyframes s14Exit {
-    0%   { transform: translateX(0); opacity: .8; }
+    0%   { transform: translateX(0); opacity: .75; }
     100% { transform: translateX(70px); opacity: 0; }
 }
 
-/* — Slide 15: Mask blocking particles — */
+/* — Slide 15: Contenção após clique indevido — */
 .slide.active .s15-barrier {
     animation: s15Barrier 4s ease-in-out infinite;
 }
@@ -1066,7 +1097,7 @@ button, .nav-button { cursor: pointer; }
     85%, 100%{ transform: translateX(0); opacity: .8; }
 }
 
-/* — Slide 16: Alert beacon rings — */
+/* — Slide 16: Alerta e reporte rápido — */
 .slide.active .s16-r1 { animation: s16Ring 2.5s ease-out infinite; }
 .slide.active .s16-r2 { animation: s16Ring 2.5s .4s ease-out infinite; }
 .slide.active .s16-r3 { animation: s16Ring 2.5s .8s ease-out infinite; }
@@ -1075,7 +1106,7 @@ button, .nav-button { cursor: pointer; }
     100% { opacity: 0; transform: scale(1.2); }
 }
 
-/* — Slide 17: Team circle connecting — */
+/* — Slide 17: Rede de proteção colaborativa — */
 .s17-l1, .s17-l2, .s17-l3, .s17-l4, .s17-l5 { opacity: 0; }
 .s17-d1, .s17-d2, .s17-d3, .s17-d4, .s17-d5 { opacity: 0; }
 .slide.active .s17-d1 { animation: s17Pop 6s .0s ease-in-out infinite; }
@@ -1099,13 +1130,13 @@ button, .nav-button { cursor: pointer; }
     90%, 100%{ opacity: 0; }
 }
 
-/* — Slide 18: Heartbeat scroll — */
-.s18-beat {
+/* — Slide 18: Encerramento com sinal digital contínuo — */
+.s18-signal {
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
 }
-.slide.active .s18-beat {
-    animation: s18Scroll 3s linear infinite;
+.slide.active .s18-signal {
+    animation: s18Scroll 3.2s linear infinite;
 }
 @keyframes s18Scroll {
     to { stroke-dashoffset: 0; }
@@ -1215,59 +1246,66 @@ button, .nav-button { cursor: pointer; }
     92%, 100%{ opacity: 0; transform: translateY(18px) scale(.85); }
 }
 
-/* People silhouettes appearing one by one on each loop */
-.person { opacity: 0; }
-.slide.active .person-1 { animation: personPop1 8s cubic-bezier(.22,1,.36,1) infinite; }
-.slide.active .person-2 { animation: personPop2 8s cubic-bezier(.22,1,.36,1) infinite; }
-.slide.active .person-3 { animation: personPop3 8s cubic-bezier(.22,1,.36,1) infinite; }
-@keyframes personPop1 {
+/* QR cells blink as a scan target */
+.qr-cell { opacity: 0; transform-origin: center; }
+.slide.active .qr-cell-1 { animation: qrCellPop1 8s cubic-bezier(.22,1,.36,1) infinite; }
+.slide.active .qr-cell-2 { animation: qrCellPop2 8s cubic-bezier(.22,1,.36,1) infinite; }
+.slide.active .qr-cell-3 { animation: qrCellPop3 8s cubic-bezier(.22,1,.36,1) infinite; }
+.slide.active .qr-cell-4 { animation: qrCellPop2 8s .2s cubic-bezier(.22,1,.36,1) infinite; }
+.slide.active .qr-cell-5 { animation: qrCellPop3 8s .35s cubic-bezier(.22,1,.36,1) infinite; }
+@keyframes qrCellPop1 {
     0%, 9%   { opacity: 0; transform: scale(.5); }
     13%, 85% { opacity: 1; transform: scale(1); }
     92%, 100%{ opacity: 0; transform: scale(.5); }
 }
-@keyframes personPop2 {
+@keyframes qrCellPop2 {
     0%, 11%  { opacity: 0; transform: scale(.5); }
     15%, 85% { opacity: 1; transform: scale(1); }
     92%, 100%{ opacity: 0; transform: scale(.5); }
 }
-@keyframes personPop3 {
+@keyframes qrCellPop3 {
     0%, 13%  { opacity: 0; transform: scale(.5); }
     17%, 85% { opacity: 1; transform: scale(1); }
     92%, 100%{ opacity: 0; transform: scale(.5); }
 }
 
-/* Clock hands spinning */
-.clock-minute-hand,
-.clock-hour-hand {
-    transform-origin: 40px 40px;
+/* Validation lens confirms the destination before login */
+.validation-ring,
+.validation-check {
+    transform-origin: 35px 34px;
 }
-.slide.active .clock-minute-hand {
-    animation: clockSpin 3s linear infinite;
+.slide.active .validation-ring {
+    animation: validationScan 3s ease-in-out infinite;
 }
-.slide.active .clock-hour-hand {
-    animation: clockSpin 36s linear infinite;
+.slide.active .validation-check {
+    animation: validationCheck 3s ease-in-out infinite;
 }
-@keyframes clockSpin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+@keyframes validationScan {
+    0%, 100% { transform: scale(.95); opacity: .55; }
+    50%      { transform: scale(1.08); opacity: 1; }
+}
+@keyframes validationCheck {
+    0%, 35%  { opacity: 0; stroke-dasharray: 32; stroke-dashoffset: 32; }
+    55%, 80% { opacity: 1; stroke-dasharray: 32; stroke-dashoffset: 0; }
+    100%     { opacity: 0; stroke-dasharray: 32; stroke-dashoffset: 0; }
 }
 
-/* Wind lines dim and X slashes in on each loop */
-.wind-lines { opacity: 1; }
-.slide.active .wind-lines {
-    animation: windFadeLoop 8s ease-out infinite;
+/* Fake login form dims and X slashes in on each loop */
+.login-fields { opacity: 1; }
+.slide.active .login-fields {
+    animation: loginFormFadeLoop 8s ease-out infinite;
 }
-@keyframes windFadeLoop {
+@keyframes loginFormFadeLoop {
     0%, 45%  { opacity: 1; }
     50%, 85% { opacity: .25; }
     92%, 100%{ opacity: 1; }
 }
-.vent-x-mark {
+.login-x-mark {
     opacity: 0;
     transform: scale(0) rotate(-90deg);
     transform-origin: 40px 40px;
 }
-.slide.active .vent-x-mark {
+.slide.active .login-x-mark {
     animation: xSlashLoop 8s cubic-bezier(.22,1,.36,1) infinite;
 }
 @keyframes xSlashLoop {
@@ -1299,44 +1337,44 @@ button, .nav-button { cursor: pointer; }
 }
 
 /* ============================================
-   ALERT PILLS (Slide 6) — alive feel
+   ALERT PILLS (Slide 6) — pulso de atenção
    ============================================ */
 .slide.active .rounded-full.shadow-lg {
-    animation: alertPillBreathe 3.5s ease-in-out infinite;
+    animation: alertPillPulse 3.8s ease-in-out infinite;
     position: relative;
 }
 .slide.active .delay-2.rounded-full.shadow-lg { animation-delay: .4s; }
 .slide.active .delay-3.rounded-full.shadow-lg { animation-delay: .8s; }
 .slide.active .delay-4.rounded-full.shadow-lg { animation-delay: 1.2s; }
 .slide.active .delay-5.rounded-full.shadow-lg { animation-delay: 1.6s; }
-@keyframes alertPillBreathe {
-    0%, 100% { transform: scale(1); box-shadow: 0 10px 15px -3px rgba(0,0,0,.1); }
-    50%      { transform: scale(1.04); box-shadow: 0 10px 25px -3px rgba(0,0,0,.18); }
+@keyframes alertPillPulse {
+    0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 10px 15px -3px rgba(0,0,0,.1); }
+    50%      { transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 24px -3px rgba(0,0,0,.16); }
 }
 
 /* ============================================
    SLIDE HEADER ICONS — pulse ring
    ============================================ */
 .slide.active .w-12.h-12.rounded-full {
-    animation: headerIconPulse 3s ease-in-out infinite;
+    animation: headerIconPulse 3.6s ease-in-out infinite;
 }
 @keyframes headerIconPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(0,133,66,.25); }
-    50%      { box-shadow: 0 0 0 6px rgba(0,133,66,0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,133,66,.22); }
+    50%      { box-shadow: 0 0 0 5px rgba(0,133,66,0); }
 }
 
 /* ============================================
    LOGOS — gentle float
    ============================================ */
 .slide.active .logos-container img {
-    animation: logoFloat 5s ease-in-out infinite;
+    animation: logoFloat 6s ease-in-out infinite;
 }
 .slide.active .logos-container img:nth-child(2) {
     animation-delay: 1s;
 }
 @keyframes logoFloat {
     0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-5px); }
+    50%      { transform: translateY(-3px); }
 }
 
 /* ============================================
@@ -1345,7 +1383,7 @@ button, .nav-button { cursor: pointer; }
 .slide.active.gradient-bg,
 .slide.active.subtle-bg,
 .slide.active.low-opacity-gradient-bg {
-    animation: bgShift 12s ease-in-out infinite;
+    animation: bgShift 18s ease-in-out infinite;
     background-size: 200% 200%;
 }
 @keyframes bgShift {
@@ -1357,10 +1395,10 @@ button, .nav-button { cursor: pointer; }
    CONTENT MOTION — text, cards and lists
    ============================================ */
 .slide.active .card p {
-    animation: textBreathe 6s ease-in-out infinite;
+    animation: textSignalFocus 8s ease-in-out infinite;
 }
-@keyframes textBreathe {
-    0%, 100% { opacity: .9; }
+@keyframes textSignalFocus {
+    0%, 100% { opacity: .93; }
     50%      { opacity: 1; }
 }
 
@@ -1389,18 +1427,18 @@ button, .nav-button { cursor: pointer; }
     inset: 0;
     background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.15) 45%, transparent 90%);
     transform: translateX(-120%);
-    animation: cardSweep 8s ease-in-out infinite;
+    animation: cardSweep 10s ease-in-out infinite;
     pointer-events: none;
 }
 @keyframes cardSweep {
     0%, 20%   { transform: translateX(-120%); opacity: 0; }
-    28%, 52%  { transform: translateX(120%); opacity: 1; }
+    30%, 48%  { transform: translateX(120%); opacity: .7; }
     60%, 100% { transform: translateX(120%); opacity: 0; }
 }
 
 /* Marcadores das listas com micro movimento */
 .slide.active .card-list li span:first-child {
-    animation: bulletPulse 2.8s ease-in-out infinite;
+    animation: bulletPulse 3.2s ease-in-out infinite;
 }
 .slide.active .card-list li:nth-child(2) span:first-child { animation-delay: .25s; }
 .slide.active .card-list li:nth-child(3) span:first-child { animation-delay: .5s; }
@@ -1408,27 +1446,27 @@ button, .nav-button { cursor: pointer; }
 .slide.active .card-list li:nth-child(5) span:first-child { animation-delay: 1s; }
 @keyframes bulletPulse {
     0%, 100% { transform: scale(1); opacity: .85; }
-    50%      { transform: scale(1.25); opacity: 1; }
+    50%      { transform: scale(1.15); opacity: 1; }
 }
 
 /* Listas textuais fora de cards (ex.: slide 4) */
 .slide.active ul.list-inside li {
-    animation: outsideListWave 5.5s ease-in-out infinite;
+    animation: outsideListWave 6.5s ease-in-out infinite;
 }
 .slide.active ul.list-inside li:nth-child(2) { animation-delay: .3s; }
 .slide.active ul.list-inside li:nth-child(3) { animation-delay: .6s; }
 .slide.active ul.list-inside li:nth-child(4) { animation-delay: .9s; }
 @keyframes outsideListWave {
     0%, 100% { opacity: .9; transform: translateX(0); }
-    50%      { opacity: 1; transform: translateX(3px); }
+    50%      { opacity: 1; transform: translateX(2px); }
 }
 
-/* Parágrafos de bloco principal ganham respiração sutil */
+/* Parágrafos de bloco principal ganham foco sutil */
 .slide.active .m-auto > p,
 .slide.active .slide-content > p {
-    animation: bodyTextBreathe 6.2s ease-in-out infinite;
+    animation: bodyTextFocus 6.2s ease-in-out infinite;
 }
-@keyframes bodyTextBreathe {
+@keyframes bodyTextFocus {
     0%, 100% { opacity: .88; }
     50%      { opacity: 1; }
 }
