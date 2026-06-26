@@ -1,843 +1,295 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
-    <title>Segurança Digital no Trabalho: o clique que vira incidente | DDSMS</title>
-    <meta name="description" content="DDSMS sobre segurança digital no trabalho: engenharia social, phishing, roubo de credenciais e comportamentos seguros na rotina corporativa.">
-    <meta name="keywords" content="Segurança digital, phishing, engenharia social, MFA, credenciais, DDSMS, conscientização, comportamento seguro">
-    <meta name="author" content="Petrobras | AGF Engenharia">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DDSMS — Regra de Ouro 8: Atenção às Mudanças. Quando algo muda, pare. Processe. Só prossiga com segurança.">
+  <meta property="og:title" content="DDSMS — Atenção às Mudanças | Regra de Ouro 8">
+  <meta property="og:description" content="Quando algo muda, pare. Processe. Só prossiga com segurança.">
+  <meta property="og:image" content="./assets/img/og-image.jpg">
+  <meta property="og:type" content="website">
+  <title>DDSMS — Atenção às Mudanças | Regra de Ouro 8</title>
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/layout.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+  <link rel="stylesheet" href="./assets/css/responsive.css">
 </head>
 <body>
-    <div id="loading-screen">
-        <div class="loader-spinner"></div>
-        <div class="loader-text">Carregando apresentação...</div>
+  <a class="skip-link" href="#hero">Ir para o conteúdo</a>
+
+  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progresso horizontal da apresentação">
+    <div class="progress-bar__fill"></div>
+  </div>
+
+  <div class="transition-scrim" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="site-header__inner">
+      <a class="site-header__brand" href="#hero" data-section="hero" aria-label="Início da apresentação">
+        <span class="site-header__brand-mark">DDSMS</span>
+        <span class="site-header__brand-sub">Regra de Ouro 8</span>
+      </a>
+      <nav class="site-nav" aria-label="Seções da apresentação">
+        <ul class="site-nav__list">
+          <li><a href="#hero"       data-section="hero">Início</a></li>
+          <li><a href="#regra"      data-section="regra">Regra</a></li>
+          <li><a href="#tres-ps"    data-section="tres-ps">3 Ps</a></li>
+          <li><a href="#video"      data-section="video">Vídeo</a></li>
+          <li><a href="#debrief"    data-section="debrief">Debrief</a></li>
+          <li><a href="#fechamento" data-section="fechamento">Fechamento</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__tools">
+        <span class="panel-counter" aria-live="polite">
+          <span id="panel-current">01</span><span class="panel-counter__sep">/</span>06
+        </span>
+        <button class="btn btn--ghost btn--icon" id="btn-presentation" type="button"
+                aria-label="Alternar modo apresentação" aria-pressed="false"
+                title="Modo apresentação (P)">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <rect x="1" y="3" width="16" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 7h6M6 10h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
     </div>
-    <canvas id="particles-canvas"></canvas>
-    <main id="presentationCard">
-        <div class="presentation-header">
-            <div class="header-left">
-                <div class="brand-pill">DDSMS | Segurança Digital</div>
-                <div id="slideIndicator" class="slide-indicator" aria-live="polite">1 / 18</div>
-            </div>
-            <div class="header-right">
-                <div id="timer" class="hud-chip" aria-label="Timer da apresentação">00:00</div>
-                <button id="fullscreenBtn" class="hud-chip" aria-label="Alternar tela cheia">
-                    <span id="fs-enter-icon" aria-hidden="true">&#x26F6;</span>
-                    <span id="fs-exit-icon" class="hidden" aria-hidden="true">&#x1F5D7;</span>
-                </button>
-            </div>
-        </div>
-        <div class="slides-container">
+  </header>
 
-        <!-- Slide 1: Capa -->
-        <section id="slide-1" class="slide active gradient-bg text-center">
-            <div class="slide-content">
-                <div class="logos-container animated-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" alt="Logo Petrobras">
-                    <img src="https://www.agfengenharia.com.br/wp-content/uploads/2018/09/group-20668-211507.png" alt="Logo AGF Engenharia">
-                </div>
-                <div class="animated-item delay-1 section-kicker mb-4">DDSMS | Segurança Digital</div>
-                <h1 class="animated-item delay-2 section-title">
-                    <span class="title-line">Segurança Digital no Trabalho</span>
-                    <span class="title-line">o clique que vira <span class="title-accent">incidente</span></span>
-                </h1>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 140 70" class="illust-svg" aria-hidden="true">
-                        <rect class="s1-login-card" x="44" y="14" width="24" height="30" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
-                        <rect class="s1-data-card" x="72" y="14" width="24" height="30" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
-                        <rect x="62" y="24" width="16" height="22" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
-                        <path d="M66 24 v-4 a4 4 0 0 1 8 0 v4" fill="none" stroke="#2563eb" stroke-width="1.5"/>
-                        <circle class="s1-risk-dot" cx="18" cy="18" r="7" fill="#ef4444"/>
-                        <text class="s1-lock-icon" x="118" y="24" font-size="16" fill="#22c55e">&#x1F512;</text>
-                    </svg>
-                </div>
-                <p class="animated-item delay-3 mt-6 section-lead">
-                    Na rotina corporativa, um clique apressado pode expor dados, sistemas e operações.
-                </p>
-            </div>
-        </section>
-
-        <!-- Slide 2: Por que importa -->
-        <div id="slide-2" class="slide w-full h-full subtle-bg text-center">
-            <div class="m-auto w-full max-w-3xl">
-                <div class="animated-item section-kicker mb-3">Por que isso importa</div>
-                <h2 class="animated-item section-title text-gray-800 mb-6">Incidente digital começa no comportamento</h2>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 80 70" class="illust-svg" aria-hidden="true">
-                        <rect x="30" y="10" width="20" height="42" rx="5" fill="none" stroke="#9CA3AF" stroke-width="2"/>
-                        <rect class="s2-risk-fill" x="33" y="34" width="14" height="14" rx="3" fill="#ef4444"/>
-                        <line x1="34" y1="20" x2="46" y2="20" stroke="#d1d5db" stroke-width="2"/>
-                        <line x1="34" y1="28" x2="46" y2="28" stroke="#d1d5db" stroke-width="2"/>
-                        <circle class="s2-v1" cx="16" cy="18" r="4" fill="#d1d5db" opacity=".5"/>
-                        <circle class="s2-v2" cx="64" cy="14" r="3.5" fill="#d1d5db" opacity=".5"/>
-                        <circle class="s2-v3" cx="66" cy="42" r="3" fill="#d1d5db" opacity=".4"/>
-                    </svg>
-                </div>
-                <div class="animated-item delay-1 card card--success">
-                    <p class="text-2xl text-gray-700 leading-relaxed">
-                        A maioria dos ataques não começa no firewall.
-                        <br>
-                        Começa na caixa de e-mail, no chat ou no celular.
-                    </p>
-                    <p class="mt-6 text-xl text-gray-600">
-                        Quando a atenção cai, o risco cresce.
-                    </p>
-                    <p class="mt-4 text-base text-gray-600 leading-relaxed">
-                        Um clique em link falso, QR malicioso ou anexo suspeito pode gerar
-                        vazamento, indisponibilidade de sistemas, prejuízo financeiro e impacto reputacional.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 3: Engenharia social -->
-        <div id="slide-3" class="slide w-full h-full text-center">
-            <div class="m-auto w-full max-w-5xl">
-                <div class="animated-item section-kicker mb-2">Conceito-chave</div>
-                <h2 class="animated-item section-title text-gray-800 mb-8">O que é engenharia social?</h2>
-                <div class="slide-illust slide-illust--sm">
-                    <svg viewBox="0 0 60 60" class="illust-svg illust-svg--sm" aria-hidden="true">
-                        <circle cx="30" cy="30" r="22" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="4 3"/>
-                        <path class="s3-arrow" d="M30 8 A22 22 0 1 1 9 36" fill="none" stroke="#008542" stroke-width="2.5" stroke-linecap="round"/>
-                        <polygon class="s3-arrow" points="6,30 13,38 1,36" fill="#008542"/>
-                        <text class="s3-risk" x="30" y="25" text-anchor="middle" font-size="14" fill="#ef4444" font-weight="bold" opacity="0">!</text>
-                        <text class="s3-verify" x="30" y="44" text-anchor="middle" font-size="12" fill="#22c55e" font-weight="bold" opacity="0">&#x2713;</text>
-                    </svg>
-                </div>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="animated-item delay-1 card hover-lift text-center">
-                        <div class="icon-pill icon-pill--emerald mx-auto mb-3">
-                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_shield_24_filled.svg" alt="Manipulação emocional">
-                        </div>
-                        <div class="card-title">Manipulação emocional</div>
-                        <p class="text-sm text-gray-600">Atacante usa medo, curiosidade ou pressa para induzir ação.</p>
-                        <p class="mt-2 text-xs text-gray-500">Exemplo: "sua conta será bloqueada em 10 minutos".</p>
-                    </div>
-                    <div class="animated-item delay-2 card hover-lift text-center">
-                        <div class="icon-pill icon-pill--blue mx-auto mb-3">
-                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_document_24_filled.svg" alt="História convincente">
-                        </div>
-                        <div class="card-title">História convincente</div>
-                        <p class="text-sm text-gray-600">Mensagem parece legítima: RH, TI, banco, fornecedor ou liderança.</p>
-                        <p class="mt-2 text-xs text-gray-500">Pode vir por e-mail, WhatsApp, Teams, SMS ou ligação.</p>
-                    </div>
-                    <div class="animated-item delay-3 card hover-lift text-center">
-                        <div class="icon-pill icon-pill--yellow mx-auto mb-3">
-                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_clock_24_filled.svg" alt="Ação rápida">
-                        </div>
-                        <div class="card-title">Ação sem checagem</div>
-                        <p class="text-sm text-gray-600">Objetivo é fazer você clicar, baixar ou informar dados.</p>
-                        <p class="mt-2 text-xs text-gray-500">Quanto menos tempo para pensar, maior a chance de erro.</p>
-                    </div>
-                    <div class="animated-item delay-4 card hover-lift text-center">
-                        <div class="icon-pill icon-pill--purple mx-auto mb-3">
-                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_eye_show_24_filled.svg" alt="Aparência real">
-                        </div>
-                        <div class="card-title">Aparência de normalidade</div>
-                        <p class="text-sm text-gray-600">Layout, assinatura e logotipo podem ser copiados.</p>
-                        <p class="mt-2 text-xs text-gray-500">Visual profissional não garante autenticidade.</p>
-                    </div>
-                    <div class="animated-item delay-5 card hover-lift text-center">
-                        <div class="icon-pill icon-pill--orange mx-auto mb-3">
-                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_people_add_24_filled.svg" alt="Alvo humano">
-                        </div>
-                        <div class="card-title">Alvo é a pessoa</div>
-                        <p class="text-sm text-gray-600">Não precisa quebrar sistema se alguém entregar acesso.</p>
-                        <p class="mt-2 text-xs text-gray-500">Tecnologia ajuda, mas comportamento decide.</p>
-                    </div>
-                    <div class="animated-item delay-6 card hover-lift text-center">
-                        <div class="icon-pill icon-pill--teal mx-auto mb-3">
-                            <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_shield_24_filled.svg" alt="Defesa comportamental">
-                        </div>
-                        <div class="card-title">Defesa diária</div>
-                        <p class="text-sm text-gray-600">Checar antes de agir interrompe o golpe.</p>
-                        <p class="mt-2 text-xs text-gray-500">Um minuto de validação evita horas de incidente.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 4: Como o phishing funciona -->
-        <div id="slide-4" class="slide w-full h-full subtle-bg text-center">
-            <div class="m-auto w-full max-w-4xl flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-1/3 animated-item">
-                    <div class="w-40 h-40 rounded-full mx-auto overflow-hidden shadow-xl border-4 border-emerald-500 flex items-center justify-center bg-white">
-                        <img class="icon-img" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_document_24_filled.svg" alt="Fluxo de phishing">
-                    </div>
-                </div>
-                <div class="md:w-2/3 text-center">
-                    <div class="animated-item delay-1 section-kicker mb-2">Fluxo do Ataque</div>
-                    <h2 class="animated-item section-title text-gray-800 mb-4">Como o phishing funciona?</h2>
-                    <p class="animated-item delay-2 text-lg text-gray-700">
-                        O golpe segue um roteiro simples: atrair atenção, provocar clique e capturar informação.
-                    </p>
-                    <ul class="animated-item delay-3 mt-6 space-y-3 text-lg text-gray-700 list-inside">
-                        <li>• Mensagem parece legítima</li>
-                        <li>• Link leva para página falsa</li>
-                        <li>• Usuário informa login/senha ou baixa arquivo</li>
-                        <li>• Invasor usa o acesso para se mover na rede</li>
-                    </ul>
-                    <div class="slide-illust mt-4">
-                        <svg viewBox="0 0 100 60" class="illust-svg" aria-hidden="true">
-                            <rect x="4" y="18" width="24" height="18" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
-                            <rect x="38" y="16" width="24" height="22" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
-                            <rect x="72" y="18" width="24" height="18" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
-                            <path d="M28 27 H38 M62 27 H72" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-                            <circle class="s4-flow-dot s4-p1" cx="18" cy="27" r="2.5" fill="#2563eb"/>
-                            <circle class="s4-flow-dot s4-p2" cx="50" cy="27" r="2.5" fill="#f59e0b"/>
-                            <circle class="s4-flow-dot s4-p3" cx="84" cy="27" r="2.5" fill="#ef4444"/>
-                        </svg>
-                    </div>
-                    <p class="animated-item delay-4 mt-5 text-base text-gray-600 leading-relaxed">
-                        Nem sempre há malware imediato: só o roubo de credencial já pode virar incidente crítico.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 5: Armadilhas comuns -->
-        <div id="slide-5" class="slide w-full h-full text-center">
-            <div class="m-auto w-full max-w-5xl">
-                <div class="animated-item section-kicker mb-2">Armadilhas Comuns</div>
-                <h2 class="animated-item section-title text-gray-800 mb-8">Onde as pessoas mais caem</h2>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 60 80" class="illust-svg" aria-hidden="true">
-                        <rect x="9" y="8" width="42" height="64" rx="6" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.5"/>
-                        <rect x="14" y="16" width="32" height="8" rx="3" fill="#e2e8f0"/>
-                        <rect x="14" y="30" width="24" height="5" rx="2" fill="#cbd5e1"/>
-                        <rect x="14" y="40" width="28" height="5" rx="2" fill="#cbd5e1"/>
-                        <rect x="14" y="50" width="20" height="5" rx="2" fill="#cbd5e1"/>
-                        <circle class="s5-dot s5-d1" cx="44" cy="18" r="3" fill="#ef4444" opacity="0"/>
-                        <circle class="s5-dot s5-d2" cx="40" cy="32" r="3" fill="#f59e0b" opacity="0"/>
-                        <circle class="s5-dot s5-d3" cx="44" cy="42" r="3" fill="#ef4444" opacity="0"/>
-                        <circle class="s5-dot s5-d4" cx="37" cy="52" r="2.5" fill="#f59e0b" opacity="0"/>
-                    </svg>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="animated-item delay-1 card card--danger">
-                        <div class="card-title">Gatilhos frequentes</div>
-                        <div class="card-heading text-red-700">Observe</div>
-                        <p class="text-gray-700 mb-4">Entradas mais usadas em golpes digitais:</p>
-                        <ul class="card-list text-red-900">
-                            <li><span>•</span><span>E-mail com "atualização urgente"</span></li>
-                            <li><span>•</span><span>Boleto/fatura inesperada</span></li>
-                            <li><span>•</span><span>Arquivo de currículo, contrato ou nota fiscal</span></li>
-                            <li><span>•</span><span>Mensagem de redefinição de senha</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="animated-item delay-2 card card--success">
-                        <div class="card-title">Conduta preventiva</div>
-                        <div class="card-heading text-emerald-700">Pense antes de clicar</div>
-                        <p class="text-gray-700 mb-4">Antes de qualquer ação, valide o contexto:</p>
-                        <ul class="card-list text-emerald-800">
-                            <li><span>•</span><span>Conferir remetente real</span></li>
-                            <li><span>•</span><span>Passar o mouse no link antes de abrir</span></li>
-                            <li><span>•</span><span>Confirmar pedido com canal oficial</span></li>
-                            <li><span>•</span><span>Acionar TI/Sec se houver dúvida</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="animated-item delay-3 mt-8 card card--soft text-center">
-                    <p class="text-xl text-gray-800 font-semibold">
-                        Golpe eficaz parece rotina normal.
-                    </p>
-                    <p class="mt-3 text-base text-gray-600">
-                        O cuidado está em validar rápido antes de agir no automático.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 6: Falsa urgência e falsa autoridade -->
-        <div id="slide-6" class="slide w-full h-full subtle-bg text-center">
-            <div class="m-auto">
-                <div class="animated-item section-kicker mb-2">Técnica de Persuasão</div>
-                <h2 class="animated-item section-title text-gray-800 mb-10">Falsa urgência e falsa autoridade</h2>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 160 40" class="illust-svg illust-svg--wide" aria-hidden="true">
-                        <line class="s6-alert-line" x1="8" y1="20" x2="152" y2="20" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8 7"/>
-                        <circle class="s6-alert-pulse" cx="80" cy="20" r="7" fill="none" stroke="#ef4444" stroke-width="2"/>
-                        <text x="80" y="24" text-anchor="middle" font-size="12" font-weight="bold" fill="#ef4444">!</text>
-                    </svg>
-                </div>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <div class="animated-item delay-1 px-6 py-3 bg-emerald-600 text-white rounded-full font-bold text-xl shadow-lg flex items-center gap-3">
-                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_shield_24_filled.svg" alt="Urgente"> "Urgente agora"
-                    </div>
-                    <div class="animated-item delay-2 px-6 py-3 bg-emerald-500 text-white rounded-full font-bold text-xl shadow-lg flex items-center gap-3">
-                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_people_add_24_filled.svg" alt="Diretoria"> "Pedido da diretoria"
-                    </div>
-                    <div class="animated-item delay-3 px-6 py-3 bg-teal-500 text-white rounded-full font-bold text-xl shadow-lg flex items-center gap-3">
-                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_chart_person_24_filled.svg" alt="Sigilo"> "Não conte para ninguém"
-                    </div>
-                    <div class="animated-item delay-4 px-6 py-3 bg-cyan-500 text-white rounded-full font-bold text-xl shadow-lg flex items-center gap-3">
-                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_clock_24_filled.svg" alt="Prazo curto"> "Prazo de minutos"
-                    </div>
-                    <div class="animated-item delay-5 px-6 py-3 bg-blue-500 text-white rounded-full font-bold text-xl shadow-lg flex items-center gap-3">
-                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_document_24_filled.svg" alt="Exceção"> "Abra exceção hoje"
-                    </div>
-                </div>
-                <p class="animated-item delay-6 mt-10 section-lead">
-                    Pressa + hierarquia simulada = menor senso crítico.
-                </p>
-                <p class="animated-item delay-6 mt-4 text-base text-gray-600">
-                    Sempre valide por um segundo canal antes de cumprir pedido urgente fora do padrão.
-                </p>
-            </div>
-        </div>
-
-        <!-- Slide 7: Links suspeitos -->
-        <div id="slide-7" class="slide w-full h-full text-center">
-            <div class="m-auto w-full max-w-4xl">
-                <div class="flex items-center justify-center mb-6">
-                    <div class="w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4 shadow-lg">!</div>
-                    <h2 class="section-title text-gray-800">Links e domínios suspeitos</h2>
-                </div>
-                <p class="animated-item delay-1 text-2xl text-gray-700 mb-8">Um caractere trocado no domínio já pode indicar golpe</p>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 120 70" class="illust-svg" aria-hidden="true">
-                        <rect class="s7-url-box" x="8" y="18" width="78" height="22" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
-                        <circle class="s7-spoof-dot" cx="18" cy="29" r="3" fill="#ef4444"/>
-                        <text x="26" y="32" font-size="8" fill="#374151" font-weight="bold">empresa-login.com</text>
-                        <text class="s7-domain-alert" x="48" y="56" text-anchor="middle" font-size="12" fill="#ef4444" font-weight="bold">domínio falso</text>
-                        <rect x="94" y="18" width="18" height="34" rx="4" fill="none" stroke="#6B7280" stroke-width="1.5"/>
-                        <rect class="s7-trust-meter" x="97" y="22" width="12" height="26" rx="2" fill="#22c55e"/>
-                    </svg>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="animated-item delay-2 card card--danger">
-                        <div class="card-title">Sinais de alerta</div>
-                        <ul class="card-list">
-                            <li><span>•</span><span>Domínio parecido, mas diferente</span></li>
-                            <li><span>•</span><span>Encurtador ou URL longa/confusa</span></li>
-                            <li><span>•</span><span>Erros de idioma e formatação</span></li>
-                            <li><span>•</span><span>Página de login fora do padrão</span></li>
-                        </ul>
-                    </div>
-                    <div class="animated-item delay-3 card card--soft">
-                        <div class="card-title">Mensagem-chave</div>
-                        <p class="text-gray-700 text-lg">Antes de clicar, passe o mouse e leia o endereço completo.</p>
-                        <p class="mt-3 text-base text-gray-600">
-                            Se o domínio não for exatamente o oficial, pare e valide pelo canal corporativo.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 8: QR code malicioso -->
-        <div id="slide-8" class="slide w-full h-full subtle-bg text-center">
-            <div class="m-auto w-full max-w-4xl">
-                <div class="flex items-center justify-center mb-6">
-                    <div class="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">
-                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_document_24_filled.svg" alt="QR code" style="filter: brightness(10);">
-                    </div>
-                    <h2 class="section-title text-gray-800">QR code malicioso</h2>
-                </div>
-                <div class="animated-item delay-1 card card--warning">
-                    <div class="card-title">Risco crescente</div>
-                    <p class="text-lg text-gray-600">QR é prático, mas oculta o destino real do link.</p>
-                    <p class="mt-3 text-base text-gray-500">Golpistas colam QR falso em cartazes, mesas, totens e comunicados digitais.</p>
-                </div>
-
-                <!-- Animated Risk Equation -->
-                <div class="animated-item delay-2 equation-container">
-                    <div class="equation-term eq-anim eq-step-1">
-                        <div class="equation-icon">
-                            <svg viewBox="0 0 80 80" class="eq-svg" aria-hidden="true">
-                                <rect x="16" y="16" width="48" height="48" rx="6" fill="#f8fafc" stroke="#374151" stroke-width="2"/>
-                                <rect class="qr-cell qr-cell-1" x="22" y="22" width="8" height="8" fill="#374151"/>
-                                <rect class="qr-cell qr-cell-2" x="50" y="22" width="8" height="8" fill="#374151"/>
-                                <rect class="qr-cell qr-cell-3" x="22" y="50" width="8" height="8" fill="#374151"/>
-                                <rect class="qr-cell qr-cell-4" x="38" y="34" width="6" height="6" fill="#ef4444"/>
-                                <rect class="qr-cell qr-cell-5" x="50" y="46" width="6" height="6" fill="#ef4444"/>
-                            </svg>
-                        </div>
-                        <span class="equation-label">QR desconhecido</span>
-                    </div>
-
-                    <div class="equation-operator eq-anim eq-step-2">+</div>
-
-                    <div class="equation-term eq-anim eq-step-3">
-                        <div class="equation-icon">
-                            <svg viewBox="0 0 80 80" class="eq-svg" aria-hidden="true">
-                                <circle class="validation-ring" cx="35" cy="34" r="18" fill="none" stroke="#374151" stroke-width="3"/>
-                                <line x1="49" y1="48" x2="64" y2="63" stroke="#374151" stroke-width="4" stroke-linecap="round"/>
-                                <path class="validation-check" d="M27 34 L34 41 L45 27" fill="none" stroke="#008542" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <span class="equation-label">Sem validação</span>
-                    </div>
-
-                    <div class="equation-operator eq-anim eq-step-4">+</div>
-
-                    <div class="equation-term eq-anim eq-step-5">
-                        <div class="equation-icon">
-                            <svg viewBox="0 0 80 80" class="eq-svg" aria-hidden="true">
-                                <g class="login-fields">
-                                    <rect x="14" y="16" width="52" height="42" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
-                                    <rect x="22" y="26" width="36" height="6" rx="3" fill="#cbd5e1"/>
-                                    <rect x="22" y="40" width="28" height="6" rx="3" fill="#cbd5e1"/>
-                                </g>
-                                <g class="login-x-mark">
-                                    <line x1="18" y1="18" x2="62" y2="62" stroke="#ef4444" stroke-width="5.5" stroke-linecap="round"/>
-                                    <line x1="62" y1="18" x2="18" y2="62" stroke="#ef4444" stroke-width="5.5" stroke-linecap="round"/>
-                                </g>
-                            </svg>
-                        </div>
-                        <span class="equation-label">Login solicitado</span>
-                    </div>
-
-                    <div class="equation-operator eq-equals eq-anim eq-step-6">=</div>
-
-                    <div class="equation-term eq-result eq-anim eq-step-7">
-                        <div class="equation-icon">
-                            <svg viewBox="0 0 80 80" class="eq-svg" aria-hidden="true">
-                                <path class="risk-triangle" d="M40 8 L74 68 L6 68 Z" fill="#fbbf24" stroke="#f59e0b" stroke-width="2.5" stroke-linejoin="round"/>
-                                <text x="40" y="56" text-anchor="middle" font-size="30" font-weight="bold" fill="#92400e">!</text>
-                            </svg>
-                        </div>
-                        <span class="equation-label equation-label--danger">Roubo de acesso</span>
-                    </div>
-                </div>
-
-                <div class="animated-item delay-3 mt-4 card card--success text-center">
-                    <p class="text-base text-gray-700">
-                        Só escaneie QR de fonte confiável e nunca informe credenciais sem confirmar o domínio.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 9: Anexos suspeitos -->
-        <div id="slide-9" class="slide w-full h-full text-center">
-            <div class="m-auto w-full max-w-4xl">
-                <div class="flex items-center justify-center mb-6">
-                    <div class="w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4 shadow-lg">&#x2715;</div>
-                    <h2 class="section-title text-gray-800">Anexos e arquivos falsos</h2>
-                </div>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 120 70" class="illust-svg" aria-hidden="true">
-                        <line x1="60" y1="6" x2="60" y2="20" stroke="#6B7280" stroke-width="3"/>
-                        <polygon points="55,6 65,6 60,1" fill="#6B7280"/>
-                        <line class="s9-beam" x1="20" y1="26" x2="100" y2="26" stroke="#374151" stroke-width="3" stroke-linecap="round"/>
-                        <line x1="22" y1="26" x2="22" y2="44" stroke="#9CA3AF" stroke-width="1.5"/>
-                        <path d="M8 48 Q22 44 36 48" fill="#fecaca" stroke="#ef4444" stroke-width="1"/>
-                        <text x="22" y="62" text-anchor="middle" font-size="10" fill="#ef4444" font-weight="bold">&#x2717;</text>
-                        <line x1="98" y1="26" x2="98" y2="44" stroke="#9CA3AF" stroke-width="1.5"/>
-                        <path d="M84 48 Q98 44 112 48" fill="#bbf7d0" stroke="#22c55e" stroke-width="1"/>
-                        <text x="98" y="62" text-anchor="middle" font-size="10" fill="#22c55e" font-weight="bold">&#x2713;</text>
-                    </svg>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="animated-item delay-1 card card--danger">
-                        <div class="card-title">Armadilhas comuns</div>
-                        <p class="text-lg text-gray-600">Arquivos com dupla extensão e nome conhecido.</p>
-                        <p class="mt-3 text-base text-gray-500">Ex.: nota_fiscal.pdf.exe, contrato.zip, curriculo.xlsm.</p>
-                    </div>
-                    <div class="animated-item delay-2 card card--success">
-                        <div class="card-title">Conduta correta</div>
-                        <p class="text-gray-700 text-lg">Não abrir anexo inesperado, mesmo de remetente conhecido.</p>
-                        <p class="mt-3 text-base text-gray-600">Responsabilidade coletiva começa com uma decisão individual correta.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 10: Roubo de credenciais -->
-        <div id="slide-10" class="slide w-full h-full subtle-bg text-center">
-            <div class="m-auto w-full max-w-4xl">
-                <div class="flex items-center justify-center mb-6">
-                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4 shadow-lg">&#x26A0;</div>
-                    <h2 class="section-title text-gray-800">Roubo de credenciais</h2>
-                </div>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 130 55" class="illust-svg illust-svg--wide" aria-hidden="true">
-                        <rect class="s10-bar1" x="8" y="35" width="28" height="18" rx="4" fill="#86efac"/>
-                        <rect class="s10-bar2" x="46" y="20" width="28" height="33" rx="4" fill="#fbbf24"/>
-                        <rect class="s10-bar3" x="84" y="5" width="28" height="48" rx="4" fill="#fca5a5"/>
-                        <text x="22" y="48" text-anchor="middle" font-size="7" fill="#166534">Tentativa</text>
-                        <text x="60" y="48" text-anchor="middle" font-size="7" fill="#854d0e">Acesso</text>
-                        <text x="98" y="48" text-anchor="middle" font-size="7" fill="#991b1b">Incidente</text>
-                        <circle class="s10-dot" cx="22" cy="30" r="4" fill="#008542" opacity="0"/>
-                    </svg>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="animated-item delay-1 card card--warning">
-                        <div class="card-title">Como acontece</div>
-                        <p class="text-lg text-gray-600">Usuário digita login e senha em página falsa.</p>
-                        <p class="text-lg text-gray-600 mt-2">Invasor captura acesso em segundos.</p>
-                        <p class="mt-3 text-base text-gray-500">Com credencial válida, o atacante parece usuário legítimo.</p>
-                    </div>
-                    <div class="animated-item delay-2 card card--soft">
-                        <div class="card-title">Impacto</div>
-                        <p class="text-gray-700 text-lg">Acesso indevido, movimentação lateral e exfiltração de dados.</p>
-                        <p class="mt-3 text-base text-gray-600">Um único login comprometido pode abrir caminho para incidente maior.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 11: Fadiga de MFA -->
-        <div id="slide-11" class="slide w-full h-full text-center">
-            <div class="m-auto w-full max-w-4xl">
-                <div class="flex items-center justify-center mb-6">
-                    <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mr-4">
-                        <img class="icon-img sm" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_people_add_24_filled.svg" alt="MFA" style="filter: brightness(10);">
-                    </div>
-                    <h2 class="section-title text-gray-800">MFA fatigue e aprovação indevida</h2>
-                </div>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 80 70" class="illust-svg" aria-hidden="true">
-                        <path class="s11-shield" d="M40 4 L68 16 L68 38 Q68 56 40 64 Q12 56 12 38 L12 16 Z" fill="rgba(0,133,66,.12)" stroke="#008542" stroke-width="2"/>
-                        <circle cx="30" cy="32" r="5" fill="#374151"/>
-                        <rect x="25" y="40" width="10" height="12" rx="3" fill="#374151"/>
-                        <circle cx="50" cy="32" r="5" fill="#374151"/>
-                        <rect x="45" y="40" width="10" height="12" rx="3" fill="#374151"/>
-                    </svg>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="animated-item delay-1 card card--danger">
-                        <div class="card-title">Tática do atacante</div>
-                        <p class="text-lg text-gray-600">Disparar várias notificações de MFA até alguém aprovar por cansaço.</p>
-                        <p class="text-lg text-gray-600 mt-2">Também pode ligar fingindo ser suporte para "ajudar".</p>
-                        <p class="mt-3 text-base text-gray-500">A aprovação indevida dá acesso mesmo com MFA ativo.</p>
-                    </div>
-                    <div class="animated-item delay-2 card card--success">
-                        <div class="card-title">Resposta segura</div>
-                        <p class="text-gray-700 text-lg">Negue solicitações que você não iniciou.</p>
-                        <p class="mt-3 text-base text-gray-600">Reporte imediatamente tentativas repetidas de push no canal de segurança.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 12: Sinais de alerta -->
-        <div id="slide-12" class="slide w-full h-full subtle-bg text-center">
-            <div class="m-auto w-full max-w-4xl">
-                <div class="animated-item section-kicker mb-2">Reconhecimento Rápido</div>
-                <h2 class="animated-item section-title text-gray-800 mb-8">Sinais de alerta</h2>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 120 60" class="illust-svg" aria-hidden="true">
-                        <rect x="8" y="12" width="42" height="36" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
-                        <rect class="s12-warning-row" x="14" y="20" width="24" height="5" rx="2" fill="#cbd5e1"/>
-                        <rect class="s12-active-row" x="14" y="28" width="18" height="5" rx="2" fill="#60a5fa"/>
-                        <rect x="14" y="36" width="14" height="5" rx="2" fill="#cbd5e1"/>
-                        <path class="s12-shield" d="M85 6 L106 14 L106 36 Q106 50 85 56 Q64 50 64 36 L64 14 Z" fill="rgba(0,133,66,.15)" stroke="#008542" stroke-width="2"/>
-                        <text class="s12-check" x="85" y="38" text-anchor="middle" font-size="20" fill="#008542" font-weight="bold" opacity="0">&#x2713;</text>
-                    </svg>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="animated-item delay-1 card card--danger">
-                        <div class="card-title">Mensagem suspeita</div>
-                        <ul class="card-list text-gray-600">
-                            <li><span>&#x274C;</span><span>Urgência fora do normal</span></li>
-                            <li><span>&#x274C;</span><span>Pedido de senha/código MFA</span></li>
-                            <li><span>&#x274C;</span><span>Remetente estranho ou parecido</span></li>
-                            <li><span>&#x274C;</span><span>Anexo inesperado</span></li>
-                        </ul>
-                    </div>
-                    <div class="animated-item delay-2 card card--success">
-                        <div class="card-title">Comportamento seguro</div>
-                        <ul class="card-list text-gray-600">
-                            <li><span>&#x2705;</span><span>Parar e validar o contexto</span></li>
-                            <li><span>&#x2705;</span><span>Conferir domínio e canal oficial</span></li>
-                            <li><span>&#x2705;</span><span>Confirmar com solicitante real</span></li>
-                            <li><span>&#x2705;</span><span>Reportar tentativa suspeita</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="animated-item delay-3 mt-8 card card--soft text-center">
-                    <p class="text-base text-gray-700">
-                        Sinais simples detectados cedo evitam que um golpe vire incidente.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 13: Nunca faça -->
-        <div id="slide-13" class="slide w-full h-full text-center">
-            <div class="m-auto w-full max-w-6xl">
-                <div class="animated-item section-kicker mb-2">Condutas Proibidas</div>
-                <h2 class="animated-item section-title text-gray-800 mb-8">O que nunca fazer</h2>
-                <div class="slide-illust slide-illust--sm">
-                    <svg viewBox="0 0 70 55" class="illust-svg illust-svg--sm" aria-hidden="true">
-                        <rect x="12" y="10" width="46" height="30" rx="5" fill="none" stroke="#6B7280" stroke-width="1.8"/>
-                        <line x1="18" y1="18" x2="52" y2="18" stroke="#9CA3AF" stroke-width="1.5"/>
-                        <line x1="18" y1="26" x2="44" y2="26" stroke="#9CA3AF" stroke-width="1.5"/>
-                        <line x1="18" y1="34" x2="38" y2="34" stroke="#9CA3AF" stroke-width="1.5"/>
-                        <circle class="s13-d1" cx="24" cy="6" r="3" fill="#60a5fa"/>
-                        <circle class="s13-d2" cx="35" cy="4" r="2.5" fill="#60a5fa"/>
-                        <circle class="s13-d3" cx="46" cy="6" r="3" fill="#60a5fa"/>
-                        <path class="s13-sparkle" d="M14 25 L10 21 M56 25 L60 21 M16 36 L12 40 M54 36 L58 40" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
-                    </svg>
-                </div>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="animated-item delay-1 card card--danger hover-lift">
-                        <img class="icon-img mb-4 mx-auto" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_document_24_filled.svg" alt="Compartilhar senha">
-                        <div class="card-title">Compartilhar credencial</div>
-                        <h3 class="card-heading">Risco crítico</h3>
-                        <ul class="card-list text-gray-600 text-sm">
-                            <li><span>•</span><span>Não envie senha por e-mail ou chat.</span></li>
-                            <li><span>•</span><span>Não empreste token ou código MFA.</span></li>
-                            <li><span>•</span><span>Conta corporativa é pessoal e intransferível.</span></li>
-                        </ul>
-                    </div>
-                    <div class="animated-item delay-2 card card--warning hover-lift">
-                        <img class="icon-img mb-4 mx-auto" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_eye_show_24_filled.svg" alt="Ignorar alerta">
-                        <div class="card-title">Ignorar alerta</div>
-                        <h3 class="card-heading">Erro comum</h3>
-                        <ul class="card-list text-gray-600 text-sm">
-                            <li><span>•</span><span>Não desative proteção para "resolver rápido".</span></li>
-                            <li><span>•</span><span>Não aprove push MFA sem iniciar login.</span></li>
-                            <li><span>•</span><span>Não trate aviso de segurança como ruído.</span></li>
-                        </ul>
-                    </div>
-                    <div class="animated-item delay-3 card card--success hover-lift">
-                        <img class="icon-img mb-4 mx-auto" src="https://raw.githubusercontent.com/coltongriffith/fluenticons/main/static/icons/fluent/ic_fluent_shield_24_filled.svg" alt="Instalação não autorizada">
-                        <div class="card-title">Instalar sem validar</div>
-                        <h3 class="card-heading">Porta de entrada</h3>
-                        <ul class="card-list text-gray-600 text-sm">
-                            <li><span>•</span><span>Não execute arquivo só porque "parece útil".</span></li>
-                            <li><span>•</span><span>Não habilite macro sem origem confiável.</span></li>
-                            <li><span>•</span><span>Não use software fora da política corporativa.</span></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="animated-item delay-4 mt-8 card card--soft text-center">
-                    <p class="text-lg text-gray-800 font-semibold">
-                        A maioria dos incidentes começa em exceções evitáveis.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 14: Comportamentos seguros -->
-        <div id="slide-14" class="slide w-full h-full subtle-bg">
-            <div class="m-auto w-full max-w-4xl">
-                <div class="animated-item section-kicker mb-2">Hábito Seguro</div>
-                <h2 class="animated-item section-title text-gray-800 mb-6">Comportamentos que protegem</h2>
-                <p class="animated-item delay-1 section-lead mb-8">Rotina simples e consistente reduz chance de incidente.</p>
-                <div class="slide-illust slide-illust--sm">
-                    <svg viewBox="0 0 120 40" class="illust-svg illust-svg--wide" aria-hidden="true">
-                        <rect x="2" y="4" width="30" height="32" rx="3" fill="none" stroke="#9CA3AF" stroke-width="1.5"/>
-                        <rect x="8" y="11" width="18" height="3.5" rx="2" fill="#9CA3AF"/>
-                        <rect x="8" y="17" width="14" height="3.5" rx="2" fill="#9CA3AF"/>
-                        <rect x="8" y="23" width="11" height="3.5" rx="2" fill="#9CA3AF"/>
-                        <path class="s14-f1" d="M38 10 H112" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="4 4"/>
-                        <path class="s14-f2" d="M38 20 H112" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="4 4"/>
-                        <path class="s14-f3" d="M38 30 H112" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="4 4"/>
-                        <circle class="s14-px1" cx="50" cy="12" r="2" fill="#ef4444"/>
-                        <circle class="s14-px2" cx="58" cy="22" r="1.8" fill="#ef4444"/>
-                        <circle class="s14-px3" cx="46" cy="30" r="2" fill="#ef4444"/>
-                    </svg>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="animated-item delay-2 card card--success hover-lift text-center">
-                        <div class="w-14 h-14 bg-green-500 rounded-2xl mb-4 shadow-lg mx-auto flex items-center justify-center">
-                            <span class="text-white text-2xl font-bold">&#x21BB;</span>
-                        </div>
-                        <div class="card-title">Verificar</div>
-                        <p class="text-sm">Checar remetente, domínio e contexto.</p>
-                    </div>
-                    <div class="animated-item delay-3 card card--success hover-lift text-center">
-                        <div class="w-14 h-14 bg-blue-500 rounded-2xl mb-4 shadow-lg mx-auto flex items-center justify-center">
-                            <span class="text-white text-2xl font-bold">&#x21D4;</span>
-                        </div>
-                        <div class="card-title">Confirmar</div>
-                        <p class="text-sm">Validar pedido em canal oficial.</p>
-                    </div>
-                    <div class="animated-item delay-4 card card--warning hover-lift text-center">
-                        <div class="w-14 h-14 bg-orange-500 rounded-2xl mb-4 shadow-lg mx-auto flex items-center justify-center">
-                            <span class="text-white text-2xl font-bold">&#x25C9;</span>
-                        </div>
-                        <div class="card-title">Atualizar</div>
-                        <p class="text-sm">Sistema e app sempre em dia.</p>
-                    </div>
-                    <div class="animated-item delay-5 card card--danger hover-lift text-center">
-                        <div class="w-14 h-14 bg-red-600 rounded-2xl mb-4 shadow-lg mx-auto flex items-center justify-center">
-                            <span class="text-white text-2xl font-bold">&#x2713;</span>
-                        </div>
-                        <div class="card-title">Reportar</div>
-                        <p class="text-sm">Sinal estranho deve ser comunicado.</p>
-                    </div>
-                </div>
-                <div class="animated-item delay-6 mt-8 card card--soft text-center">
-                    <p class="text-base text-gray-700">
-                        Segurança digital forte é soma de hábitos corretos todos os dias.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 15: Se você clicou -->
-        <div id="slide-15" class="slide w-full h-full text-center">
-            <div class="m-auto w-full max-w-5xl">
-                <div class="animated-item section-kicker mb-2">Resposta Imediata</div>
-                <h2 class="animated-item section-title text-gray-800 mb-6">Se você clicou, o que fazer</h2>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 120 60" class="illust-svg" aria-hidden="true">
-                        <rect x="18" y="12" width="30" height="24" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
-                        <rect x="23" y="18" width="20" height="6" rx="2" fill="#cbd5e1"/>
-                        <rect x="23" y="27" width="13" height="4" rx="2" fill="#cbd5e1"/>
-                        <line class="s15-barrier" x1="56" y1="14" x2="56" y2="46" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3 3" opacity="0"/>
-                        <circle class="s15-p1" cx="75" cy="22" r="3" fill="#ef4444"/>
-                        <circle class="s15-p2" cx="85" cy="30" r="2.5" fill="#ef4444"/>
-                        <circle class="s15-p3" cx="78" cy="40" r="2" fill="#ef4444"/>
-                    </svg>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6 text-center">
-                    <div class="animated-item delay-1 card card--success">
-                        <div class="card-title">Interromper ação</div>
-                        <p class="text-sm">Pare o preenchimento e feche a página suspeita.</p>
-                    </div>
-                    <div class="animated-item delay-2 card card--success">
-                        <div class="card-title">Trocar senha</div>
-                        <p class="text-sm">Se digitou credencial, altere imediatamente.</p>
-                    </div>
-                    <div class="animated-item delay-3 card card--warning">
-                        <div class="card-title">Avisar segurança/TI</div>
-                        <p class="text-sm">Informe horário, canal e conteúdo recebido.</p>
-                    </div>
-                    <div class="animated-item delay-4 card card--danger">
-                        <div class="card-title">Não ocultar o erro</div>
-                        <p class="text-sm">Reportar cedo reduz dano e acelera contenção.</p>
-                    </div>
-                </div>
-                <div class="animated-item delay-5 mt-8 card card--soft text-center">
-                    <p class="text-base text-gray-700">
-                        Em segurança digital, rapidez e transparência valem mais do que tentar resolver sozinho.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 16: Cultura e reporte -->
-        <div id="slide-16" class="slide w-full h-full subtle-bg text-center">
-            <div class="m-auto w-full max-w-3xl">
-                <div class="animated-item section-kicker mb-2">Cultura de Segurança</div>
-                <h2 class="animated-item section-title text-gray-800 mb-6">Equipe forte reporta cedo</h2>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 80 80" class="illust-svg" aria-hidden="true">
-                        <circle class="s16-r3" cx="40" cy="40" r="35" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0"/>
-                        <circle class="s16-r2" cx="40" cy="40" r="25" fill="none" stroke="#ef4444" stroke-width="2" opacity="0"/>
-                        <circle class="s16-r1" cx="40" cy="40" r="15" fill="none" stroke="#ef4444" stroke-width="2.5" opacity="0"/>
-                        <circle cx="40" cy="40" r="8" fill="#ef4444"/>
-                        <text x="40" y="45" text-anchor="middle" font-size="12" fill="white" font-weight="bold">!</text>
-                    </svg>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="animated-item delay-1 card card--danger">
-                        <p class="text-2xl font-medium text-gray-700 leading-relaxed text-center">
-                        Segurança digital não é só da TI. É comportamento coletivo.
-                        </p>
-                    </div>
-                    <div class="animated-item delay-2 card card--soft text-center">
-                        <div class="card-title">Reporte sem medo</div>
-                        <ul class="card-list text-gray-700">
-                            <li><span>•</span><span>Sem caça às bruxas</span></li>
-                            <li><span>•</span><span>Foco em contenção rápida</span></li>
-                            <li><span>•</span><span>Aprendizado contínuo da equipe</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="animated-item delay-3 mt-6 section-lead">
-                    Quanto antes o reporte, menor o impacto para toda a operação.
-                </p>
-            </div>
-        </div>
-
-        <!-- Slide 17: Resumo -->
-        <div id="slide-17" class="slide w-full h-full text-center">
-            <div class="m-auto w-full max-w-4xl">
-                <div class="animated-item section-kicker mb-2">Mensagens-chave</div>
-                <h2 class="animated-item section-title text-gray-800 mb-8">Principais aprendizados</h2>
-                <div class="slide-illust">
-                    <svg viewBox="0 0 100 80" class="illust-svg" aria-hidden="true">
-                        <line class="s17-l1" x1="50" y1="10" x2="84" y2="30" stroke="#d1d5db" stroke-width="1.5"/>
-                        <line class="s17-l2" x1="84" y1="30" x2="72" y2="66" stroke="#d1d5db" stroke-width="1.5"/>
-                        <line class="s17-l3" x1="72" y1="66" x2="28" y2="66" stroke="#d1d5db" stroke-width="1.5"/>
-                        <line class="s17-l4" x1="28" y1="66" x2="16" y2="30" stroke="#d1d5db" stroke-width="1.5"/>
-                        <line class="s17-l5" x1="16" y1="30" x2="50" y2="10" stroke="#d1d5db" stroke-width="1.5"/>
-                        <circle class="s17-d1" cx="50" cy="10" r="6" fill="#008542"/>
-                        <circle class="s17-d2" cx="84" cy="30" r="6" fill="#059669"/>
-                        <circle class="s17-d3" cx="72" cy="66" r="6" fill="#10b981"/>
-                        <circle class="s17-d4" cx="28" cy="66" r="6" fill="#059669"/>
-                        <circle class="s17-d5" cx="16" cy="30" r="6" fill="#008542"/>
-                    </svg>
-                </div>
-                <div class="animated-item delay-1 card card--soft text-center">
-                    <p class="text-lg text-gray-600 mb-4">Pontos essenciais deste DDSMS:</p>
-                    <ul class="card-list text-gray-700">
-                        <li><span>•</span><span>Engenharia social explora comportamento, não só tecnologia</span></li>
-                        <li><span>•</span><span>Phishing, QR e anexos falsos exigem validação prévia</span></li>
-                        <li><span>•</span><span>MFA protege, mas aprovação indevida abre a porta</span></li>
-                    </ul>
-                </div>
-                <div class="animated-item delay-2 mt-6 card card--success text-center">
-                    <p class="text-lg text-gray-700 mb-4 font-semibold">Comportamento esperado na rotina:</p>
-                    <ul class="card-list text-gray-700">
-                        <li><span>•</span><span>Parar, verificar, confirmar e só então agir</span></li>
-                        <li><span>•</span><span>Reportar qualquer sinal suspeito sem atraso</span></li>
-                        <li><span>•</span><span>Proteger credenciais como ativo crítico da empresa</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 18: Fechamento -->
-        <div id="slide-18" class="slide w-full h-full low-opacity-gradient-bg">
-            <div class="m-auto flex flex-col items-center text-gray-800">
-                <div class="animated-item mb-6 flex items-center justify-center space-x-8">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_petrobras.gif" alt="Logo Petrobras" class="h-20">
-                    <img src="https://www.agfengenharia.com.br/wp-content/uploads/2018/09/group-20668-211507.png" alt="Logo AGF Engenharia" class="h-20">
-                </div>
-                <div class="slide-illust slide-illust--sm">
-                    <svg viewBox="0 0 200 40" class="illust-svg illust-svg--wide" aria-hidden="true">
-                        <polyline class="s18-signal" points="0,20 24,20 24,10 52,10 52,30 82,30 82,20 116,20 116,10 146,10 146,30 176,30 176,20 200,20" fill="none" stroke="#008542" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h1 class="animated-item delay-1 text-5xl md:text-7xl font-black leading-tight mt-4">Pense antes de clicar.</h1>
-                <div class="animated-item delay-2 mt-12 text-lg md:text-xl font-semibold bg-white/50 p-8 rounded-xl backdrop-blur-sm text-center max-w-3xl mx-auto">
-                    <p class="mb-4 font-bold text-emerald-800 text-2xl">Segurança digital é atitude diária de cada pessoa.</p>
-                    <p class="mb-4 text-base text-gray-700 max-w-2xl mx-auto">
-                        Um clique seguro evita incidente, protege dados e fortalece a continuidade da operação.
-                    </p>
-                    <p class="text-3xl font-black text-gray-800">Obrigado | DDSMS Segurança Digital</p>
-                </div>
-            </div>
-        </div>
-            
+  <div class="parallax-scene" aria-hidden="true">
+    <div class="parallax-layer layer-grid technical-orbit"></div>
+    <div class="parallax-layer layer-noise"></div>
+    <div class="parallax-layer layer-tank">
+      <img src="./assets/img/hero-tank.svg" alt="" width="420" height="380">
     </div>
+    <div class="parallax-layer layer-risk-line"></div>
+    <div class="parallax-layer layer-warning risk-pulse"></div>
+  </div>
 
-    <!-- Navigation Bar -->
-    <nav class="navigation-bar glass">
-        <button id="prevBtn" class="nav-button" aria-label="Slide anterior">Anterior</button>
-        <div class="progress-container">
-            <div class="progress-track">
-                <div id="progressBar" class="progress-fill" style="width: 0%"></div>
-            </div>
+  <nav class="nav-rail" aria-label="Indicador de painéis">
+    <ol class="nav-rail__list">
+      <li><button type="button" class="nav-rail__dot" data-section="hero"       aria-label="Painel 1 — Início"></button></li>
+      <li><button type="button" class="nav-rail__dot" data-section="regra"      aria-label="Painel 2 — Regra"></button></li>
+      <li><button type="button" class="nav-rail__dot" data-section="tres-ps"    aria-label="Painel 3 — 3 Ps"></button></li>
+      <li><button type="button" class="nav-rail__dot" data-section="video"      aria-label="Painel 4 — Vídeo"></button></li>
+      <li><button type="button" class="nav-rail__dot" data-section="debrief"    aria-label="Painel 5 — Debrief"></button></li>
+      <li><button type="button" class="nav-rail__dot" data-section="fechamento" aria-label="Painel 6 — Fechamento"></button></li>
+    </ol>
+    <p class="nav-rail__hint">
+      <span class="nav-rail__hint-scroll">Role para avançar</span>
+      <span class="nav-rail__hint-sep" aria-hidden="true">·</span>
+      <span class="nav-rail__hint-keys">← →</span>
+    </p>
+  </nav>
+
+  <main class="horizontal-stage" id="horizontal-stage" tabindex="-1">
+
+    <!-- PAINEL 1 — HERO -->
+    <section class="panel panel--hero" id="hero" data-section="hero" data-panel-idx="0">
+      <div class="panel__inner panel__inner--hero">
+        <div class="hero__content">
+          <div class="badges" data-reveal="0">
+            <span class="badge badge--primary">DDSMS</span>
+            <span class="badge badge--outline">Regra de Ouro 8</span>
+          </div>
+          <h1 class="hero__title" data-reveal="1">Atenção às Mudanças</h1>
+          <p class="hero__subtitle" data-reveal="2">Quando a condição muda, a rotina deixa de ser rotina.</p>
+          <p class="hero__lead" data-reveal="2">Antes de agir no automático, pergunte: <strong>algo mudou?</strong></p>
+          <p class="hero__meta" data-reveal="3">
+            <span class="meta-chip">Vídeo: 7min28s</span>
+            <span class="meta-chip">Complemento: ~3min</span>
+          </p>
+          <a class="btn btn--primary btn--lg magnetic-btn" href="#regra" id="btn-iniciar"
+             data-section="regra" aria-label="Iniciar apresentação DDSMS"
+             data-reveal="3">Iniciar DDSMS</a>
         </div>
-        <button id="nextBtn" class="nav-button primary" aria-label="Próximo slide">Próximo</button>
-    </nav>
-</main>
+        <div class="hero__visual" data-reveal="4">
+          <div class="hero__tank-wrap">
+            <img src="./assets/img/hero-tank.svg" alt="" width="480" height="420" class="hero__tank">
+            <span class="hero__pulse risk-pulse" aria-hidden="true"></span>
+          </div>
+          <div class="hero__risk-line" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-hint__text">Role para avançar</span>
+        <span class="scroll-hint__arrow"></span>
+      </div>
+    </section>
 
-<!-- Scripts -->
-<script src="script.js"></script>
+    <!-- PAINEL 2 — REGRA DE OURO 8 -->
+    <section class="panel panel--regra" id="regra" data-section="regra" data-panel-idx="1">
+      <div class="panel__inner">
+        <header class="panel__header" data-reveal="0">
+          <span class="panel__number">02</span>
+          <h2 class="panel__title">Regra de Ouro 8</h2>
+        </header>
+        <blockquote class="quote-block quote-block--premium" data-reveal="1">
+          <p>"Fique atento aos riscos das mudanças. Somente realize qualquer mudança que envolva pessoas, instalações, materiais ou procedimentos após análise e autorização."</p>
+        </blockquote>
+        <div class="factor-grid" data-reveal="2">
+          <article class="factor-card animated-rule-card">
+            <span class="factor-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M5 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <span class="factor-card__label">Pessoas</span>
+            <p>Equipe, função ou liderança mudaram?</p>
+          </article>
+          <article class="factor-card animated-rule-card">
+            <span class="factor-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M9 6V4h6v2" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
+            <span class="factor-card__label">Instalações</span>
+            <p>Área, acesso ou condição física mudaram?</p>
+          </article>
+          <article class="factor-card animated-rule-card">
+            <span class="factor-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 12l2 2 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
+            <span class="factor-card__label">Materiais</span>
+            <p>Ferramenta, peça ou insumo mudou?</p>
+          </article>
+          <article class="factor-card animated-rule-card">
+            <span class="factor-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 8h12M6 12h8M6 16h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
+            <span class="factor-card__label">Procedimentos</span>
+            <p>O método ainda representa o campo?</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAINEL 3 — OS 3 Ps -->
+    <section class="panel panel--accent panel--tres-ps" id="tres-ps" data-section="tres-ps" data-panel-idx="2">
+      <div class="panel__inner">
+        <header class="panel__header" data-reveal="0">
+          <span class="panel__number">03</span>
+          <h2 class="panel__title">Os 3 Ps</h2>
+        </header>
+        <div class="tres-ps" data-reveal="2">
+          <div class="tres-ps__connector pps-flow-line" aria-hidden="true"></div>
+          <article class="p-card p-card--parar">
+            <div class="p-card__step">01</div>
+            <h3 class="p-card__title">Parar</h3>
+            <p class="p-card__text">Interrompa o automático.</p>
+          </article>
+          <article class="p-card p-card--processar">
+            <div class="p-card__step">02</div>
+            <h3 class="p-card__title">Processar</h3>
+            <p class="p-card__text">Entenda o que mudou.</p>
+          </article>
+          <article class="p-card p-card--prosseguir">
+            <div class="p-card__step">03</div>
+            <h3 class="p-card__title">Prosseguir</h3>
+            <p class="p-card__text">Siga só com segurança.</p>
+          </article>
+        </div>
+        <p class="impact-line" data-reveal="4">Se mudou e não foi analisado, <strong class="impact-line__accent">pare</strong>.</p>
+      </div>
+    </section>
+
+    <!-- PAINEL 4 — VÍDEO (link externo SharePoint) -->
+    <section class="panel panel--video" id="video" data-section="video" data-panel-idx="3">
+      <div class="panel__inner panel__inner--video">
+        <header class="panel__header panel__header--video" data-reveal="0">
+          <span class="panel__number">04</span>
+          <h2 class="panel__title">Assista ao estudo de caso</h2>
+          <p class="panel__intro">Observe onde a mudança apareceu: condição do equipamento, acesso, rotina, registros e comunicação.</p>
+        </header>
+
+        <div class="video-stage" data-reveal="1">
+          <a class="video-placeholder technical-orbit"
+             href="https://petrobrasbr.sharepoint.com/teams/Comunidades-de-interesse-316/_layouts/15/stream.aspx?UniqueId=2a776d30-42f8-4fde-bebc-7f96afd94946"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Abrir vídeo no SharePoint em nova aba">
+            <span class="video-placeholder__grid" aria-hidden="true"></span>
+            <img class="video-placeholder__tank" src="./assets/img/hero-tank.svg" alt="" width="200" height="180">
+            <span class="video-play-orb" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M10 7l12 7-12 7V7z" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="video-meta-badge video-meta-badge--duration">7min28s</span>
+            <span class="video-meta-badge video-meta-badge--source">SharePoint</span>
+          </a>
+
+          <a class="btn btn--primary btn--lg magnetic-btn btn--video-open"
+             href="https://petrobrasbr.sharepoint.com/teams/Comunidades-de-interesse-316/_layouts/15/stream.aspx?UniqueId=2a776d30-42f8-4fde-bebc-7f96afd94946"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Abrir vídeo no SharePoint em nova aba">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M7 2H2v12h12V9M9 2h5v5M7 9l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Abrir vídeo no SharePoint
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAINEL 5 — DEBRIEF -->
+    <section class="panel panel--debrief" id="debrief" data-section="debrief" data-panel-idx="4">
+      <div class="panel__inner">
+        <header class="panel__header" data-reveal="0">
+          <span class="panel__number">05</span>
+          <h2 class="panel__title">Onde a mudança apareceu?</h2>
+        </header>
+        <div class="debrief-grid" data-reveal="2">
+          <article class="debrief-card debrief-card--a">
+            <span class="debrief-card__marker risk-pulse" aria-hidden="true"></span>
+            <h3>Equipamento</h3>
+            <p>A integridade já não era a mesma.</p>
+          </article>
+          <article class="debrief-card debrief-card--b">
+            <span class="debrief-card__marker" aria-hidden="true"></span>
+            <h3>Área</h3>
+            <p>O cenário de acesso havia mudado.</p>
+          </article>
+          <article class="debrief-card debrief-card--c">
+            <span class="debrief-card__marker" aria-hidden="true"></span>
+            <h3>Informação</h3>
+            <p>Registro precisa virar barreira.</p>
+          </article>
+          <article class="debrief-card debrief-card--d">
+            <span class="debrief-card__marker" aria-hidden="true"></span>
+            <h3>Acesso</h3>
+            <p>Restrição precisa ser bloqueio real.</p>
+          </article>
+          <article class="debrief-card debrief-card--e">
+            <span class="debrief-card__marker" aria-hidden="true"></span>
+            <h3>Rotina</h3>
+            <p>Hábito não substitui verificação.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAINEL 6 — FECHAMENTO -->
+    <section class="panel panel--closing" id="fechamento" data-section="fechamento" data-panel-idx="5">
+      <div class="panel__inner panel__inner--split">
+        <div class="closing__questions" data-reveal="1">
+          <header class="panel__header">
+            <span class="panel__number">06</span>
+            <h2 class="panel__title">Antes de executar, confirme.</h2>
+          </header>
+          <ul class="question-strip">
+            <li>Algo mudou?</li>
+            <li>Foi analisado?</li>
+            <li>Foi comunicado?</li>
+            <li>Foi autorizado?</li>
+            <li>Está seguro para prosseguir?</li>
+          </ul>
+        </div>
+        <div class="closing__final" data-reveal="2">
+          <p class="closing__eyebrow">Segurança começa antes da execução.</p>
+          <p class="closing__mantra">PARAR. PROCESSAR. PROSSEGUIR.</p>
+          <p class="closing-statement">Mudança não analisada não é detalhe. <strong>É risco.</strong></p>
+          <a class="btn btn--primary magnetic-btn" href="#tres-ps" data-section="tres-ps" aria-label="Revisar os 3 Ps">Revisar 3 Ps</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./assets/js/app.js" defer></script>
 </body>
 </html>
